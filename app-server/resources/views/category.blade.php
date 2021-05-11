@@ -6,12 +6,11 @@
         <style>body {padding: 10px;}</style>
     </head>
     <body>
-        <h1>テスト</h1>
-            @foreach ($cities as $city)
+        <h1>カテゴリーを選択してください</h1>
+        @foreach($categories as $key => $category)
             <p>
-                  
-                <a href="/{{ $city->id}}">{{ $city->name }}</a>
+                    {{ $category }}
             </p>
-        @endforeach
+            @endforeach
     </body>
 </html>

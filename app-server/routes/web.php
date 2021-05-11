@@ -12,5 +12,6 @@
 */
 
 Route::get('/', 'CityController@index')->name('city.list');
+Route::get('/{id}', 'CityController@show')->name('category.list');
 
 
