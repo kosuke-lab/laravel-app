@@ -7,10 +7,12 @@
     </head>
     <body>
         <h1>カテゴリーを選択してください</h1>
+        <p>{{ $_token }}</p>
         @foreach($categories as $key => $category)
             <p>
                     {{ $category }}
             </p>
             @endforeach
+            <a href="/">戻る</a>
     </body>
 </html>
