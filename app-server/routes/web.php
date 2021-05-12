@@ -12,6 +12,8 @@
 */
 
 Route::get('/', 'CityController@index')->name('city.list');
+Route::get('/new', 'PostController@create')->name('post.new');
+Route::post('/store', 'PostController@store')->name('post.store');
 Route::get('/{id}', 'CityController@show')->name('category.list');
 Route::get('/{id}/result', 'PostController@index')->name('post.list');
 
