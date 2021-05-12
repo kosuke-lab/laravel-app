@@ -16,7 +16,7 @@ class CityController extends Controller
     $request->session()->put('key', 'value');
     $data = $request->session()->all();
 
-    
+   
     return view('index',['cities' =>$cities,'data' =>$data]);
 }
 
@@ -27,6 +27,11 @@ class CityController extends Controller
     $categories = config('category.caterories');
     $_token = session()->get('_token');
 
-    return view('category',['categories' =>$categories,'city' => $city,'id' =>$id,'_token' =>$_token]);
+    return view('category',[
+        'categories' =>$categories,
+        'city' => $city,
+        'id' =>$id,
+        '_token' =>$_token
+        ]);
 }
 }

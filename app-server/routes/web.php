@@ -13,5 +13,6 @@
 
 Route::get('/', 'CityController@index')->name('city.list');
 Route::get('/{id}', 'CityController@show')->name('category.list');
+Route::get('/{id}/result', 'PostController@index')->name('post.list');
 
 

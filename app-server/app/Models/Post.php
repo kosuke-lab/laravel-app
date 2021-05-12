@@ -19,11 +19,11 @@ class Post extends Model
     ];
 
     public function postImage(){
-        return $this->hasOne(PostImage::class);
+        return $this->hasOne(Post_image::class);
     }
 
     public function city(){
-        return $this->hasOne(City::class);
+        return $this->belongsTo(City::class);
     }
 
 }
