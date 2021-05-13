@@ -7,7 +7,9 @@
     </head>
     <body>
          <h1>新しいお店</h1>
-         {{ Form::open(['route' => 'post.store']) }}
+          {{ Form::open(['route' => 'post.store','enctype' => 'multipart/form-data']) }} 
+         <!-- <form action="{{ route('post.store')}} "enctype="multipart/form-data" method="POST"> -->
+         {{ csrf_field() }}
         <div class='form-group'>
             {{ Form::label('titile', '店名:') }}
             {{ Form::text('titile', null) }}
@@ -25,13 +27,17 @@
             {{ Form::label('address', '住所:') }}
             {{ Form::text('address', null) }}
         </div>
-        <div class='form-group'>
+
+        <div class='form-group'> 
         <input type="file" name="file_path">
-        </div>
+        </div> 
+
+
         <div class="form-group">
             {{ Form::submit('作成する', ['class' => 'btn btn-outline-primary']) }}
         </div>
-    {{ Form::close() }}
+
+    {{ Form::close() }} 
 
     </body>
 </html>

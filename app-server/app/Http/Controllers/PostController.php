@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use Storage;
 use App\Models\Post;
 use App\Models\City;
 use App\Models\Post_image;
@@ -27,31 +28,46 @@ class PostController extends Controller
 
     public function create(Request $request)
     {
-        $post = new Post();
-        $titile = $request->input('titile');
+   
         $cities = City::all()->pluck('name', 'id');
         $categories = config('category.caterories');
-        $id = Auth::id();
+  
   
         return view('new', [
-             'post' =>$post,
-             'titile' =>$titile,
              'cities' => $cities,
              'categories' => $categories, 
-             'id'=>$id,
              ]);
     }
     public function store(Request $request)
     {
-        $post = new Post();
-        $post->user_id = auth()->id();
-        $post->city_id = request('city_id');
-        $post->category_id = request('category_id');
-        $post->status_id = 1;
-        $post->titile = request('titile');
-        $post->address = request('address');
+           
+
+            $post_id = Post::create([
+            'titile' => $request->input('titile'),
+            'city_id'=>$request->input('city_id'),
+            'category_id'=>$request->input('category_id'),
+            'status_id'=>1,
+            'address'=>$request->input('address'),
+            'user_id'=> auth()->id(),
+            ]);
+
+           
+
+            //$form = $request->file('file_path');
+            //dd($form);
+
+            $image = $request->file('file_path');
+            $path = Storage::disk('minio')->put('/', $image, 'public');
+            $image->path = Storage::disk('s3')->url($path);;
+
+            
+            $post_image = Post_image::create([
+                //'file_name' => $request->file('file_path')->getClientOriginalName(),
+            ]);
+
+       
+
         
-        $post->save();
         return redirect()->route('city.list');
     }
 }

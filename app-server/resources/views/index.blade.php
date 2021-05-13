@@ -24,5 +24,8 @@
             @foreach ($cities as $city)
             <p><a href="/{{ $city->id}}">{{ $city->name }}</a></p>
         @endforeach
+
+        <img src="http://localhost:9000/image/CeJG5oQbFoLExnyxMmpL7rHh1suoy3l9wS1jkZ5Q.jpg" alt="">
+
     </body>
 </html>
