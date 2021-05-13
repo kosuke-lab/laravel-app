@@ -10,7 +10,7 @@
          {{ Form::open(['route' => 'post.store']) }}
         <div class='form-group'>
             {{ Form::label('titile', '店名:') }}
-            {{ Form::text('name', null) }}
+            {{ Form::text('titile', null) }}
         </div>
         <div class='form-group'>
             {{ Form::label('category_id', 'カテゴリー:') }}
@@ -20,9 +20,13 @@
             {{ Form::label('city_id', '市町村:') }}
             {{ Form::select('city_id', $cities) }}
         </div>
+
         <div class='form-group'>
             {{ Form::label('address', '住所:') }}
             {{ Form::text('address', null) }}
+        </div>
+        <div class='form-group'>
+        <input type="file" name="file_path">
         </div>
         <div class="form-group">
             {{ Form::submit('作成する', ['class' => 'btn btn-outline-primary']) }}
