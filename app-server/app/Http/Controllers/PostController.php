@@ -58,7 +58,7 @@ class PostController extends Controller
 
             $image = $request->file('file_path');
             $path = Storage::disk('minio')->put('/', $image, 'public');
-            $image->path = Storage::disk('s3')->url($path);;
+            $image->path = Storage::disk('minio')->url($path);;
 
             
             $post_image = Post_image::create([
