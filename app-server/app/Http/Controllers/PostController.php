@@ -16,14 +16,12 @@ class PostController extends Controller
         $this->middleware('auth')->except(['index']);
     }
 
-    public function index($city_id ,$category_id)
+    public function index(Request $request, $category_id)
     {
-
-        //$posts = Post::all();
-        //$categories = config('category.caterories');
-        //dd($category_id);
-
+        
+        $city_id = $request->session()->get('city_id');
         $results = Post::inRandomOrder()->where('city_id', $city_id)->where('category_id', $category_id)->first();
+
         //dd($results);
         return view('result',[
             'results' =>$results,

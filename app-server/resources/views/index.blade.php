@@ -20,7 +20,6 @@
                 </div>
             @endif
         <h1>テスト</h1>
-        <div>session値：{{ session()->get('_token') }} </div>
             @foreach ($cities as $city)
             <p><a href="/{{ $city->id}}">{{ $city->name }}</a></p>
         @endforeach

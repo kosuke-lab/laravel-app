@@ -16,8 +16,8 @@ Route::get('/', 'CityController@index')->name('city.list');
 Route::get('/new', 'PostController@create')->name('post.new');
 Route::post('/store', 'PostController@store')->name('post.store');
 Route::get('/home', 'HomeController@index')->name('home');
-Route::get('/{id}', 'CityController@show')->name('category.list');
-Route::get('/{id}/{category_id}/result', 'PostController@index')->name('post.list');
+Route::get('/{city_id}', 'CityController@show')->name('category.list');
+Route::get('{city_id}/result/{category_id}', 'PostController@index')->name('post.list');
 
 
 

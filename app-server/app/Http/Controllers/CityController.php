@@ -21,17 +21,15 @@ class CityController extends Controller
 }
 
 
-     public function show($id)
+     public function show(Request $request, $id)
     {
     $city = City::find($id);
     $categories = config('category.caterories');
-    $_token = session()->get('_token');
-
+    $request->session()->put('city_id', $id);
     return view('category',[
         'categories' =>$categories,
         'city' => $city,
         'id' =>$id,
-        '_token' =>$_token
         ]);
 }
 }

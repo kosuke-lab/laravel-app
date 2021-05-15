@@ -7,9 +7,10 @@
     </head>
     <body>
         <h1>カテゴリーを選択してください</h1>
-        <p>{{ $_token }}</p>
+        <p>{{ $id }}</p>
+        <input type="hidden" value="{{ $id }}">
         @foreach($categories as $category_id => $category_name)
-            <p><a href="{{ $category_id}}/result">{{ $category_name }} </a></p>
+            <p><a href="{{ route('post.list',[$id,$category_id]) }}">{{ $category_name }} </a></p>
             @endforeach
             <a href="/">戻る</a>
     </body>
