@@ -15,19 +15,25 @@ class PostController extends Controller
     {
         $this->middleware('auth')->except(['index']);
     }
-
-    public function index(Request $request, $category_id)
+    
+    public function index()
     {
-        
-        $city_id = $request->session()->get('city_id');
-        $results = Post::inRandomOrder()->where('city_id', $city_id)->where('category_id', $category_id)->first();
-
-        //dd($results);
-        return view('result',[
-            'results' =>$results,
-        ]);
+    $cities = City::all();
+    return view('index',['cities' =>$cities]);
     }
 
+    public function category(Request $request, $id)
+    {
+        $city_name = City::find($id)->name;
+        $categories = config('category.caterories');
+        $request->session()->put('city_id', $id);
+        return view('category',[
+            'city_name' => $city_name,
+            'categories' =>$categories,
+            'id' =>$id,
+            ]);
+        }
+        
     public function create()
     {
         $cities = City::all()->pluck('name', 'id');
@@ -60,7 +66,17 @@ class PostController extends Controller
                 'file_path'=> 'image/'.$file_path,
                  'post_id' =>  $post_id,
             ]);
-
         return redirect()->route('city.list');
+    }
+
+    public function result(Request $request,$id,$category_id)
+    {
+        
+        $city_id = $request->session()->get('city_id');
+        dd($category_id);
+        $results = Post::where('city_id', $city_id)->where('category_id', $category_id)->inRandomOrder()->first();
+        return view('result',[
+            'results' =>$results,
+        ]);
     }
 }

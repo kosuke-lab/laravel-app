@@ -9,9 +9,8 @@
         <div><p>{{ $city_name }}</p></div>
         <h1>カテゴリーを選択してください</h1>
         <p>{{ $id }}</p>
-        <input type="hidden" value="{{ $id }}">
         @foreach($categories as $category_id => $category_name)
-            <p><a href="{{ route('post.list',[$id,$category_id]) }}">{{ $category_name }} </a></p>
+            <p><a href="{{ route('post.list',['city_id'=>$id,'category_id'=>$category_id]) }}">{{ $category_name }} </a></p>
             @endforeach
             <a href="/">戻る</a>
     </body>
