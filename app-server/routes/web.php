@@ -12,7 +12,7 @@
 */
 Auth::routes();
 
-Route::get('/', 'PostController@top')->name('city.list');
+Route::get('/', 'PostController@index')->name('city.list');
 Route::get('/new', 'PostController@create')->name('post.new');
 Route::post('/store', 'PostController@store')->name('post.store');
 Route::get('/home', 'HomeController@index')->name('home');

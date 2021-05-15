@@ -16,6 +16,9 @@ class PostController extends Controller
         $this->middleware('auth')->except(['index']);
     }
     
+    /**
+     * 
+     */
     public function index()
     {
     $cities = City::all();
@@ -26,6 +29,8 @@ class PostController extends Controller
     {
         $city_name = City::find($id)->name;
         $categories = config('category.caterories');
+
+        //セッションcity_idを保存
         $request->session()->put('city_id', $id);
         return view('category',[
             'city_name' => $city_name,
@@ -45,7 +50,7 @@ class PostController extends Controller
     }
     public function store(Request $request)
     {
-            $post_id = Post::create([
+        $post_id = Post::create([
             'titile' => $request->input('titile'),
             'city_id'=>$request->input('city_id'),
             'category_id'=>$request->input('category_id'),
@@ -54,13 +59,13 @@ class PostController extends Controller
             'user_id'=> Auth()->id(),
             ])->id;
             
+            //フォームから画像情報受け取り
             $file = $request->file('image');
             $file_name = $file->getClientOriginalName();
+
+            //minioへ画像アップロード
             $file_path = Storage::disk('minio')->put('/', $file, 'public');
             
-            //dd('image/'.$path);
-            // $image_path = Storage::disk('minio')->url($path);
-
              Post_image::create([
                 'file_name' => $file_name,
                 'file_path'=> 'image/'.$file_path,
@@ -71,9 +76,10 @@ class PostController extends Controller
 
     public function result(Request $request,$id,$category_id)
     {
-        
+        //セッションcity＿idの受け取り
         $city_id = $request->session()->get('city_id');
-        dd($category_id);
+
+        //ランダムでcity_idとcategory_idが一致するデータ呼び出し
         $results = Post::where('city_id', $city_id)->where('category_id', $category_id)->inRandomOrder()->first();
         return view('result',[
             'results' =>$results,
