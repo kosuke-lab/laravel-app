@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Models\Post;
 use App\Models\City;
 use App\Models\Post_image;
+use App\Http\Requests\CreatePostRequest;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Storage;
 
@@ -48,7 +49,7 @@ class PostController extends Controller
              'categories' => $categories, 
              ]);
     }
-    public function store(Request $request)
+    public function store(CreatePostRequest $request)
     {
         $post_id = Post::create([
             'titile' => $request->input('titile'),

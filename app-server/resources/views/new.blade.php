@@ -7,6 +7,11 @@
     </head>
     <body>
          <h1>新しいお店</h1>
+         <ul>
+        @foreach ($errors->all() as $error)
+            <li>{{ $error }}</li>
+        @endforeach
+    </ul>
           {{ Form::open(['route' => 'post.store','enctype' => 'multipart/form-data', 'method'=>'POST' ]) }} 
          <!-- <form action="{{ route('post.store')}} "enctype="multipart/form-data" method="POST"> -->
          @csrf
