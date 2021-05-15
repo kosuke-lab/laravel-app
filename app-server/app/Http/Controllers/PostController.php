@@ -2,12 +2,11 @@
 
 namespace App\Http\Controllers;
 
-use Storage;
 use App\Models\Post;
 use App\Models\City;
 use App\Models\Post_image;
 use Illuminate\Http\Request;
-use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Storage;
 
 class PostController extends Controller
 {
@@ -20,13 +19,12 @@ class PostController extends Controller
     public function index()
     {
         $posts = Post::all();
-        //dd($posts);
         return view('result',[
             'posts' =>$posts
         ]);
     }
 
-    public function create(Request $request)
+    public function create()
     {
    
         $cities = City::all()->pluck('name', 'id');
@@ -48,26 +46,22 @@ class PostController extends Controller
             'category_id'=>$request->input('category_id'),
             'status_id'=>1,
             'address'=>$request->input('address'),
-            'user_id'=> auth()->id(),
-            ]);
+            'user_id'=> Auth()->id(),
+            ])->id;
 
-           
 
-            //$form = $request->file('file_path');
-            //dd($form);
 
             $image = $request->file('file_path');
             $path = Storage::disk('minio')->put('/', $image, 'public');
-            $image->path = Storage::disk('minio')->url($path);;
+            $image_path = Storage::disk('minio')->url($path);
 
-            
-            $post_image = Post_image::create([
-                //'file_name' => $request->file('file_path')->getClientOriginalName(),
+
+             Post_image::create([
+                'file_name' => $request->file('file_path')->getClientOriginalName(),
+                'file_path'=> $image_path,
+                 'post_id' =>  $post_id,
             ]);
 
-       
-
-        
         return redirect()->route('city.list');
     }
 }

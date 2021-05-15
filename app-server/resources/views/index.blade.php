@@ -26,6 +26,7 @@
         @endforeach
 
         <img src="http://localhost:9000/image/nvaUoXmMl5p3mCUyoIG36TfGMbTAlVqua22yYbnH.png" alt="">
+        <img src="http://localhost:9000/image/nvaUoXmMl5p3mCUyoIG36TfGMbTAlVqua22yYbnH.png" alt="">
 
     </body>
 </html>

@@ -7,9 +7,9 @@
     </head>
     <body>
          <h1>新しいお店</h1>
-          {{ Form::open(['route' => 'post.store','enctype' => 'multipart/form-data']) }} 
+          {{ Form::open(['route' => 'post.store','enctype' => 'multipart/form-data', 'method'=>'POST' ]) }} 
          <!-- <form action="{{ route('post.store')}} "enctype="multipart/form-data" method="POST"> -->
-         {{ csrf_field() }}
+         @csrf
         <div class='form-group'>
             {{ Form::label('titile', '店名:') }}
             {{ Form::text('titile', null) }}
