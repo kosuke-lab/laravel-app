@@ -47,15 +47,17 @@ class PostController extends Controller
             'address'=>$request->input('address'),
             'user_id'=> Auth()->id(),
             ])->id;
-
-            $image = $request->file('file_path');
-            $path = Storage::disk('minio')->put('/', $image, 'public');
+            
+            $file = $request->file('image');
+            $file_name = $file->getClientOriginalName();
+            $file_path = Storage::disk('minio')->put('/', $file, 'public');
+            
             //dd('image/'.$path);
             // $image_path = Storage::disk('minio')->url($path);
 
              Post_image::create([
-                'file_name' => $request->file('file_path')->getClientOriginalName(),
-                'file_path'=> 'image/'.$path,
+                'file_name' => $file_name,
+                'file_path'=> 'image/'.$file_path,
                  'post_id' =>  $post_id,
             ]);
 

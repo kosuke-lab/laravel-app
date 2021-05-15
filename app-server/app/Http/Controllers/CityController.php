@@ -10,25 +10,18 @@ class CityController extends Controller
     public function index(Request $request)
     {
     $cities = City::all();
-
-    $value = $request->session()->get('key', 'default');
-    $request->session()->regenerate();
-    $request->session()->put('key', 'value');
-    $data = $request->session()->all();
-
-   
-    return view('index',['cities' =>$cities,'data' =>$data]);
+    return view('index',['cities' =>$cities]);
 }
 
 
      public function show(Request $request, $id)
     {
-    $city = City::find($id);
+    $city_name = City::find($id)->name;
     $categories = config('category.caterories');
     $request->session()->put('city_id', $id);
     return view('category',[
+        'city_name' => $city_name,
         'categories' =>$categories,
-        'city' => $city,
         'id' =>$id,
         ]);
 }

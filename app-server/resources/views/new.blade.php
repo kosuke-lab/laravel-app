@@ -29,7 +29,7 @@
         </div>
 
         <div class='form-group'> 
-        <input type="file" name="file_path">
+        <input type="file" name="image">
         </div> 
 
 

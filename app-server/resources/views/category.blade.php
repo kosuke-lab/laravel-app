@@ -6,6 +6,7 @@
         <style>body {padding: 10px;}</style>
     </head>
     <body>
+        <div><p>{{ $city_name }}</p></div>
         <h1>カテゴリーを選択してください</h1>
         <p>{{ $id }}</p>
         <input type="hidden" value="{{ $id }}">
