@@ -9,10 +9,12 @@
         <h1>テスト</h1>
 
             @foreach ($posts as $post)
-            <p>{{ $post->titile }}{{ $post->postImage->file_name }}{{ $post->postImage->file_path }}</p>
+            <p>{{ $post->titile }}</p>
+            <img src="http://localhost:9000/{{$post->postImage->file_path }}" alt="{{$post->postimage->file_name}}">
             <br>
             {{ $post->city->name }}
         @endforeach
+    
 
         
     </body>
