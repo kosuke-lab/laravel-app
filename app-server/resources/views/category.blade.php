@@ -8,10 +8,8 @@
     <body>
         <h1>カテゴリーを選択してください</h1>
         <p>{{ $_token }}</p>
-        @foreach($categories as $key => $category)
-            <p>
-                    {{ $category }}
-            </p>
+        @foreach($categories as $category_id => $category_name)
+            <p><a href="{{ $category_id}}/result">{{ $category_name }} </a></p>
             @endforeach
             <a href="/">戻る</a>
     </body>

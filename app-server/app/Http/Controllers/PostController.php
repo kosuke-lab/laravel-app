@@ -16,21 +16,24 @@ class PostController extends Controller
         $this->middleware('auth')->except(['index']);
     }
 
-    public function index()
+    public function index($city_id ,$category_id)
     {
-        $posts = Post::all();
+
+        //$posts = Post::all();
+        //$categories = config('category.caterories');
+        //dd($category_id);
+
+        $results = Post::inRandomOrder()->where('city_id', $city_id)->where('category_id', $category_id)->first();
+        //dd($results);
         return view('result',[
-            'posts' =>$posts
+            'results' =>$results,
         ]);
     }
 
     public function create()
     {
-   
         $cities = City::all()->pluck('name', 'id');
         $categories = config('category.caterories');
-  
-  
         return view('new', [
              'cities' => $cities,
              'categories' => $categories, 
@@ -38,8 +41,6 @@ class PostController extends Controller
     }
     public function store(Request $request)
     {
-           
-
             $post_id = Post::create([
             'titile' => $request->input('titile'),
             'city_id'=>$request->input('city_id'),
@@ -49,13 +50,10 @@ class PostController extends Controller
             'user_id'=> Auth()->id(),
             ])->id;
 
-
-
             $image = $request->file('file_path');
             $path = Storage::disk('minio')->put('/', $image, 'public');
             //dd('image/'.$path);
             // $image_path = Storage::disk('minio')->url($path);
-
 
              Post_image::create([
                 'file_name' => $request->file('file_path')->getClientOriginalName(),
