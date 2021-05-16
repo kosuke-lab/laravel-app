@@ -10,7 +10,12 @@
 | contains the "web" middleware group. Now create something great!
 |
 */
+
+
 Auth::routes();
+
+Route::get('/city_add', 'PostController@city_add')->name('city.add');
+Route::post('/city_store', 'PostController@city_store')->name('city.store');
 
 Route::get('/', 'PostController@index')->name('city.list');
 Route::get('/new', 'PostController@create')->name('post.new');

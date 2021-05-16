@@ -14,7 +14,24 @@ class PostController extends Controller
 
     public function __construct()
     {
-        $this->middleware('auth')->except(['index']);
+        $this->middleware('auth')->except(['index','category','add']);
+    }
+    public function city_add()
+    {
+        $cities = City::all();
+        return view('city_add',['cities' =>$cities]
+    );
+}
+
+    public function city_store(Request $request)
+    {
+        //$city_name = $request->input('text');
+        //dd($city_name);
+        
+        City::create([
+            'name'=>$request->input('text')
+        ]);
+        return redirect()->route('city.list');
     }
     
     /**
