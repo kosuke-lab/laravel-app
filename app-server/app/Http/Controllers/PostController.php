@@ -52,6 +52,47 @@ class PostController extends Controller
              'categories' => $categories, 
              ]);
     }
+
+    public function edit($post_id)
+    {
+        $post = Post::find($post_id);
+        $cities = City::all()->pluck('name', 'id');
+
+        $categories = config('category.caterories');
+        return view('edit', [
+            'post' =>$post,
+             'cities' => $cities,
+             'categories' => $categories, 
+             ]);
+    }
+
+    public function update(CreatePostRequest $request, $post_id)
+    {
+
+        $post = Post::find($post_id);
+        $post ->fill(['titile' => $request->input('titile')]);
+        $post ->fill(['city_id' => $request->input('city_id')]);
+        $post ->fill(['category_id' => $request->input('category_id')]);
+        $post ->fill(['address' => $request->input('address')]);
+
+        $post->save();
+
+             //フォームから画像情報受け取り
+             $file = $request->file('image');
+             $file_name = $file->getClientOriginalName();
+
+             //minioへ画像アップロード
+             $file_path = Storage::disk('minio')->put('/', $file, 'public');
+            
+              Post_image::create([
+                 'file_name' => $file_name,
+                 'file_path'=> 'image/'.$file_path,
+                  'post_id' =>  $post_id,
+             ]);
+        return redirect()->route('city.list');
+    }
+
+
     public function store(CreatePostRequest $request)
     {
         $post_id = Post::create([
