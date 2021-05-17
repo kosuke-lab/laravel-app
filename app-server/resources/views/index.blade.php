@@ -24,6 +24,8 @@
             <p><a href="/{{ $city->id}}">{{ $city->name }}</a></p>
         @endforeach
 
+        <a href="{{ route('mypage',['user_id' =>auth()->user()->id])}}">mypage</a>
+
         <img src="http://localhost:9000/image/nvaUoXmMl5p3mCUyoIG36TfGMbTAlVqua22yYbnH.png" alt="">
         <img src="http://localhost:9000/image/nvaUoXmMl5p3mCUyoIG36TfGMbTAlVqua22yYbnH.png" alt="">
 

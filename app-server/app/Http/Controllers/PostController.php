@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use Illuminate\Support\Facades\Auth; 
 use App\Models\Post;
 use App\Models\City;
 use App\Models\Post_image;
@@ -84,6 +85,19 @@ class PostController extends Controller
         $results = Post::where('city_id', $city_id)->where('category_id', $category_id)->inRandomOrder()->first();
         return view('result',[
             'results' =>$results,
+        ]);
+    }
+
+    public function getuser($user_id)
+    {
+        $user_id =Auth()->id();
+        $posts = Post::where('user_id',$user_id)->get();
+        //dd($posts);
+
+        return view('mypage',[
+            'user_id' => $user_id,
+            'posts' => $posts,
+          
         ]);
     }
 }
