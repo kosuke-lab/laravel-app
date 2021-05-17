@@ -10,8 +10,10 @@
 
 
 
-     <p> {{$results->titile}} </p>
+     <p> {{$results->titile}} {{$results->file_path}}</p>
+     <img src="http://localhost:9000/{{$results->postImage->file_path }}" alt="{{$results->postImage->file_name }}">
     
+     
 
 
     </body>

@@ -26,14 +26,14 @@ class CreatePostRequest extends FormRequest
         return [
             'titile' =>'required',
             'address' =>'required',
-            'file' =>'required',
+           
         ];
     }
     public function messages() {
         return [
             'titile.required' => '場所を入力してください。',
             'address.required' =>'住所を入力してください。',
-            'file.required' =>'画像を選択してください。',
+          
         ];
     }
 }
