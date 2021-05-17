@@ -3,6 +3,8 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Support\Facades\Auth; 
+use Gate;
+use App\Models\User;
 use App\Models\Post;
 use App\Models\City;
 use App\Models\Post_image;
@@ -93,11 +95,24 @@ class PostController extends Controller
         $user_id =Auth()->id();
         $posts = Post::where('user_id',$user_id)->get();
         //dd($posts);
-
         return view('mypage',[
             'user_id' => $user_id,
             'posts' => $posts,
           
         ]);
+    }
+
+    public function admin()
+    {
+
+        if(Gate::authorize('admin')){
+        
+        $users = User::all();
+        }else{
+            dd('ユーザ一覧にアクセスが許可されていないユーザです。');
+        };
+        return view ('admin',[
+            'users' =>$users,
+    ]);
     }
 }

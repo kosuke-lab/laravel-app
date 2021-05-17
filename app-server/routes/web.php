@@ -15,6 +15,7 @@ Auth::routes();
 Route::get('/', 'PostController@index')->name('city.list');
 Route::get('/new', 'PostController@create')->name('post.new');
 Route::post('/store', 'PostController@store')->name('post.store');
+Route::get('/admin', 'PostController@admin')->name('admin');
 Route::get('/home', 'HomeController@index')->name('home');
 Route::get('/mypage/{user_id}', 'PostController@getuser')->name('mypage');
 Route::get('/{city_id}', 'PostController@category')->name('category.list');
