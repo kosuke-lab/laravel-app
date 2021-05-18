@@ -16,6 +16,8 @@ Route::get('/', 'PostController@index')->name('city.list');
 Route::get('/new', 'PostController@create')->name('post.new');
 Route::post('/store', 'PostController@store')->name('post.store');
 Route::get('/admin', 'PostController@admin')->name('admin');
+Route::get('/admin/edit/{post_id}', 'PostController@admin_edit')->name('admin.edit');
+Route::post('/admin/update/{post_id}', 'PostController@admin_update')->name('admin.update');
 Route::get('/home', 'HomeController@index')->name('home');
 Route::get('/edit/{post_id}', 'PostController@edit')->name('post.edit');
 Route::post('/update/{post_id}', 'PostController@update')->name('post.update');

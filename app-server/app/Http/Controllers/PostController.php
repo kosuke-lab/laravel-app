@@ -21,13 +21,17 @@ class PostController extends Controller
     }
     
     /**
-     * 
+     * トップページで市町村選択処理
      */
     public function index()
     {
     $cities = City::all();
     return view('index',['cities' =>$cities]);
     }
+
+    /**
+     * カテゴリー選択画面
+     */
 
     public function category(Request $request, $id)
     {
@@ -42,6 +46,10 @@ class PostController extends Controller
             'id' =>$id,
             ]);
         }
+
+     /**
+     *新規投稿画面
+     */
         
     public function create()
     {
@@ -53,11 +61,13 @@ class PostController extends Controller
              ]);
     }
 
+     /**
+     *投稿編集画面
+     */
     public function edit($post_id)
     {
         $post = Post::find($post_id);
         $cities = City::all()->pluck('name', 'id');
-
         $categories = config('category.caterories');
         return view('edit', [
             'post' =>$post,
@@ -65,6 +75,10 @@ class PostController extends Controller
              'categories' => $categories, 
              ]);
     }
+
+    /**
+     *投稿編集の情報受け取り
+     */
 
     public function update(CreatePostRequest $request, $post_id)
     {
@@ -92,6 +106,9 @@ class PostController extends Controller
         return redirect()->route('city.list');
     }
 
+    /**
+     *新規投稿情報受け取り
+     */
 
     public function store(CreatePostRequest $request)
     {
@@ -119,6 +136,12 @@ class PostController extends Controller
         return redirect()->route('city.list');
     }
 
+
+     /**
+     *ランダム結果
+     */
+
+
     public function result(Request $request,$id,$category_id)
     {
         //セッションcity＿idの受け取り
@@ -130,6 +153,10 @@ class PostController extends Controller
             'results' =>$results,
         ]);
     }
+
+    /**
+     *マイページ作成
+     */
 
     public function getuser($user_id)
     {
@@ -143,17 +170,54 @@ class PostController extends Controller
         ]);
     }
 
+
+    /**
+     *管理者ページ作成
+     */
     public function admin()
     {
-
         if(Gate::authorize('admin')){
-        
-        $users = User::all();
+        $posts =Post::all();
+       
         }else{
             dd('ユーザ一覧にアクセスが許可されていないユーザです。');
         };
         return view ('admin',[
-            'users' =>$users,
+            'posts' =>$posts,
     ]);
     }
+
+    /**
+     *管理者ステータス変更
+     */
+    public function admin_edit($post_id)
+    {
+        if(Gate::authorize('admin')){
+        $post =Post::find($post_id);
+        $cities = City::all()->pluck('name', 'id');
+        $categories = config('category.caterories');
+
+    }else{
+        dd($post);
+    };
+        return view('admin_edit',[
+            'post' => $post,
+            'cities' => $cities,
+            'categories' => $categories,
+        ]);
+    }
+
+    public function admin_update(CreatePostRequest $request, $post_id)
+    {
+        $post = Post::find($post_id);
+        $post ->fill(['titile' => $request->input('titile')]);
+        $post ->fill(['city_id' => $request->input('city_id')]);
+        $post ->fill(['category_id' => $request->input('category_id')]);
+        $post ->fill(['address' => $request->input('address')]);
+        $post ->fill(['status_id' => $request->input('status_id')]);
+        $post->save();
+
+        return redirect()->route('city.list');
+    }
+
 }

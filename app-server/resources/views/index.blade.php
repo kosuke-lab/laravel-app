@@ -11,6 +11,8 @@
                 <div class="top-right links">
                     @auth
                         <a href="{{ url('/home') }}">Home</a>
+                        <a href="{{ route('mypage',['user_id' =>auth()->user()->id])}}">mypage</a>
+
                     @else
                         <a href="{{ route('login') }}">Login</a>
 
@@ -26,8 +28,7 @@
             <p><a href="/{{ $city->id}}">{{ $city->name }}</a></p>
         @endforeach
 
-        <a href="{{ route('mypage',['user_id' =>auth()->user()->id])}}">mypage</a>
-
+     
 
 
     </body>
