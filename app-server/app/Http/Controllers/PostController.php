@@ -174,14 +174,21 @@ class PostController extends Controller
     /**
      *管理者ページ作成
      */
-    public function admin()
+    public function admin(Request $request)
     {
         if(Gate::authorize('admin')){
         $posts =Post::all();
-       
         }else{
             dd('ユーザ一覧にアクセスが許可されていないユーザです。');
-        };
+        }
+
+         if ($request->filled('keyword')) {
+             $keyword = $request->input('keyword');
+             $posts = Post::where('titile', 'like', '%' . $keyword . '%')->get();
+            }else{
+            $posts = Post::all();
+         }
+
         return view ('admin',[
             'posts' =>$posts,
     ]);
