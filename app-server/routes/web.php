@@ -32,6 +32,14 @@ Route::get('{city_id}/result/{category_id}', 'PostController@result')->name('pos
 
 
 
+// パスワードリセットのためのemail入力
+Route::get('password/reset',  'Auth\ForgotPasswordController@showLinkRequestForm')->name('password.request');
+// トークンURLが書かれたメール送信
+Route::post('password/email', 'Auth\ForgotPasswordController@sendResetLinkEmail')->name('password.email');
+// トークンURLから新規パスワード入力画面
+Route::get('password/reset/{token}', 'Auth\ResetPasswordController@showResetForm')->name('password.reset');
+// 実際のパスワード上書き処理
+Route::post('password/reset', 'Auth\ResetPasswordController@reset')->name('password.update');
 
 
 
