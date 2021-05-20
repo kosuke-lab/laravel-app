@@ -19,6 +19,10 @@ Route::get('/admin', 'PostController@admin')->name('admin');
 Route::get('/admin/edit/{post_id}', 'PostController@admin_edit')->name('admin.edit');
 Route::post('/admin/update/{post_id}', 'PostController@admin_update')->name('admin.update');
 Route::get('/home', 'HomeController@index')->name('home');
+
+Route::get('login/{provider}', 'Auth\LoginController@redirectToProvider');
+Route::get('login/{provider}/callback', 'Auth\LoginController@handleProviderCallback');
+
 Route::get('/edit/{post_id}', 'PostController@edit')->name('post.edit');
 Route::post('/update/{post_id}', 'PostController@update')->name('post.update');
 

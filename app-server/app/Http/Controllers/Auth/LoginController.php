@@ -4,6 +4,9 @@ namespace App\Http\Controllers\Auth;
 
 use App\Http\Controllers\Controller;
 use Illuminate\Foundation\Auth\AuthenticatesUsers;
+use Socialite;
+use Illuminate\Support\Facades\Auth;
+use App\Models\User;
 
 class LoginController extends Controller
 {
@@ -35,5 +38,35 @@ class LoginController extends Controller
     public function __construct()
     {
         $this->middleware('guest')->except('logout');
+    }
+    
+    public function redirectToProvider($provider)
+    {
+        //Socialiteを利用して$provider変数のSNSへリダイレクト
+        return Socialite::driver($provider)->redirect();
+    }
+
+    public function handleProviderCallback($provider)
+    {
+         //各SNSからログイン情報取得
+        try {
+            $providerUser = Socialite::with($provider)->user();
+        } catch(Exception $e) {
+            return redirect('/login')->with('oauth_error', '予期せぬエラーが発生しました');
+        }
+
+        $myinfo = User::firstOrCreate([
+            //SNSID取得
+            'name' => $providerUser->nickname,
+
+            //SNSのメールアドレス取得
+            'email' => $providerUser->getEmail(),
+
+            //SNSログインユーザーに一般ユーザーの権限付与
+            'role' => 'user'
+            ]);
+                 Auth::login($myinfo);
+                 return redirect()->to('/'); 
+
     }
 }
