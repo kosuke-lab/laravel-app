@@ -28,7 +28,12 @@ class LoginController extends Controller
      *
      * @var string
      */
-    protected $redirectTo = '/';
+    //protected $redirectTo = '/';
+
+    protected function redirectTo() {
+        session()->flash('msg_success', 'ログインしました');
+        return '/';
+    }
 
     /**
      * Create a new controller instance.
@@ -42,6 +47,7 @@ class LoginController extends Controller
     
     protected function loggedOut()
     {
+        session()->flash('msg_danger','ログアウトしました。');
         return redirect('/');
     }
     

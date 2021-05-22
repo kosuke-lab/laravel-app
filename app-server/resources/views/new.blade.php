@@ -4,6 +4,9 @@
         <meta charset='utf-8'>
         <title>新規投稿フォーム</title>
         <style>body {padding: 10px;}</style>
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/toastr.css">
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/toastr.min.js"></script>
     </head>
     <body>
          <h1>新しいお店</h1>
@@ -44,5 +47,13 @@
 
     {{ Form::close() }} 
 
+    <script type="text/javascript">
+            // {{--失敗時--}}
+            @if (session('msg_danger'))
+                $(function () {
+                    toastr.success('{{ session('msg_danger') }}');
+                });
+            @endif
+</script>
     </body>
 </html>

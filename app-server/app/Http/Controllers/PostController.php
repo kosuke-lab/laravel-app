@@ -110,8 +110,9 @@ class PostController extends Controller
      *新規投稿情報受け取り
      */
 
-    public function store(CreatePostRequest $request)
+    public function store(Request $request)
     {
+    try{
         $post_id = Post::create([
             'titile' => $request->input('titile'),
             'city_id'=>$request->input('city_id'),
@@ -133,7 +134,15 @@ class PostController extends Controller
                 'file_path'=> 'image/'.$file_path,
                  'post_id' =>  $post_id,
             ]);
+        session()->flash('msg_success', '投稿が完了しました。管理者の承認をお待ちください');
         return redirect()->route('city.list');
+        }
+        catch (\Exception $e) {
+            session()->flash('msg_danger', '失敗しました。');
+    
+
+            return redirect()->route('post.new');
+        }
     }
 
 
