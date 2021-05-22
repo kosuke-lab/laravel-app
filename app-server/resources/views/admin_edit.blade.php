@@ -35,8 +35,8 @@
         </div>
 
         <div class='form-group'>
-            {{ Form::label('status_id', 'ステータスID:') }}
-            {{ Form::text('status_id', null) }}
+            {{ Form::label('status_id', 'ステータス:') }}
+            {{ Form::select('status_id', $statuses, $statuses[$post->status_id])}}
         </div>
 
         <div class='form-group'> 

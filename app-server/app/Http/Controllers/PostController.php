@@ -176,6 +176,8 @@ class PostController extends Controller
      */
     public function admin(Request $request)
     {
+        $statuses = config('status.statuses');
+
         if(Gate::allows('admin')){
         $posts =Post::all();
         }else{
@@ -191,6 +193,7 @@ class PostController extends Controller
 
         return view ('admin',[
             'posts' =>$posts,
+            'statuses'=>$statuses,
     ]);
     }
 
@@ -203,6 +206,7 @@ class PostController extends Controller
         $post =Post::find($post_id);
         $cities = City::all()->pluck('name', 'id');
         $categories = config('category.caterories');
+        $statuses = config('status.statuses');
 
     }else{
          return redirect('/');
@@ -211,6 +215,7 @@ class PostController extends Controller
             'post' => $post,
             'cities' => $cities,
             'categories' => $categories,
+            'statuses'=>$statuses,
         ]);
     }
 

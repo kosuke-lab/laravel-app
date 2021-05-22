@@ -6,6 +6,7 @@
         <style>body {padding: 10px;}</style>
     </head>
     <body>
+        <p>{{ $statuses[1]}}</p>
     {{ Form::open(['method' => 'get']) }}
     {{ csrf_field() }}
     <div class='form-group'>
@@ -29,9 +30,9 @@
               <tr>
                         <td>{{ $post->id }}</td>
                         <td>{{ $post->titile }}</td>
-                        <td>{{ $post->status_id }}</td>
+                         <td><a href="{{ route('admin.edit',$post->id)}}">{{ $statuses[$post->status_id] }}</a></td>
                         <!-- <td><a href="/admin/edit/{{ $post->id }}">変更</a></td> -->
-                        <td>  <a href="{{ route('admin.edit',$post->id)}}">変更</a> </td>
+                        <!-- <td>  <a href="{{ route('admin.edit',$post->id)}}">変更</a> </td> -->
 
 
               </tr>
