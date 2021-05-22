@@ -11,9 +11,10 @@
         <h1>テスト</h1>
 
         <div id="app">
-        <example-component></example-component>
+        <like-component :post-id="{{ json_encode($results->id) }}"></like-component>
     </div>
-   
+    
+
 
 
 
