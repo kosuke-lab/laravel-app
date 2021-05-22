@@ -176,10 +176,10 @@ class PostController extends Controller
      */
     public function admin(Request $request)
     {
-        if(Gate::authorize('admin')){
+        if(Gate::allows('admin')){
         $posts =Post::all();
         }else{
-            dd('ユーザ一覧にアクセスが許可されていないユーザです。');
+            return redirect('/');
         }
 
          if ($request->filled('keyword')) {
@@ -199,13 +199,13 @@ class PostController extends Controller
      */
     public function admin_edit($post_id)
     {
-        if(Gate::authorize('admin')){
+        if(Gate::allows('admin')){
         $post =Post::find($post_id);
         $cities = City::all()->pluck('name', 'id');
         $categories = config('category.caterories');
 
     }else{
-        dd($post);
+         return redirect('/');
     };
         return view('admin_edit',[
             'post' => $post,
@@ -224,7 +224,7 @@ class PostController extends Controller
         $post ->fill(['status_id' => $request->input('status_id')]);
         $post->save();
 
-        return redirect()->route('city.list');
+        return redirect()->route('admin');
     }
 
 }
