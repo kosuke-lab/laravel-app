@@ -156,10 +156,13 @@ class PostController extends Controller
         //セッションcity＿idの受け取り
         $city_id = $request->session()->get('city_id');
 
+        $userAuth = \Auth::id();
+
         //ランダムでcity_idとcategory_idが一致するデータ呼び出し
         $results = Post::where('city_id', $city_id)->where('category_id', $category_id)->where('status_id', 2)->inRandomOrder()->first();
         return view('result',[
             'results' =>$results,
+            'userAuth' => $userAuth,
         ]);
     }
 

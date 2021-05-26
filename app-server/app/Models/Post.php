@@ -26,4 +26,8 @@ class Post extends Model
         return $this->belongsTo(City::class);
     }
 
+    public function like(){
+        return $this->hasMany(Like::class);
+    }
+
 }

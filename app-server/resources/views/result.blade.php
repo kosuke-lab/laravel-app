@@ -10,8 +10,10 @@
     <body>
         <h1>テスト</h1>
 
+
+
         <div id="app">
-        <like-component :post-id="{{ json_encode($results->id) }}"></like-component>
+        <like-component :post-id="{{ json_encode($results->id) }}":user-id="{{ json_encode($userAuth) }}"></like-component>
     </div>
     
 

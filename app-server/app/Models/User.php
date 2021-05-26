@@ -40,4 +40,9 @@ class User extends Authenticatable
     public function social(){
         return $this->hasMany(Social::class);
     }
+
+    public function like()
+    {
+        return $this->hasMany(Like::class);
+    }
 }
