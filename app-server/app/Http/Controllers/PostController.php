@@ -161,6 +161,7 @@ class PostController extends Controller
 
         $post->load('like');
         $defaultLiked = $post->like->where('user_id',$userAuth)->first();
+        $defaultCount = count($post->like);
          //dd($defaultLiked);
 
          if(!empty($defaultLiked) ==0){
@@ -175,6 +176,7 @@ class PostController extends Controller
             'results' =>$results,
             'userAuth' => $userAuth,
             'defaultLiked' =>$defaultLiked,
+            'defaultCount' =>$defaultCount,
         ]);
     }
 
