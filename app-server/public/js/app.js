@@ -37713,7 +37713,7 @@ var render = function() {
               }
             }
           },
-          [_vm._v("いいね" + _vm._s(_vm.likeCount))]
+          [_vm._v("like" + _vm._s(_vm.likeCount))]
         )
       : _c(
           "button",
@@ -37726,7 +37726,7 @@ var render = function() {
               }
             }
           },
-          [_vm._v("いいね" + _vm._s(_vm.likeCount))]
+          [_vm._v("liled" + _vm._s(_vm.likeCount))]
         )
   ])
 }

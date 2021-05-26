@@ -13,7 +13,7 @@
 
 
         <div id="app">
-        <like-component :post-id="{{ json_encode($results->id) }}":user-id="{{ json_encode($userAuth) }}"></like-component>
+        <like-component :post-id="{{ json_encode($results->id) }}":user-id="{{ json_encode($userAuth) }}":default-liked="{{ json_encode($defaultLiked) }}"></like-component>
     </div>
     
 

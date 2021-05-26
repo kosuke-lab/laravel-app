@@ -151,18 +151,30 @@ class PostController extends Controller
      */
 
 
-    public function result(Request $request,$id,$category_id)
+    public function result(Request $request,$id,$category_id, Post $post)
     {
         //セッションcity＿idの受け取り
         $city_id = $request->session()->get('city_id');
 
+        //Vue側でuser_id取得
         $userAuth = \Auth::id();
+
+        $post->load('like');
+        $defaultLiked = $post->like->where('user_id',$userAuth)->first();
+         //dd($defaultLiked);
+
+         if(!empty($defaultLiked) ==0){
+             $defaultLiked == false;
+         }else{
+             $defaultLiked == true;
+         }
 
         //ランダムでcity_idとcategory_idが一致するデータ呼び出し
         $results = Post::where('city_id', $city_id)->where('category_id', $category_id)->where('status_id', 2)->inRandomOrder()->first();
         return view('result',[
             'results' =>$results,
             'userAuth' => $userAuth,
+            'defaultLiked' =>$defaultLiked,
         ]);
     }
 

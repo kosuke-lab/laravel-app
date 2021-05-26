@@ -15,6 +15,7 @@ use Illuminate\Http\Request;
 */
 
 Route::post('/posts/{post}/like', 'LikeController@like');
+Route::post('/posts/{post}/unlike', 'LikeController@unlike');
 
 Route::middleware('auth:api')->get('/user', function (Request $request) {
     return $request->user();
