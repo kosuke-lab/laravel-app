@@ -48,6 +48,9 @@ Route::post('/update/{post_id}', 'PostController@update')->name('post.update');
 //マイページ投稿一覧表示
 Route::get('/mypage/{user_id}', 'PostController@getuser')->name('mypage');
 
+//マイページお気に入り表示
+Route::get('/mypage/{user_id}/favorite', 'PostController@favorite')->name('favorite');
+
 //市町村選択後、カテゴリー表示
 Route::get('/{city_id}', 'PostController@category')->name('category.list');
 

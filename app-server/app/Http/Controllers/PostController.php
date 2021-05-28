@@ -7,6 +7,7 @@ use Gate;
 use App\Models\User;
 use App\Models\Post;
 use App\Models\City;
+use App\Models\Like;
 use App\Models\Post_image;
 use App\Http\Requests\CreatePostRequest;
 use Illuminate\Http\Request;
@@ -157,7 +158,7 @@ class PostController extends Controller
         $city_id = $request->session()->get('city_id');
 
         //Vue側でuser_id取得
-        $userAuth = \Auth::id();
+        $userAuth = Auth::id();
 
         $post->load('like');
         $defaultLiked = $post->like->where('user_id',$userAuth)->first();
@@ -258,4 +259,28 @@ class PostController extends Controller
         return redirect()->route('admin');
     }
 
+    public function favorite(Post $post, Request $request,$post_id)
+{
+    $userAuth = Auth::id();
+    $posts = Like::where('user_id',$userAuth)->get();
+
+
+    $data =[];
+    foreach($posts as $post){
+        $data[] = $post->post_id;
+    }
+
+    //dd($data);
+    $posts = [];
+    foreach($data as $test ){
+    $posts[] =Post::findOrFail($test);
 }
+    //dd($posts);
+
+     return view('favorite',[
+         'posts' => $posts,
+     ]);
+}
+}
+
+
