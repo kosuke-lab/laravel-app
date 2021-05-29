@@ -262,23 +262,12 @@ class PostController extends Controller
     public function favorite(Post $post, Request $request,$post_id)
 {
     $userAuth = Auth::id();
-    $posts = Like::where('user_id',$userAuth)->get();
 
-
-    $data =[];
-    foreach($posts as $post){
-        $data[] = $post->post_id;
-    }
-
-    //dd($data);
-    $posts = [];
-    foreach($data as $test ){
-    $posts[] =Post::findOrFail($test);
-}
-    //dd($posts);
+    $favorites = Auth::user()->posts()->get();
+    
 
      return view('favorite',[
-         'posts' => $posts,
+         'favorites' => $favorites,
      ]);
 }
 }

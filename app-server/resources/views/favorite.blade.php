@@ -8,8 +8,8 @@
     <body>
         <div><p></p></div>
         <h1>お気に入りページ</h1>
-        @foreach($posts as $post)
-            <p>{{ $post->titile }}</p>
+        @foreach($favorites as $favorite)
+            <p>{{ $favorite->titile }}</p>
             @endforeach
     </body>
 </html>

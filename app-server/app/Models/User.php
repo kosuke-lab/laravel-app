@@ -15,6 +15,7 @@ class User extends Authenticatable
      *
      * @var array
      */
+    protected $table = 'users';
     protected $fillable = [
         'name', 'email', 'password','role',
     ];
@@ -41,9 +42,9 @@ class User extends Authenticatable
         return $this->hasMany(Social::class);
     }
 
-    public function like()
+    public function posts()
     {
-        return $this->belongsToMany(Post::class,'user_id', 'id')->withTimestamps();
+        return $this->belongsToMany(Post::class, 'likes')->withTimestamps();
     }
 
     public function user()

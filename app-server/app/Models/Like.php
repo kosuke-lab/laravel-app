@@ -6,6 +6,7 @@ use Illuminate\Database\Eloquent\Model;
 
 class Like extends Model
 {
+    protected $table = 'likes';
     protected $fillable = [
         'post_id',
         'user_id',
@@ -16,6 +17,6 @@ class Like extends Model
     }
 
     public function post(){
-        return $this->BelongsToMany(Post::class,'user_id', 'id');
+        return $this->belongsToMany(Post::class,'user_id', 'id');
     }
 }
