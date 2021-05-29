@@ -2009,6 +2009,15 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
+//
+//
+//
+//
+//
+//
+//
+//
 /* harmony default export */ __webpack_exports__["default"] = ({
   mounted: function mounted() {
     console.log('Component mounted.');
@@ -37785,9 +37794,38 @@ var render = function() {
   var _vm = this
   var _h = _vm.$createElement
   var _c = _vm._self._c || _h
-  return _c("div")
+  return _c("div", [
+    _c("div", { attrs: { id: "overlay" } }, [
+      _c("div", { attrs: { id: "content" } }, [
+        _c("div", [
+          _vm._m(0),
+          _vm._v(" "),
+          _c(
+            "button",
+            {
+              staticClass: "btn btn-success",
+              attrs: { type: "button" },
+              on: {
+                click: function($event) {
+                  return _vm.$emit("close")
+                }
+              }
+            },
+            [_vm._v("閉じる "), _c("i", { staticClass: "fas fa-times" })]
+          )
+        ])
+      ])
+    ])
+  ])
 }
-var staticRenderFns = []
+var staticRenderFns = [
+  function() {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c("div", [_c("p", [_vm._v("カテゴリーを選択してください")])])
+  }
+]
 render._withStripped = true
 
 
