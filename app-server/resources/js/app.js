@@ -21,6 +21,7 @@ window.Vue = require('vue');
 
 Vue.component('example-component', require('./components/ExampleComponent.vue').default);
 Vue.component('like-component', require('./components/LikeComponent.vue').default);
+Vue.component('open-modal', require('./components/ModalComponent.vue').default);
 
 /**
  * Next, we will create a fresh Vue application instance and attach it to
@@ -30,4 +31,18 @@ Vue.component('like-component', require('./components/LikeComponent.vue').defaul
 
 const app = new Vue({
     el: '#app',
+    data: {
+        showContent: false
+      },
+      methods:{
+        clickEvent: function(){
+            this.$emit('from-child')
+           },
+        openModal: function(){
+          this.showContent = true
+        },
+        closeModal: function(){
+          this.showContent = false
+        }
+      }
 });
