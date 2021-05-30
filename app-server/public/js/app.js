@@ -2018,9 +2018,17 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
+//
+//
+//
+//
+//
 /* harmony default export */ __webpack_exports__["default"] = ({
-  mounted: function mounted() {
-    console.log('Component mounted.');
+  props: {
+    cityid: {
+      type: Array
+    }
   },
   methods: {
     clickEvent: function clickEvent() {
@@ -37799,6 +37807,16 @@ var render = function() {
       _c("div", { attrs: { id: "content" } }, [
         _c("div", [
           _vm._m(0),
+          _vm._v(" "),
+          _c(
+            "div",
+            _vm._l(_vm.cityid, function(city) {
+              return _c("li", { key: city.id }, [_vm._v(_vm._s(city.name))])
+            }),
+            0
+          ),
+          _vm._v(" "),
+          _c("ul"),
           _vm._v(" "),
           _c(
             "button",

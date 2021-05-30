@@ -6,6 +6,12 @@
           <div>
                <p>カテゴリーを選択してください</p>
            </div>
+             <div>
+                 <li v-for="city in cityid" v-bind:key="city.id">{{city.name}}</li>
+                 </div>
+             <ul>
+            
+            </ul>
                <button type="button" v-on:click="$emit('close')" class="btn btn-success">閉じる <i class="fas fa-times"></i></button>
            </div>
        </div>
@@ -17,8 +23,10 @@
 
 <script>
     export default {
-        mounted() {
-            console.log('Component mounted.')
+        props: {
+            cityid: {
+                type: Array
+            },
         },
         methods :{
     clickEvent: function(){

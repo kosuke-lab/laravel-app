@@ -27,7 +27,12 @@ class PostController extends Controller
     public function index()
     {
     $cities = City::all();
-    return view('index',['cities' =>$cities]);
+    //dd($cities);
+    $categories = config('category.caterories');
+    return view('index',[
+        'cities' =>$cities,
+        'categories' =>$categories,
+        ]);
     }
 
     /**
