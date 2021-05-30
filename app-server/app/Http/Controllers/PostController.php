@@ -157,22 +157,24 @@ class PostController extends Controller
         //セッションcity＿idの受け取り
         $city_id = $request->session()->get('city_id');
 
+        //ランダムでcity_idとcategory_idが一致するデータ呼び出し
+        $results = Post::where('city_id', $city_id)->where('category_id', $category_id)->where('status_id', 2)->inRandomOrder()->first();
+
         //Vue側でuser_id取得
         $userAuth = Auth::id();
 
-        $post->load('like');
-        $defaultLiked = $post->like->where('user_id',$userAuth)->first();
-        $defaultCount = count($post->like);
-         //dd($defaultLiked);
+        //ランダム結果をいいねしてる取得
+        $defaultLiked = $results->like->where('user_id',$userAuth)->first();
 
-         if(!empty($defaultLiked) ==0){
-             $defaultLiked == false;
-         }else{
-             $defaultLiked == true;
-         }
+        //ランダム結果をいいねされてる数を取得
+        $defaultCount = count($results->like);
 
-        //ランダムでcity_idとcategory_idが一致するデータ呼び出し
-        $results = Post::where('city_id', $city_id)->where('category_id', $category_id)->where('status_id', 2)->inRandomOrder()->first();
+            if(!empty($defaultLiked) ==0){
+                $defaultLiked == false;
+            }else{
+                $defaultLiked == true;
+            }
+        
         return view('result',[
             'results' =>$results,
             'userAuth' => $userAuth,
