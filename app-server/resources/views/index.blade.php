@@ -34,9 +34,11 @@
     <body>
     
 
-    <div id="app" class="p-4">
-   <button type="button" @click="openModal" class="btn btn-primary">モーダルウィンドウを開く</button>
+    <div id="app">
+   @foreach ($cities as $city)
+   <button type="button" @click="openModal" class="btn btn-primary">{{ $city->name }}</button>
    <open-modal v-show="showContent" @close="showContent = false"></open-modal>
+        @endforeach
 </div>
 
 
