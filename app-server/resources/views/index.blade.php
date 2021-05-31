@@ -34,10 +34,13 @@
     <body>
     
 
-    <div id="app" class="p-4">
-   <button type="button" @click="openModal" class="btn btn-primary">モーダルウィンドウを開く</button>
-   <open-modal v-show="showContent" @close="showContent = false"   :cityid="{{ json_encode($cities) }}"></open-modal>
-
+    <div id="app">
+    @foreach ($cities as $city)
+            <!-- <a><a href="/{{ $city->id}}"></a></p> -->
+   <button type="button" @click="openModal" class="btn btn-primary">{{ $city->name }}</button>
+   <open-modal v-show="showContent" @close="showContent = false"   :category_datas="{{ json_encode($categories) }}"></open-modal>
+   @endforeach
+</div>
 
 
     @if (Route::has('login'))

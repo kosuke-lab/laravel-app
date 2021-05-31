@@ -2026,8 +2026,8 @@ __webpack_require__.r(__webpack_exports__);
 //
 /* harmony default export */ __webpack_exports__["default"] = ({
   props: {
-    cityid: {
-      type: Array
+    category_datas: {
+      type: Object
     }
   },
   methods: {
@@ -37810,8 +37810,10 @@ var render = function() {
           _vm._v(" "),
           _c(
             "div",
-            _vm._l(_vm.cityid, function(city) {
-              return _c("li", { key: city.id }, [_vm._v(_vm._s(city.name))])
+            _vm._l(_vm.category_datas, function(category_data) {
+              return _c("li", { key: category_data.id }, [
+                _vm._v(_vm._s(category_data))
+              ])
             }),
             0
           ),

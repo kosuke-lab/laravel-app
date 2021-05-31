@@ -7,7 +7,7 @@
                <p>カテゴリーを選択してください</p>
            </div>
              <div>
-                 <li v-for="city in cityid" v-bind:key="city.id">{{city.name}}</li>
+                 <li v-for="category_data in category_datas" v-bind:key="category_data.id">{{category_data}}</li>
                  </div>
              <ul>
             
@@ -24,8 +24,8 @@
 <script>
     export default {
         props: {
-            cityid: {
-                type: Array
+            category_datas: {
+                type: Object
             },
         },
         methods :{
