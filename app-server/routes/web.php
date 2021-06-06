@@ -55,7 +55,7 @@ Route::get('/mypage/{user_id}/favorite', 'PostController@favorite')->name('favor
 Route::get('/{city_id}', 'PostController@category')->name('category.list');
 
 //市町村*カテゴリーのランダム結果
-Route::get('{city_id}/result/{category_id}', 'PostController@result')->name('post.list');
+Route::post('/result', 'PostController@result')->name('post.list');
 
 // パスワードリセットのためのemail入力
 Route::get('password/reset',  'Auth\ForgotPasswordController@showLinkRequestForm')->name('password.request');

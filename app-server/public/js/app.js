@@ -2022,8 +2022,6 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
-//
-//
 /* harmony default export */ __webpack_exports__["default"] = ({
   props: {
     category_datas: {
@@ -37810,15 +37808,21 @@ var render = function() {
           _vm._v(" "),
           _c(
             "div",
-            _vm._l(_vm.category_datas, function(category_data) {
-              return _c("li", { key: category_data.id }, [
-                _vm._v(_vm._s(category_data))
-              ])
-            }),
-            0
+            [
+              _vm._l(_vm.category_datas, function(category_data, index) {
+                return _c("div", { key: index }, [
+                  _c("input", {
+                    attrs: { type: "radio", name: "category_id" },
+                    domProps: { value: index }
+                  }),
+                  _vm._v(_vm._s(category_data) + "\n                    ")
+                ])
+              }),
+              _vm._v(" "),
+              _c("button", { attrs: { type: "submit" } }, [_vm._v("検索")])
+            ],
+            2
           ),
-          _vm._v(" "),
-          _c("ul"),
           _vm._v(" "),
           _c(
             "button",

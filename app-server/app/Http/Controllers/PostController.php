@@ -26,8 +26,8 @@ class PostController extends Controller
      */
     public function index()
     {
-    $cities = City::all();
-    //dd($cities);
+    $cities = City::get();
+    
     $categories = config('category.caterories');
     return view('index',[
         'cities' =>$cities,
@@ -157,13 +157,15 @@ class PostController extends Controller
      */
 
 
-    public function result(Request $request,$id,$category_id, Post $post)
+    public function result(Request $request)
     {
         //セッションcity＿idの受け取り
-        $city_id = $request->session()->get('city_id');
+        //$city_id = $request->session()->get('city_id');
+        $datas = $request->input();
+        
 
         //ランダムでcity_idとcategory_idが一致するデータ呼び出し
-        $results = Post::where('city_id', $city_id)->where('category_id', $category_id)->where('status_id', 2)->inRandomOrder()->first();
+        $results = Post::where('city_id', $datas['cityId'])->where('category_id', $datas['category_id'])->where('status_id', 2)->inRandomOrder()->first();
 
         //Vue側でuser_id取得
         $userAuth = Auth::id();

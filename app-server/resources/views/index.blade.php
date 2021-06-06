@@ -35,11 +35,16 @@
     
 
     <div id="app">
+        
+<form action="{{ route('post.list') }}" method="POST">   
+    {{ csrf_field() }}
+        
     @foreach ($cities as $city)
-            <!-- <a><a href="/{{ $city->id}}"></a></p> -->
-   <button type="button" @click="openModal" class="btn btn-primary">{{ $city->name }}</button>
-   <open-modal v-show="showContent" @close="showContent = false"   :category_datas="{{ json_encode($categories) }}"></open-modal>
+    <input value="{{$city->id}}" name="cityId" type="radio"  @click="openModal" class="btn btn-primary">{{ $city->name }}
    @endforeach
+   <open-modal v-show="showContent" @close="showContent = false"  :category_datas="{{ json_encode($categories) }}"></open-modal>
+
+</form>
 </div>
 
 
@@ -60,9 +65,9 @@
                 </div>
             @endif
         <h1>テスト</h1>
-            @foreach ($cities as $city)
+            <!-- @foreach ($cities as $city)
             <p><a href="/{{ $city->id}}">{{ $city->name }}</a></p>
-        @endforeach
+        @endforeach -->
 
      
     <script type="text/javascript">
