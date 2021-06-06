@@ -1,10 +1,11 @@
 <!DOCTYPE html>
-<html>
+<div>
     <head>
         <meta charset='utf-8'>
         <meta name="csrf-token" content="{{ csrf_token() }}">
         <title>テスト</title>
         <style>body {padding: 10px;}</style>
+        <link href="{{ asset('/css/app.css') }}" rel="stylesheet">
         <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/toastr.css">
         <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
         <script src="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/toastr.min.js"></script>
@@ -32,20 +33,6 @@
    }
 </style>
     <body>
-    
-
-    <div id="app">
-        
-<form action="{{ route('post.list') }}" method="POST">   
-    {{ csrf_field() }}
-        
-    @foreach ($cities as $city)
-    <input value="{{$city->id}}" name="cityId" type="radio"  @click="openModal" class="btn btn-primary">{{ $city->name }}
-   @endforeach
-   <open-modal v-show="showContent" @close="showContent = false"  :category_datas="{{ json_encode($categories) }}"></open-modal>
-
-</form>
-</div>
 
 
     @if (Route::has('login'))
@@ -69,6 +56,31 @@
             <p><a href="/{{ $city->id}}">{{ $city->name }}</a></p>
         @endforeach -->
 
+
+        <div id="app">
+    <div class="container">
+  <div class="radio-tile-group">
+<form action="{{ route('post.list') }}" method="POST">   
+    {{ csrf_field() }}
+    @foreach ($cities as $city)
+    <div class="input-container">
+      <input value="{{$city->id}}" class="radio-button" type="radio" name="cityId"  @click="openModal" class="btn btn-primary">
+      <div class="radio-tile">
+        <div class="icon walk-icon">
+
+        </div>
+        <label for="walk" class="radio-tile-label">{{ $city->name }}</label>
+      </div>
+    </div>
+    
+   @endforeach
+   <open-modal v-show="showContent" @close="showContent = false"  :category_datas="{{ json_encode($categories) }}"></open-modal>
+</form>
+</div>
+
+  </div>
+</div>
+
      
     <script type="text/javascript">
             // {{--成功時--}}
@@ -87,4 +99,4 @@
 </script>
         <script src="{{asset('js/app.js')}}"></script>
     </body>
-</html>
+</div>

@@ -163,7 +163,7 @@ class PostController extends Controller
         //$city_id = $request->session()->get('city_id');
         $datas = $request->input();
         
-
+        dd($datas);
         //ランダムでcity_idとcategory_idが一致するデータ呼び出し
         $results = Post::where('city_id', $datas['cityId'])->where('category_id', $datas['category_id'])->where('status_id', 2)->inRandomOrder()->first();
 
