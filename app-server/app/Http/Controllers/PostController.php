@@ -26,12 +26,18 @@ class PostController extends Controller
      */
     public function index()
     {
-    $cities = City::get();
+    $cities_center = City::where('area', '都心')->get();
+    $cities_subcenter = City::where('area', '副都心')->get();
+    $cities_east = City::where('area', '東部')->get();
+    $cities_west = City::where('area', '西部')->get();
     
     $categories = config('category.caterories');
     return view('index',[
-        'cities' =>$cities,
+        'cities_center' =>$cities_center,
         'categories' =>$categories,
+        'cities_subcenter'=>$cities_subcenter,
+        'cities_east'=>$cities_east,
+        'cities_west'=>$cities_west,
         ]);
     }
 

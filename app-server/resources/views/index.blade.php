@@ -48,9 +48,9 @@
                         <a class="nav-link" href="{{ route('mypage',['user_id' =>auth()->user()->id])}}">mypage</a>
                     </li>   
                     @else
-                        <a href="{{ route('login') }}">Login</a>
+                        <a  class="nav-link"href="{{ route('login') }}">Login</a>
                     @if (Route::has('register'))
-                        <a href="{{ route('register') }}">Register</a>
+                        <a class="nav-link" href="{{ route('register') }}">Register</a>
                         @endif
                     @endauth
             @endif
@@ -63,15 +63,14 @@
 
 
         <h1>テスト</h1>
-            <!-- @foreach ($cities as $city)
-            <p><a href="/{{ $city->id}}">{{ $city->name }}</a></p>
-        @endforeach -->
+
         <div id="app">
 <form action="{{ route('post.list') }}" method="POST">   
     {{ csrf_field() }}
     <div class="container">
+      <h2>都心</h2>
     <div class="radio-tile-group">
-    @foreach ($cities as $city)
+    @foreach ($cities_center as $city)
     <div class="input-container">
     <input value="{{$city->id}}" name="cityId" type="radio"  @click="openModal" class="radio-button">
       <div class="radio-tile">
@@ -79,11 +78,78 @@
       </div>
     </div>    
    @endforeach
+   </div>
+
+   <h2>副都心</h2>
+   <div class="radio-tile-group">
+   @foreach ($cities_subcenter as $city)
+    <div class="input-container">
+    <input value="{{$city->id}}" name="cityId" type="radio"  @click="openModal" class="radio-button">
+      <div class="radio-tile">
+        <label for="bike" class="radio-tile-label">{{ $city->name }}</label>
+      </div>
+    </div>    
+   @endforeach
+   </div>
+
+   <h2>東部</h2>
+   <div class="radio-tile-group">
+   @foreach ($cities_east as $city)
+    <div class="input-container">
+    <input value="{{$city->id}}" name="cityId" type="radio"  @click="openModal" class="radio-button">
+      <div class="radio-tile">
+        <label for="bike" class="radio-tile-label">{{ $city->name }}</label>
+      </div>
+    </div>    
+   @endforeach
+   </div>
+
+   <h2>西部</h2>
+   <div class="radio-tile-group">
+   @foreach ($cities_west as $city)
+    <div class="input-container">
+    <input value="{{$city->id}}" name="cityId" type="radio"  @click="openModal" class="radio-button">
+      <div class="radio-tile">
+        <label for="bike" class="radio-tile-label">{{ $city->name }}</label>
+      </div>
+    </div>    
+   @endforeach
+   </div>
+   
    <open-modal v-show="showContent" @close="showContent = false"  :category_datas="{{ json_encode($categories) }}"></open-modal>
+   </div>
+</div>
 </form>
 </div>
-</div>
-</div>
+
+
+<script>
+               function offradio() {
+   var ElementsCount = document.sample.elements.length; // ラジオボタンの数
+   for( i=0 ; i<ElementsCount ; i++ ) {
+      document.sample.elements[i].checked = false;
+   }
+}
+function offradio1() {
+   var ElementsCount = document.sample1.elements.length; // ラジオボタンの数
+   for( i=0 ; i<ElementsCount ; i++ ) {
+      document.sample1.elements[i].checked = false;
+   }
+}
+function offradio3() {
+   var ElementsCount = document.sample.elements.length; // ラジオボタンの数
+   for( i=0 ; i<ElementsCount ; i++ ) {
+      document.sample3.elements[i].checked = false;
+   }
+}
+function offradio4() {
+   var ElementsCount = document.sample.elements.length; // ラジオボタンの数
+   for( i=0 ; i<ElementsCount ; i++ ) {
+      document.sample.elements[i].checked = false;
+   }
+}
+     </script>
+
 
      
     <script type="text/javascript">
