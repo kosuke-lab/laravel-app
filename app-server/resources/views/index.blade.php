@@ -59,8 +59,9 @@
   </div>
   </nav>
 
-
-
+  <!-- <div>
+  <img src="{{ asset('images/shinzyuku.png')}}">
+  </div> -->
 
         <h1>テスト</h1>
 
@@ -68,18 +69,27 @@
 <form action="{{ route('post.list') }}" method="POST">   
     {{ csrf_field() }}
     <div class="container">
+      <div class="clearfix">
+        <div class="float-left">
       <h2>都心</h2>
     <div class="radio-tile-group">
     @foreach ($cities_center as $city)
     <div class="input-container">
     <input value="{{$city->id}}" name="cityId" type="radio"  @click="openModal" class="radio-button">
       <div class="radio-tile">
+      <div class="icon">
+      <img src="{{ asset('images/setagaya.png')}}">
+        </div>
         <label for="bike" class="radio-tile-label">{{ $city->name }}</label>
       </div>
     </div>    
    @endforeach
    </div>
+   </div>
+   </div>
 
+   <div class="clearfix">
+     <div class="float-left">
    <h2>副都心</h2>
    <div class="radio-tile-group">
    @foreach ($cities_subcenter as $city)
@@ -91,30 +101,47 @@
     </div>    
    @endforeach
    </div>
+   </div>
+   </div>
 
+   <div class="clearfix">
+     <div class="float-left">
    <h2>東部</h2>
    <div class="radio-tile-group">
    @foreach ($cities_east as $city)
     <div class="input-container">
     <input value="{{$city->id}}" name="cityId" type="radio"  @click="openModal" class="radio-button">
       <div class="radio-tile">
+      <div class="icon">
+      <img src="{{ asset('images/shinzyuku.png')}}">
+        </div>
         <label for="bike" class="radio-tile-label">{{ $city->name }}</label>
       </div>
     </div>    
    @endforeach
    </div>
+   </div>
+   </div>
 
+   <div class="clearfix">
+     <div class="float-left">
    <h2>西部</h2>
    <div class="radio-tile-group">
    @foreach ($cities_west as $city)
     <div class="input-container">
     <input value="{{$city->id}}" name="cityId" type="radio"  @click="openModal" class="radio-button">
       <div class="radio-tile">
+      <div class="icon">
+      <img src="{{ asset('images/nerima.png')}}">
+        </div>
         <label for="bike" class="radio-tile-label">{{ $city->name }}</label>
       </div>
     </div>    
    @endforeach
    </div>
+   </div>
+  </div>
+
    
    <open-modal v-show="showContent" @close="showContent = false"  :category_datas="{{ json_encode($categories) }}"></open-modal>
    </div>
