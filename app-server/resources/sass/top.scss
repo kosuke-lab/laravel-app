@@ -1,6 +1,23 @@
-h1{
-font-size: 100px!important;
+
+h2{
+  border-left: 3px solid #079ad9;
+  padding-left:16px;
 }
+
+.border-bottom{
+  border-bottom:1px solid #707070 !important;
+}
+
+.container-fluid{
+  .row{
+      background-color: #e4e4e4;
+    .img-fluid{
+       margin: 0 auto;
+    }
+  }
+}
+
+
 
 #content{
           z-index:10;

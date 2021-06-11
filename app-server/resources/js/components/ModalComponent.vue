@@ -6,11 +6,15 @@
                     <div>
                         <p>カテゴリーを選択してください</p>
                     </div>
-                    <div>
-                        <div v-for="(category_data, index) in category_datas" v-bind:key="index">
+                    <div class="container">
+                        <div class="row">
+                        <div v-for="(category_data, index) in category_datas" v-bind:key="index" class="col-lg-6">
                             <input type ="radio" name = "category_id" :value="index">{{ category_data }}
                         </div>
-                        <button type="submit">検索</button>
+                        </div>
+                        <div class="text-center">
+                        <button type="submit" class="btn btn-primary">検索</button>
+                        </div>
                     </div>
                 <button type="button" v-on:click="$emit('close')" class="btn btn-success">閉じる <i class="fas fa-times"></i></button>
                 </div>

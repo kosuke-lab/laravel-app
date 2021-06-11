@@ -10,6 +10,11 @@
         <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/toastr.css">
         <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
         <script src="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/toastr.min.js"></script>
+        <script>
+window.addEventListener('pageshow',()=>{
+  if(window.performance.navigation.type==2) location.reload();
+});
+</script>
     </head>
 
     <body>
@@ -29,10 +34,10 @@
           <a class="nav-link" href=''>Home <span class="sr-only">(current)</span></a>
         </li>
         <li class="nav-item">
-            <a class="nav-link" href=''>〇〇登録</a>
+            <a class="nav-link" href="{{route('post.new')}}">〇〇登録</a>
           </li>
         <li class="nav-item">
-          <a class="nav-link" href=''>〇〇とは</a>
+          <a class="nav-link" href=>〇〇とは</a>
         </li>    
         @if (Route::has('login'))
                     @auth
@@ -59,26 +64,38 @@
   </div>
   </nav>
 
-  <!-- <div>
-  <img src="{{ asset('images/shinzyuku.png')}}">
-  </div> -->
+  <div class="container-fluid">
+    <div class="row">
+  <img src="{{ asset('images/top_mv.jpg')}}" class="img-fluid">
+  </div>
+  </div>
 
-        <h1>テスト</h1>
+  <div class="container">
+
+  <p>サービス紹介</p>
+
+  </div>
+
+  <div class="block">
+<div class="container">
+        <h2>23区から探す</h2>
 
         <div id="app">
-<form action="{{ route('post.list') }}" method="POST">   
+<form action="{{ route('post.list') }}" method="POST" id="back" autocomplete="off">   
     {{ csrf_field() }}
-    <div class="container">
+    <div class="">
       <div class="clearfix">
+      <div class="border-bottom">
+      <h3>都心</h3>
+        </div>
         <div class="float-left">
-      <h2>都心</h2>
     <div class="radio-tile-group">
     @foreach ($cities_center as $city)
     <div class="input-container">
-    <input value="{{$city->id}}" name="cityId" type="radio"  @click="openModal" class="radio-button">
+    <input value="{{$city->id}}" name="cityId" type="radio"  @click="openModal" class="radio-button" autocomplete="on">
       <div class="radio-tile">
       <div class="icon">
-      <img src="{{ asset('images/setagaya.png')}}">
+      <img src="{{ asset('images/' .$city->file_path)}}">
         </div>
         <label for="bike" class="radio-tile-label">{{ $city->name }}</label>
       </div>
@@ -89,13 +106,18 @@
    </div>
 
    <div class="clearfix">
+   <div class="border-bottom">
+   <h3>副都心</h3>
+     </div>
      <div class="float-left">
-   <h2>副都心</h2>
    <div class="radio-tile-group">
    @foreach ($cities_subcenter as $city)
     <div class="input-container">
     <input value="{{$city->id}}" name="cityId" type="radio"  @click="openModal" class="radio-button">
       <div class="radio-tile">
+      <div class="icon">
+      <img src="{{ asset('images/' .$city->file_path)}}" alt="{{$city->file_path}}">
+        </div>
         <label for="bike" class="radio-tile-label">{{ $city->name }}</label>
       </div>
     </div>    
@@ -105,15 +127,17 @@
    </div>
 
    <div class="clearfix">
+   <div class="border-bottom">
+   <h3>東部</h3>
+     </div>
      <div class="float-left">
-   <h2>東部</h2>
    <div class="radio-tile-group">
    @foreach ($cities_east as $city)
     <div class="input-container">
     <input value="{{$city->id}}" name="cityId" type="radio"  @click="openModal" class="radio-button">
       <div class="radio-tile">
       <div class="icon">
-      <img src="{{ asset('images/shinzyuku.png')}}">
+      <img src="{{ asset('images/' .$city->file_path)}}">
         </div>
         <label for="bike" class="radio-tile-label">{{ $city->name }}</label>
       </div>
@@ -124,15 +148,17 @@
    </div>
 
    <div class="clearfix">
+   <div class="border-bottom">
+   <h3>西部</h3>
+   </div>
      <div class="float-left">
-   <h2>西部</h2>
    <div class="radio-tile-group">
    @foreach ($cities_west as $city)
     <div class="input-container">
     <input value="{{$city->id}}" name="cityId" type="radio"  @click="openModal" class="radio-button">
       <div class="radio-tile">
       <div class="icon">
-      <img src="{{ asset('images/nerima.png')}}">
+      <img src="{{ asset('images/' .$city->file_path)}}">
         </div>
         <label for="bike" class="radio-tile-label">{{ $city->name }}</label>
       </div>
@@ -149,36 +175,12 @@
 </form>
 </div>
 
-
-<script>
-               function offradio() {
-   var ElementsCount = document.sample.elements.length; // ラジオボタンの数
-   for( i=0 ; i<ElementsCount ; i++ ) {
-      document.sample.elements[i].checked = false;
-   }
-}
-function offradio1() {
-   var ElementsCount = document.sample1.elements.length; // ラジオボタンの数
-   for( i=0 ; i<ElementsCount ; i++ ) {
-      document.sample1.elements[i].checked = false;
-   }
-}
-function offradio3() {
-   var ElementsCount = document.sample.elements.length; // ラジオボタンの数
-   for( i=0 ; i<ElementsCount ; i++ ) {
-      document.sample3.elements[i].checked = false;
-   }
-}
-function offradio4() {
-   var ElementsCount = document.sample.elements.length; // ラジオボタンの数
-   for( i=0 ; i<ElementsCount ; i++ ) {
-      document.sample.elements[i].checked = false;
-   }
-}
-     </script>
+</div>
+</div>
 
 
-     
+
+
     <script type="text/javascript">
             // {{--成功時--}}
             @if (session('msg_success'))

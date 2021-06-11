@@ -2022,6 +2022,10 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
+//
+//
+//
 /* harmony default export */ __webpack_exports__["default"] = ({
   props: {
     category_datas: {
@@ -37806,11 +37810,12 @@ var render = function() {
         _c("div", [
           _vm._m(0),
           _vm._v(" "),
-          _c(
-            "div",
-            [
+          _c("div", { staticClass: "container" }, [
+            _c(
+              "div",
+              { staticClass: "row" },
               _vm._l(_vm.category_datas, function(category_data, index) {
-                return _c("div", { key: index }, [
+                return _c("div", { key: index, staticClass: "col-lg-6" }, [
                   _c("input", {
                     attrs: { type: "radio", name: "category_id" },
                     domProps: { value: index }
@@ -37818,11 +37823,11 @@ var render = function() {
                   _vm._v(_vm._s(category_data) + "\n                    ")
                 ])
               }),
-              _vm._v(" "),
-              _c("button", { attrs: { type: "submit" } }, [_vm._v("検索")])
-            ],
-            2
-          ),
+              0
+            ),
+            _vm._v(" "),
+            _vm._m(1)
+          ]),
           _vm._v(" "),
           _c(
             "button",
@@ -37848,6 +37853,18 @@ var staticRenderFns = [
     var _h = _vm.$createElement
     var _c = _vm._self._c || _h
     return _c("div", [_c("p", [_vm._v("カテゴリーを選択してください")])])
+  },
+  function() {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c("div", { staticClass: "text-center" }, [
+      _c(
+        "button",
+        { staticClass: "btn btn-primary", attrs: { type: "submit" } },
+        [_vm._v("検索")]
+      )
+    ])
   }
 ]
 render._withStripped = true
