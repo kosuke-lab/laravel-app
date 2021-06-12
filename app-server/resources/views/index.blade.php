@@ -10,11 +10,7 @@
         <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/toastr.css">
         <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
         <script src="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/toastr.min.js"></script>
-        <script>
-window.addEventListener('pageshow',()=>{
-  if(window.performance.navigation.type==2) location.reload();
-});
-</script>
+
     </head>
 
     <body>
@@ -70,15 +66,24 @@ window.addEventListener('pageshow',()=>{
   </div>
   </div>
 
-  <div class="container">
-
-  <p>サービス紹介</p>
-
+  <div class="block">
+<div class="container">
+  <h2>サービス紹介</h2>
+  <div class="row">
+    <div class="col-md-6 col-sm-12">
+      <p>あああああああああああああああああ</p>
+    </div>
+     <div class="col-md-6">
+      <div class="circle-image">
+      </div>
+      </div>
+  </div>
+  </div>
   </div>
 
   <div class="block">
 <div class="container">
-        <h2>23区から探す</h2>
+        <h2 class="headingstyle02">23区から探す</h2>
 
         <div id="app">
 <form action="{{ route('post.list') }}" method="POST" id="back" autocomplete="off">   
@@ -195,6 +200,11 @@ window.addEventListener('pageshow',()=>{
                     toastr.success('{{ session('msg_danger') }}');
                 });
             @endif
+</script>
+        <script>
+window.addEventListener('pageshow',()=>{
+  if(window.performance.navigation.type==2) location.reload();
+});
 </script>
         <script src="{{asset('js/app.js')}}">
         </script>

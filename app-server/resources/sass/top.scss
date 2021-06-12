@@ -4,8 +4,14 @@ h2{
   padding-left:16px;
 }
 
+.headingstyle02{
+  margin-bottom: 32px;
+}
+
+
 .border-bottom{
   border-bottom:1px solid #707070 !important;
+  margin-bottom: 24px;
 }
 
 .container-fluid{
@@ -17,6 +23,24 @@ h2{
   }
 }
 
+.clearfix{
+  margin-bottom: 24px;
+}
+
+.circle-image{
+  width: 300px;
+    height: 300px;
+    border-radius: 51%;
+    background-position: center center;
+    background-image: url(images/service.png);
+    background-color: #e4e4e4;
+    margin: 0 auto;
+}
+
+.block{
+  padding-top:40px;
+  padding-bottom: 40px;
+}
 
 
 #content{
