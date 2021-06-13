@@ -1,3 +1,5 @@
+@charset "UTF-8";
+
 .linkpanel {
   border-radius: 48px;
   box-shadow: 0px 0px 25px 0px rgba(0, 0, 0, 0.1);
@@ -13,5 +15,114 @@
 
 .linkpanel .btn-outline-primary {
   border-radius: 30px;
+}
+
+/*タブ切り替え全体のスタイル*/
+
+.tabs {
+  margin-top: 50px;
+  padding-bottom: 40px;
+  background-color: #fff;
+  width: 100%;
+  margin: 0 auto;
+}
+
+/*タブのスタイル*/
+
+.tab_item {
+  width: calc(100%/2);
+  height: 50px;
+  background-color: #FFFFFF;
+  line-height: 50px;
+  font-size: 16px;
+  text-align: center;
+  color: #565656;
+  display: block;
+  float: left;
+  text-align: center;
+  font-weight: bold;
+  transition: all 0.2s ease;
+  box-shadow: 0 7px 34px rgba(50, 50, 93, 0.1), 0 3px 6px rgba(0, 0, 0, 0.08);
+}
+
+.tab_item01 {
+  border-radius: 6px 0 0 6px;
+}
+
+.tab_item02 {
+  border-radius: 0 6px 6px 0;
+}
+
+.tab_item:hover {
+  opacity: 0.75;
+}
+
+/*ラジオボタンを全て消す*/
+
+input[name=tab_item] {
+  display: none;
+}
+
+/*タブ切り替えの中身のスタイル*/
+
+.tab_content {
+  display: none;
+  padding: 20px 2px 0;
+  clear: both;
+  overflow: hidden;
+}
+
+.tab_content {
+  position: relative;
+  /* 位置指定 */
+  -webkit-animation: anime1 1s ease;
+          animation: anime1 1s ease;
+  /* アニメーション指定 */
+}
+
+@-webkit-keyframes anime1 {
+  0% {
+    opacity: 0;
+    /* 透明度指定 */
+    top: 50px;
+    /* 位置指定 */
+  }
+
+  100% {
+    opacity: 1;
+    /* 透明度指定 */
+    top: 0;
+    /* 位置指定 */
+  }
+}
+
+@keyframes anime1 {
+  0% {
+    opacity: 0;
+    /* 透明度指定 */
+    top: 50px;
+    /* 位置指定 */
+  }
+
+  100% {
+    opacity: 1;
+    /* 透明度指定 */
+    top: 0;
+    /* 位置指定 */
+  }
+}
+
+/*選択されているタブのコンテンツのみを表示*/
+
+#posts:checked ~ #posts_content,
+#favorites:checked ~ #favorites_content {
+  display: block;
+}
+
+/*選択されているタブのスタイルを変える*/
+
+.tabs input:checked + .tab_item {
+  background-color: #6bb6ff;
+  color: #fff;
 }
 

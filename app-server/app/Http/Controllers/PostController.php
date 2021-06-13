@@ -169,7 +169,7 @@ class PostController extends Controller
         //$city_id = $request->session()->get('city_id');
         $datas = $request->input();
         
-        dd($datas);
+        // dd($datas);
         //ランダムでcity_idとcategory_idが一致するデータ呼び出し
         $results = Post::where('city_id', $datas['cityId'])->where('category_id', $datas['category_id'])->where('status_id', 2)->inRandomOrder()->first();
 
@@ -204,11 +204,14 @@ class PostController extends Controller
     {
         $user_id =Auth()->id();
         $posts = Post::where('user_id',$user_id)->get();
+
+        //ユーザーお気に入り投稿取得
+        $favorites = Auth::user()->posts()->get();
         //dd($posts);
         return view('mypage',[
             'user_id' => $user_id,
             'posts' => $posts,
-          
+            'favorites' => $favorites,
         ]);
     }
 
@@ -274,17 +277,16 @@ class PostController extends Controller
         return redirect()->route('admin');
     }
 
-    public function favorite(Post $post, Request $request,$post_id)
-{
-    $userAuth = Auth::id();
+//     public function favorite(Post $post, Request $request,$post_id)
+// {
+//     $userAuth = Auth::id();
 
-    $favorites = Auth::user()->posts()->get();
+//     $favorites = Auth::user()->posts()->get();
     
-
-     return view('favorite',[
-         'favorites' => $favorites,
-     ]);
-}
+//      return view('favorite',[
+//          'favorites' => $favorites,
+//      ]);
+// }
 }
 
 
