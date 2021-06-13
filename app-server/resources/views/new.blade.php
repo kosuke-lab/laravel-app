@@ -1,15 +1,12 @@
-<!DOCTYPE html>
-<html>
-    <head>
-        <meta charset='utf-8'>
-        <title>新規投稿フォーム</title>
-        <style>body {padding: 10px;}</style>
-        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/toastr.css">
-        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
-        <script src="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/toastr.min.js"></script>
-    </head>
-    <body>
+@extends('layouts.base')
+
+
+@section('content')
+
+<div class="container">
+
          <h1>新しいお店</h1>
+
          <ul>
         @foreach ($errors->all() as $error)
             <li>{{ $error }}</li>
@@ -20,32 +17,37 @@
          @csrf
         <div class='form-group'>
             {{ Form::label('titile', '店名:') }}
-            {{ Form::text('titile', null) }}
+            {{ Form::text('titile', null,['class' => 'form-control','placeholder' => '例)：明治神宮']) }}
         </div>
         <div class='form-group'>
             {{ Form::label('category_id', 'カテゴリー:') }}
-            {{ Form::select('category_id', $categories) }}
+            {{ Form::select('category_id', $categories,'ordinarily', ['class' => 'form-control']) }}
         </div>
         <div class='form-group'>
             {{ Form::label('city_id', '市町村:') }}
-            {{ Form::select('city_id', $cities) }}
+            {{ Form::select ('city_id', $cities, 'ordinarily', ['class' => 'form-control']) }}
         </div>
 
         <div class='form-group'>
             {{ Form::label('address', '住所:') }}
-            {{ Form::text('address', null) }}
+            {{ Form::text('address', null,['class' => 'form-control','placeholder'=>'例)：東京都渋谷区代々木神園町１−１']) }}
         </div>
 
         <div class='form-group'> 
-        <input type="file" name="image">
+        {{ Form::label('image', 'サムネイル:') }}
+        <input type="file" name="image" class="form-control">
         </div> 
 
 
         <div class="form-group">
             {{ Form::submit('作成する', ['class' => 'btn btn-outline-primary']) }}
         </div>
-
+        
     {{ Form::close() }} 
+
+    </div>
+
+
 
     <script type="text/javascript">
             // {{--失敗時--}}
@@ -55,5 +57,4 @@
                 });
             @endif
 </script>
-    </body>
-</html>
+    @endsection

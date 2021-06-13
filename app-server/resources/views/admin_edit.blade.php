@@ -1,11 +1,9 @@
-<!DOCTYPE html>
-<html>
-    <head>
-        <meta charset='utf-8'>
-        <title>新規投稿フォーム</title>
-        <style>body {padding: 10px;}</style>
-    </head>
-    <body>
+@extends('layouts.base')
+
+
+@section('content')
+
+<div class="container">
          <h1>お店編集</h1>
          <ul>
         @foreach ($errors->all() as $error)
@@ -18,29 +16,31 @@
          @csrf
         <div class='form-group'>
             {{ Form::label('titile', '店名:') }}
-            {{ Form::text('titile', null) }}
+            {{ Form::text('titile', null,['class' => 'form-control']) }}
         </div>
         <div class='form-group'>
             {{ Form::label('category_id', 'カテゴリー:') }}
-            {{ Form::select('category_id', $categories) }}
+            {{ Form::select('category_id', $categories,'ordinarily', ['class' => 'form-control']) }}
         </div>
         <div class='form-group'>
             {{ Form::label('city_id', '市町村:') }}
-            {{ Form::select('city_id', $cities) }}
+            {{ Form::select('city_id', $cities,'ordinarily', ['class' => 'form-control']) }}
         </div>
 
         <div class='form-group'>
             {{ Form::label('address', '住所:') }}
-            {{ Form::text('address', null) }}
+            {{ Form::text('address', null,['class' => 'form-control']) }}
         </div>
 
         <div class='form-group'>
             {{ Form::label('status_id', 'ステータス:') }}
-            {{ Form::select('status_id', $statuses, $statuses[$post->status_id])}}
+            {{ Form::select('status_id', $statuses, $statuses[$post->status_id], ['class' => 'form-control'])}}
         </div>
 
         <div class='form-group'> 
-        <input type="file" name="image">
+        {{ Form::label('image', 'サムネイル:') }}
+        <br>
+        <input type="file" name="image" class="form-control">
         </div> 
 
 
@@ -49,6 +49,6 @@
         </div>
 
     {{ Form::close() }} 
+</div>
 
-    </body>
-</html>
+    @endsection
