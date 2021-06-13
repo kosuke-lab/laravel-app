@@ -13,11 +13,13 @@
 
 <div class="wrapper">
 <div class="tabs">
+    <div>
     <input id="posts" type="radio" name="tab_item" checked>
     <label class="tab_item tab_item01" for="posts"><i class="fas fa-rss"></i>投稿一覧</label>
     
     <input id="favorites" type="radio" name="tab_item">
     <label class="tab_item tab_item02" for="favorites"><i class="fas fa-rss"></i>お気に入り</label>
+    
     <div class="tab_content" id="posts_content">
     @foreach ($posts as $post)
      <div class="linkpanel">

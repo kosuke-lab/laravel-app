@@ -69,7 +69,6 @@ input[name=tab_item] {
   display: none;
   padding: 20px 2px 0;
   clear: both;
-  overflow: hidden;
 }
 
 .tab_content {
