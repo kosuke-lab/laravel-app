@@ -122,7 +122,7 @@ class PostController extends Controller
      *新規投稿情報受け取り
      */
 
-    public function store(Request $request)
+    public function store(CreatePostRequest  $request)
     {
     try{
         $post_id = Post::create([

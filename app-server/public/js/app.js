@@ -50352,6 +50352,17 @@ __webpack_require__.r(__webpack_exports__);
 
 /***/ }),
 
+/***/ "./resources/sass/form.scss":
+/*!**********************************!*\
+  !*** ./resources/sass/form.scss ***!
+  \**********************************/
+/*! no static exports found */
+/***/ (function(module, exports) {
+
+// removed by extract-text-webpack-plugin
+
+/***/ }),
+
 /***/ "./resources/sass/mypage.scss":
 /*!************************************!*\
   !*** ./resources/sass/mypage.scss ***!
@@ -50375,16 +50386,17 @@ __webpack_require__.r(__webpack_exports__);
 /***/ }),
 
 /***/ 0:
-/*!********************************************************************************************************************!*\
-  !*** multi ./resources/js/app.js ./resources/sass/app.scss ./resources/sass/top.scss ./resources/sass/mypage.scss ***!
-  \********************************************************************************************************************/
+/*!***********************************************************************************************************************************************!*\
+  !*** multi ./resources/js/app.js ./resources/sass/app.scss ./resources/sass/top.scss ./resources/sass/mypage.scss ./resources/sass/form.scss ***!
+  \***********************************************************************************************************************************************/
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
 __webpack_require__(/*! /work/app-server/resources/js/app.js */"./resources/js/app.js");
 __webpack_require__(/*! /work/app-server/resources/sass/app.scss */"./resources/sass/app.scss");
 __webpack_require__(/*! /work/app-server/resources/sass/top.scss */"./resources/sass/top.scss");
-module.exports = __webpack_require__(/*! /work/app-server/resources/sass/mypage.scss */"./resources/sass/mypage.scss");
+__webpack_require__(/*! /work/app-server/resources/sass/mypage.scss */"./resources/sass/mypage.scss");
+module.exports = __webpack_require__(/*! /work/app-server/resources/sass/form.scss */"./resources/sass/form.scss");
 
 
 /***/ })
