@@ -25,8 +25,8 @@
                         document.getElementById('logout-form').submit();">
                         Logout
                     </a>
-                    <form id='logout-form' action="{{ route('logout')}}" method="POST" style="display: none;"></form>
-                        @csrf
+                    <form id='logout-form' action="{{ route('logout')}}" method="POST" style="display: none;">@csrf</form>
+                        
                     </li>
                     <li>
                         <a class="nav-link" href="{{ route('mypage',['user_id' =>auth()->user()->id])}}">mypage</a>

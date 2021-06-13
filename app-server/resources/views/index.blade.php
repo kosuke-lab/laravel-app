@@ -1,5 +1,8 @@
 @extends('layouts.base')
 
+@section('title', 'ぺーじのたいとる')
+@section('description', 'ぺーじのたいとる')
+@section('keywords', 'ぺーじのたいとる')
 
 @section('content')
   
