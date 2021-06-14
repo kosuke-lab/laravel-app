@@ -1,11 +1,16 @@
-<!DOCTYPE html>
-<html>
-    <head>
-        <meta charset='utf-8'>
-        <title>テスト</title>
-        <style>body {padding: 10px;}</style>
-    </head>
-    <body>
+@extends('layouts.base')
+@section('title', '管理者ページ')
+@section('description', 'ぺーじのたいとる')
+@section('keywords', 'ぺーじのたいとる')
+
+@section('pagecss')
+<link href="{{ asset('/css/form.css') }}" rel="stylesheet">
+@endsection
+
+@section('content')
+
+<div class="container">
+
         <p>{{ $statuses[1]}}</p>
     {{ Form::open(['method' => 'get']) }}
     {{ csrf_field() }}
@@ -13,37 +18,30 @@
         {{ Form::label('keyword', 'キーワード:') }}
         {{ Form::text('keyword', null, ['class' => 'form-control']) }}
     </div>
-    <div class='form-group'>
+    <div class='form-group search'>
         {{ Form::submit('検索', ['class' => 'btn btn-outline-primary'])}}
-        <a href={{ route('admin') }}>クリア</a>
+        <a href={{ route('admin') }} class="btn btn-light">クリア</a>
     </div>
 {{ Form::close() }}
 
-    <table border="1">
+<table class='table table-striped table-hover'>
+    <tr>
+              <th>ID</th>
+              <th>場所</th>
+              <th>ステータス</th>
+    </tr>
     @foreach ($posts as $post)
-              <tr>
-                        <th>ID</th>
-                        <th>タイトル</th>
-                        <th>ステータス</th>
-                        <th>変更</th>
-              </tr>
               <tr>
                         <td>{{ $post->id }}</td>
                         <td>{{ $post->titile }}</td>
                          <td><a href="{{ route('admin.edit',$post->id)}}">{{ $statuses[$post->status_id] }}</a></td>
-                        <!-- <td><a href="/admin/edit/{{ $post->id }}">変更</a></td> -->
-                        <!-- <td>  <a href="{{ route('admin.edit',$post->id)}}">変更</a> </td> -->
-
-
               </tr>
               @endforeach
     </table>
+    </div>
 
 
 
 
      
-
-
-    </body>
-</html>
+@endsection

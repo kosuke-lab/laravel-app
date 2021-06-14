@@ -9,3 +9,11 @@
   margin-top: 16px;
 }
 
+.container .search {
+  text-align: right;
+}
+
+.container .btn-light {
+  border-color: #dee2e6 !important;
+}
+
