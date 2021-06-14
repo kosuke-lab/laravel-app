@@ -25,6 +25,10 @@
      <div class="linkpanel">
     <p>{{ $post->titile }}</p>
     <p>{{ $post->address }}</p>
+    <div class="status">
+        <p class="status-color">{{ $statuses[$post->status_id] }}</p>
+    </div>
+   
     <div class="panel-button">
     <a href="{{ route('post.edit',$post->id)}}" class="btn btn-outline-primary">編集</a>
     </div>

@@ -17,6 +17,16 @@
   border-radius: 30px;
 }
 
+.status {
+  width: 60px;
+}
+
+.status .status-color {
+  text-align: center;
+  background-color: #6bb6ff;
+  border-radius: 30px;
+}
+
 /*タブ切り替え全体のスタイル*/
 
 .tabs {

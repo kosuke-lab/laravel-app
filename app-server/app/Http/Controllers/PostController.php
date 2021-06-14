@@ -134,7 +134,8 @@ class PostController extends Controller
             'user_id'=> Auth()->id(),
             ])->id;
             
-            //フォームから画像情報受け取り
+            //フォームから画像情報受け取り　画像ありの時の処理
+            if ($file = $request->file('image')) {
             $file = $request->file('image');
             $file_name = $file->getClientOriginalName();
 
@@ -148,14 +149,21 @@ class PostController extends Controller
             ]);
         session()->flash('msg_success', '投稿が完了しました。管理者の承認をお待ちください');
         return redirect()->route('city.list');
-        }
-        catch (\Exception $e) {
-            session()->flash('msg_danger', '失敗しました。');
-    
-
-            return redirect()->route('post.new');
-        }
+    }else{
+        //画像なしの時の処理、デフォルトの画像を表示させる
+        $file = $request->file('image');
+        Post_image::create([
+            'file_name' => 'noimage',
+            'file_path'=> 'image/noimage.png',
+             'post_id' =>  $post_id,
+        ]);
+        session()->flash('msg_success', '投稿が完了しました。管理者の承認をお待ちください');
+        return redirect()->route('city.list');
+    }} catch (\Exception $e) {
+        session()->flash('msg_danger', '失敗しました。');
+        return redirect()->route('post.new');
     }
+}
 
 
      /**
@@ -204,6 +212,7 @@ class PostController extends Controller
     {
         $user_id =Auth()->id();
         $posts = Post::where('user_id',$user_id)->get();
+        $statuses = config('status.statuses');
 
         //ユーザーお気に入り投稿取得
         $favorites = Auth::user()->posts()->get();
@@ -212,6 +221,7 @@ class PostController extends Controller
             'user_id' => $user_id,
             'posts' => $posts,
             'favorites' => $favorites,
+            'statuses' => $statuses,
         ]);
     }
 
