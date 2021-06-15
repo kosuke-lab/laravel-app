@@ -20,11 +20,11 @@
         </div>
         <div class='form-group'>
             {{ Form::label('category_id', 'カテゴリー:') }}
-            {{ Form::select('category_id', $categories,'ordinarily', ['class' => 'form-control']) }}
+            {{ Form::select('category_id', $categories,  null, ['class' => 'form-control']) }}
         </div>
         <div class='form-group'>
             {{ Form::label('city_id', '市町村:') }}
-            {{ Form::select('city_id', $cities,'ordinarily', ['class' => 'form-control']) }}
+            {{ Form::select('city_id', $cities , null , ['class' => 'form-control']) }}
         </div>
 
         <div class='form-group'>
@@ -34,7 +34,7 @@
 
         <div class='form-group'>
             {{ Form::label('status_id', 'ステータス:') }}
-            {{ Form::select('status_id', $statuses, $statuses[$post->status_id], ['class' => 'form-control'])}}
+            {{ Form::select('status_id', $statuses,  $statuses[$post->status_id], ['class' => 'form-control'])}}
         </div>
 
         <div class='form-group'> 

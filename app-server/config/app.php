@@ -180,6 +180,11 @@ return [
          */
         Laravel\Socialite\SocialiteServiceProvider::class,
 
+        /*
+         * ImageServiceProvider、画像のリサイズ機能　追加
+         */
+        Intervention\Image\ImageServiceProvider::class
+
     ],
 
     /*
@@ -233,6 +238,9 @@ return [
 
         //Socialログイン用追加
         'Socialite' => Laravel\Socialite\Facades\Socialite::class,
+
+        //InterventionImag画像リサイズ追加
+        'Image' => Intervention\Image\Facades\Image::class
 
     ],
 

@@ -28,12 +28,14 @@
     <tr>
               <th>ID</th>
               <th>場所</th>
+             
               <th>ステータス</th>
     </tr>
     @foreach ($posts as $post)
               <tr>
                         <td>{{ $post->id }}</td>
                         <td>{{ $post->titile }}</td>
+                       
                          <td><a href="{{ route('admin.edit',$post->id)}}">{{ $statuses[$post->status_id] }}</a></td>
               </tr>
               @endforeach
