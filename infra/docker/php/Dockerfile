@@ -14,6 +14,22 @@ ENV TZ=UTC \
 
 COPY --from=composer:2.0 /usr/bin/composer /usr/bin/composer
 
+
+RUN apt-get update && apt-get install -y \
+      libmagickwand-dev \
+      libpq-dev \
+      libfreetype6-dev \
+      libjpeg62-turbo-dev \
+      libpng-dev \
+      libwebp-dev \
+      libxpm-dev \
+    && docker-php-ext-install \ 
+      pdo_mysql \ 
+      bcmath \
+      gd \
+    && docker-php-ext-configure gd --with-freetype=/usr/include/ --with-jpeg=/usr/include/\
+    && docker-php-ext-install -j$(nproc) gd
+
 RUN apt-get update && \
   apt-get -y install git libicu-dev libonig-dev libzip-dev unzip locales && \
   apt-get clean && \
@@ -24,6 +40,7 @@ RUN apt-get update && \
   docker-php-ext-install intl pdo_mysql zip bcmath && \
   composer config -g process-timeout 3600 && \
   composer config -g repos.packagist composer https://packagist.org
+
 
 COPY ./infra/docker/php/php-fpm.d/zzz-www.conf /usr/local/etc/php-fpm.d/zzz-www.conf
 COPY ./infra/docker/php/php.ini /usr/local/etc/php/php.ini
