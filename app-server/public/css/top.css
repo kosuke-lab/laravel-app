@@ -60,3 +60,14 @@ h2 {
   justify-content: center;
 }
 
+@media screen and (max-width: 768px) {
+  #content {
+    z-index: 10;
+    width: 90%;
+  }
+
+  .col-lg-6 {
+    margin-bottom: 16px;
+  }
+}
+

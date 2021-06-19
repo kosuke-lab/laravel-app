@@ -13,16 +13,21 @@
             <img src="http://localhost:9000/{{$results->postImage->file_path }}" alt="{{$results->postImage->file_name }}">
             </div>
             <div class="col-md-6">
-            <h1>{{$results->titile}}</h1>
+            <h2>{{$results->titile}}</h2>
             <p>{{$results->address }}</p>
             <p class="list">※イメージ画像がない場合はnoimageの画像が入ることがあります。</p>
                 <div class="row detail">
                             <div class="col-md-6">
-                                <button class="btn btn-primary detail-btn"  id="reload" onclick="window.location.reload();">引き直す</button>
+                                <button class="btn btn-primary detail-btn"  id="reload" onclick="window.location.reload();">同じ条件で検索する</button>
                             </div>
-                            <div class="col-md-6" id="app">
+                @if (Route::has('login'))
+                    @auth
+                    <div class="col-md-6" id="app">
                                 <like-component :post-id="{{ json_encode($results->id) }}":user-id="{{ json_encode($userAuth) }}":default-liked="{{ json_encode($defaultLiked) }}":default-Count="{{ json_encode($defaultCount) }}"></like-component>
                             </div>
+                    @else
+                    @endauth
+                @endif
                     </div>
             </div>
     </div>
@@ -32,12 +37,12 @@
         <a href="/" class="btn btn-primary detail-btn">戻る</a>
     </div>
 
-<script>
+<!-- <script>
         var reload =document.getElementById('reload');
         reload.addEventListener('click',function(){
         window.location.reload();
         });
-</script>
+</script> -->
         <script src="{{asset('js/app.js')}}"></script>
 
 @endsection

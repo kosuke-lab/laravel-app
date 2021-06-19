@@ -13,6 +13,10 @@
   margin-top: 24px;
 }
 
+.container.main .row {
+  margin-bottom: 24px;
+}
+
 @media screen and (max-width: 768px) {
   /* 768pxまでの幅の場合に適応される */
 
@@ -20,8 +24,14 @@
     max-width: 100%;
   }
 
+  .col-md-6 h2 {
+    text-align: center;
+    margin-bottom: 24px;
+  }
+
   .position {
     text-align: center;
+    margin-bottom: 16px;
   }
 
   .row {
@@ -34,6 +44,10 @@
 
   .detail-btn {
     margin-bottom: 24px;
+  }
+
+  .container.main .row {
+    margin-bottom: initial;
   }
 }
 

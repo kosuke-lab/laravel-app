@@ -42,6 +42,11 @@ h2{
   padding-bottom: 40px;
 }
 
+// .text-right{
+//   position: relative;
+//   top: 40px;
+// }
+
 
 #content{
           z-index:10;
@@ -63,3 +68,14 @@ h2{
           align-items: center;
           justify-content: center;
       }
+
+@media screen and (max-width: 768px) { 
+  #content{
+    z-index:10;
+    width:90%;
+  }
+
+.col-lg-6{
+  margin-bottom: 16px;
+}
+}
