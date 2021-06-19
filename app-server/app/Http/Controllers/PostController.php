@@ -142,10 +142,11 @@ class PostController extends Controller
                 $file = $request->file('image');
                 $file_name = $file->getClientOriginalName();
     
-                InterventionImage::make($file)->resize(300, 300)->save(public_path('/images/' . $file_name ) );
+                InterventionImage::make($file)->resize(440, 300,function ($constraint) {
+                    $constraint->aspectRatio();
+                    })->save(public_path('/images/' . $file_name ) );
                 
                 $save_path =  public_path('/images/'. $file_name );
-    
     
                 //minioへ画像アップロード
                 $file_path = Storage::disk('minio')->putFile('/', new File($save_path), 'public');

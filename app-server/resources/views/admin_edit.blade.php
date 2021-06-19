@@ -3,7 +3,7 @@
 
 @section('content')
 
-<div class="container">
+<div class="container main">
          <h1>お店編集</h1>
          <ul>
         @foreach ($errors->all() as $error)

@@ -7,7 +7,6 @@
         <meta name="keywords" content="@yield('keywords')">
         <style>body {padding-top: 64px;}</style>
         <link href="{{ asset('/css/app.css') }}" rel="stylesheet">
-        <link href="{{ asset('/css/top.css') }}" rel="stylesheet">
         @yield('pagecss')
         <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/toastr.css">
         <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
@@ -18,3 +17,10 @@
     @include('layouts.header')
     @yield('content')
    </body>
+
+<footer class="foot">
+    <div class="container">
+<li>トップ</li>
+<li>〇〇について</li>
+    </div>
+</footer>

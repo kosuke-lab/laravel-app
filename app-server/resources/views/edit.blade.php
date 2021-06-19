@@ -5,7 +5,7 @@
 @endsection
 @section('content')
 
-<div class="container">
+<div class="container main">
 
 <h1>お店編集</h1>
     @if ($errors->any())
@@ -29,12 +29,12 @@
 
         <div class='form-group'>
             {{ Form::label('category_id', 'カテゴリー:') }}
-            {{ Form::select('category_id', $categories,'ordinarily', ['class' => 'form-control']) }}
+            {{ Form::select('category_id', $categories,  null, ['class' => 'form-control']) }}
         </div>
 
         <div class='form-group'>
             {{ Form::label('city_id', '市町村:') }}
-            {{ Form::select('city_id', $cities,'ordinarily', ['class' => 'form-control']) }}
+            {{ Form::select('city_id', $cities , null , ['class' => 'form-control']) }}
         </div>
 
         <div class='form-group'>

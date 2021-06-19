@@ -240,7 +240,7 @@ return [
         'Socialite' => Laravel\Socialite\Facades\Socialite::class,
 
         //InterventionImag画像リサイズ追加
-        'Image' => Intervention\Image\Facades\Image::class
+        'InterventionImage' => Intervention\Image\Facades\Image::class
 
     ],
 

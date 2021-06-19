@@ -5,7 +5,7 @@
 @endsection
 @section('content')
 
-<div class="container">
+<div class="container main">
 <h1>新しいお店</h1>
     @if ($errors->any())
         <div class="error">

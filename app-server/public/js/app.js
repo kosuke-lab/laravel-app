@@ -37757,7 +37757,7 @@ var render = function() {
       ? _c(
           "button",
           {
-            staticClass: "btn btn-primary",
+            staticClass: "btn btn-primary detail-btn",
             attrs: { type: "button" },
             on: {
               click: function($event) {
@@ -37765,12 +37765,12 @@ var render = function() {
               }
             }
           },
-          [_vm._v("like" + _vm._s(_vm.likeCount))]
+          [_vm._v("お気に入り登録 " + _vm._s(_vm.likeCount))]
         )
       : _c(
           "button",
           {
-            staticClass: "btn btn-primary",
+            staticClass: "btn btn-primary detail-btn",
             attrs: { type: "button" },
             on: {
               click: function($event) {
@@ -37778,7 +37778,7 @@ var render = function() {
               }
             }
           },
-          [_vm._v("liled" + _vm._s(_vm.likeCount))]
+          [_vm._v("お気に入り登録 " + _vm._s(_vm.likeCount))]
         )
   ])
 }
@@ -50352,6 +50352,17 @@ __webpack_require__.r(__webpack_exports__);
 
 /***/ }),
 
+/***/ "./resources/sass/detail.scss":
+/*!************************************!*\
+  !*** ./resources/sass/detail.scss ***!
+  \************************************/
+/*! no static exports found */
+/***/ (function(module, exports) {
+
+// removed by extract-text-webpack-plugin
+
+/***/ }),
+
 /***/ "./resources/sass/form.scss":
 /*!**********************************!*\
   !*** ./resources/sass/form.scss ***!
@@ -50386,9 +50397,9 @@ __webpack_require__.r(__webpack_exports__);
 /***/ }),
 
 /***/ 0:
-/*!***********************************************************************************************************************************************!*\
-  !*** multi ./resources/js/app.js ./resources/sass/app.scss ./resources/sass/top.scss ./resources/sass/mypage.scss ./resources/sass/form.scss ***!
-  \***********************************************************************************************************************************************/
+/*!****************************************************************************************************************************************************************************!*\
+  !*** multi ./resources/js/app.js ./resources/sass/app.scss ./resources/sass/top.scss ./resources/sass/mypage.scss ./resources/sass/form.scss ./resources/sass/detail.scss ***!
+  \****************************************************************************************************************************************************************************/
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
@@ -50396,7 +50407,8 @@ __webpack_require__(/*! /work/app-server/resources/js/app.js */"./resources/js/a
 __webpack_require__(/*! /work/app-server/resources/sass/app.scss */"./resources/sass/app.scss");
 __webpack_require__(/*! /work/app-server/resources/sass/top.scss */"./resources/sass/top.scss");
 __webpack_require__(/*! /work/app-server/resources/sass/mypage.scss */"./resources/sass/mypage.scss");
-module.exports = __webpack_require__(/*! /work/app-server/resources/sass/form.scss */"./resources/sass/form.scss");
+__webpack_require__(/*! /work/app-server/resources/sass/form.scss */"./resources/sass/form.scss");
+module.exports = __webpack_require__(/*! /work/app-server/resources/sass/detail.scss */"./resources/sass/detail.scss");
 
 
 /***/ })

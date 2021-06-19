@@ -1,7 +1,7 @@
 <template>
    <div>
-       <button v-if="!liked" type="button" class="btn btn-primary" @click="like(postId)">like{{ likeCount }}</button>
-        <button v-else type="button" class="btn btn-primary" @click="unlike(postId)">liled{{ likeCount }}</button>
+       <button v-if="!liked" type="button" class="btn btn-primary detail-btn" @click="like(postId)">お気に入り登録 {{ likeCount }}</button>
+        <button v-else type="button" class="btn btn-primary detail-btn" @click="unlike(postId)">お気に入り登録 {{ likeCount }}</button>
    </div>
 </template>
 

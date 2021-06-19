@@ -1,0 +1,39 @@
+@charset "UTF-8";
+
+.list {
+  font-size: 0.7rem;
+}
+
+.detail-btn {
+  min-width: 100%;
+  border-radius: 100px;
+}
+
+.row .detail {
+  margin-top: 24px;
+}
+
+@media screen and (max-width: 768px) {
+  /* 768pxまでの幅の場合に適応される */
+
+  img {
+    max-width: 100%;
+  }
+
+  .position {
+    text-align: center;
+  }
+
+  .row {
+    margin-top: 24px;
+  }
+
+  .btn {
+    width: 100%;
+  }
+
+  .detail-btn {
+    margin-bottom: 24px;
+  }
+}
+

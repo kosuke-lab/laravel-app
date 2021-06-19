@@ -7,7 +7,7 @@
 @endsection
 
 @section('content')
-<div class="container">
+<div class="container main">
               <h1>投稿一覧</h1>
               <p>{{ $user_id }}</p>
 

@@ -10942,6 +10942,15 @@ a.text-dark:focus {
   }
 }
 
+.foot {
+  background-color: beige;
+}
+
+.container.main {
+  margin-top: 24px;
+  margin-bottom: 40px;
+}
+
 .icon img {
   width: auto;
   height: auto;
