@@ -4,5 +4,6 @@
     "/css/top.css": "/css/top.css",
     "/css/mypage.css": "/css/mypage.css",
     "/css/form.css": "/css/form.css",
-    "/css/detail.css": "/css/detail.css"
+    "/css/detail.css": "/css/detail.css",
+    "/css/login.css": "/css/login.css"
 }
