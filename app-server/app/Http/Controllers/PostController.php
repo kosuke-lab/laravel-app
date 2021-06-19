@@ -12,6 +12,8 @@ use App\Models\Post_image;
 use App\Http\Requests\CreatePostRequest;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Storage;
+use InterventionImage;
+use Illuminate\Http\File;
 
 class PostController extends Controller
 {
@@ -135,12 +137,22 @@ class PostController extends Controller
             ])->id;
             
             //フォームから画像情報受け取り　画像ありの時の処理
-            if ($file = $request->file('image')) {
-            $file = $request->file('image');
-            $file_name = $file->getClientOriginalName();
 
-            //minioへ画像アップロード
-            $file_path = Storage::disk('minio')->put('/', $file, 'public');
+            if ($file = $request->file('image')) {
+                $file = $request->file('image');
+                $file_name = $file->getClientOriginalName();
+    
+                InterventionImage::make($file)->resize(300, 300)->save(public_path('/images/' . $file_name ) );
+                
+                $save_path =  public_path('/images/'. $file_name );
+    
+    
+                //minioへ画像アップロード
+                $file_path = Storage::disk('minio')->putFile('/', new File($save_path), 'public');
+
+                //minioへ画像アップロード
+                //$file_path = Storage::disk('minio')->put('/', $file, 'public');
+
             
              Post_image::create([
                 'file_name' => $file_name,
