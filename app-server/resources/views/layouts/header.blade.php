@@ -16,7 +16,7 @@
             <a class="nav-link" href="{{route('post.new')}}">〇〇登録</a>
           </li>
         <li class="nav-item">
-          <a class="nav-link" href=>〇〇とは</a>
+          <a class="nav-link" href="{{route('about')}}">〇〇とは</a>
         </li>    
         @if (Route::has('login'))
                     @auth

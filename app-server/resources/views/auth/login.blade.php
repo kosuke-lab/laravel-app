@@ -10,7 +10,7 @@
 <div class="col-sm-4">
         <div class="card">
             <div class="card-body">
-            <h4 class="card-title text-center mb-4 mt-1">Sign in</h4>
+            <h4 class="card-title text-center mb-4 mt-1">ログイン</h4>
             <hr>
             <p class="text-success text-center">Some message goes here</p>
                 <form method="POST" action="{{ route('login') }}">
@@ -54,10 +54,10 @@
                 </div>
                 
                 <button type="submit" class="btn btn-primary btn-block">
-                {{ __('Login') }}
+                {{ __('ログイン') }}
                 </button>
                 @if (Route::has('password.request'))
-                <a class="btn btn-link" href="{{ route('password.request') }}">
+                <a  href="{{ route('password.request') }}">
                 {{ __('パスワードを忘れた方はこちら') }}
                 </a>
                 @endif
@@ -66,7 +66,7 @@
                     <span class="span-or">or</span>
                     </div>
                         <div>
-                        <a href="{{ url('login/twitter')}}" class="btn btn-danger btn-block"><i class="fa fa-google"> twitter</i></a>
+                        <a href="{{ url('login/twitter')}}" class="btn btn-danger btn-block"><i class="fab fa-twitter"> twitter</i></a>
                         </div>
                 </form>
             </div>

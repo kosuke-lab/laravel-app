@@ -20,7 +20,7 @@ class PostController extends Controller
 
     public function __construct()
     {
-        $this->middleware('auth')->except(['index','result']);
+        $this->middleware('auth')->except(['index','result','about']);
     }
     
     /**
@@ -300,16 +300,12 @@ class PostController extends Controller
         return redirect()->route('admin');
     }
 
-//     public function favorite(Post $post, Request $request,$post_id)
-// {
-//     $userAuth = Auth::id();
+public function about()
+ {
+      return view('about',[
 
-//     $favorites = Auth::user()->posts()->get();
-    
-//      return view('favorite',[
-//          'favorites' => $favorites,
-//      ]);
-// }
+      ]);
+ }
 }
 
 

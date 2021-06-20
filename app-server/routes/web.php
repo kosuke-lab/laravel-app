@@ -15,6 +15,9 @@ Auth::routes();
 //トップページ（市町村選択一覧表示）
 Route::get('/', 'PostController@index')->name('city.list');
 
+//サービス紹介アバウトページ
+Route::get('/about', 'PostController@about')->name('about');
+
 //新規投稿フォーム作成
 Route::get('/new', 'PostController@create')->name('post.new');
 
