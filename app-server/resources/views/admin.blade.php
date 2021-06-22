@@ -9,7 +9,7 @@
 
 @section('content')
 
-<div class="container">
+<div class="container main">
 
         <p>{{ $statuses[1]}}</p>
     {{ Form::open(['method' => 'get']) }}
