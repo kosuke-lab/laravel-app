@@ -12,8 +12,8 @@
                             <input type ="radio" name = "category_id" :value="index">{{ category_data }}
                         </div>
                         </div>
-                        <div class="text-center">
-                        <button type="submit" class="btn btn-primary">検索</button>
+                        <div class="text-right">
+                        <button type="submit" class="btn btn-primary text-right">検索</button>
                         </div>
                     </div>
                 <button type="button" v-on:click="$emit('close')" class="btn btn-success">閉じる <i class="fas fa-times"></i></button>
