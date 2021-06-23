@@ -17,6 +17,17 @@
   margin-bottom: 40px;
 }
 
+.list-group{
+.list-group-item{
+  background-color:initial;
+  border:initial;
+  text-align: center;
+}
+}
+
+.copy{
+  text-align: center;
+}
         
         $primary-color: #079ad9;
         
@@ -99,3 +110,18 @@
             }
           }
         }
+
+@media screen and (max-width: 768px) {
+
+.list-group-horizontal{
+  flex-direction:column;
+}
+
+.list-group{
+  .list-group-item{
+    text-align: left;
+  }
+  }
+  
+}
+

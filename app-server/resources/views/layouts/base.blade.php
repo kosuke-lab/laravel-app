@@ -14,13 +14,19 @@
     </head>
     
     <body>
-    @include('layouts.header')
+    @include('layouts.nav')
     @yield('content')
    </body>
 
-<footer class="foot">
+   <footer class="foot pt-2 pb-3">
     <div class="container">
-<li>トップ</li>
-<li>〇〇について</li>
+        <ul class="list-group list-group-horizontal pb-1">
+                <li class="list-group-item flex-fill"><a  href="{{route('city.list')}}">トップ</a></li>
+                <li class="list-group-item flex-fill"><a  href="{{route('about')}}">〇〇について</a></li>
+                <li class="list-group-item flex-fill"><a  href="{{route('post.new')}}">新規投稿</a></li>
+        </ul>
+        <p class="copy">© 2021 Copyright<br>★★★.com</p>
     </div>
 </footer>
+
+

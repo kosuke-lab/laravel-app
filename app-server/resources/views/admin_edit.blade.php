@@ -41,6 +41,7 @@
         {{ Form::label('image', 'サムネイル:') }}
         <br>
         <input type="file" name="image" class="form-control">
+        <span id="helpBlock" class="help-block">サムネイルがなくても投稿が可能です。</span>
         </div> 
 
 

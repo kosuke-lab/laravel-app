@@ -10951,6 +10951,16 @@ a.text-dark:focus {
   margin-bottom: 40px;
 }
 
+.list-group .list-group-item {
+  background-color: initial;
+  border: initial;
+  text-align: center;
+}
+
+.copy {
+  text-align: center;
+}
+
 .icon img {
   width: auto;
   height: auto;
@@ -11025,5 +11035,15 @@ a.text-dark:focus {
 .radio-tile-group .input-container .radio-button:checked + .radio-tile .radio-tile-label {
   color: white;
   background-color: #079ad9;
+}
+
+@media screen and (max-width: 768px) {
+  .list-group-horizontal {
+    flex-direction: column;
+  }
+
+  .list-group .list-group-item {
+    text-align: left;
+  }
 }
 

@@ -23,7 +23,7 @@
     <div class='form-group'>
     {{ Form::label('titile', '場所:') }}
     {{ Form::text('titile', null,['class' => 'form-control','placeholder' => '例)：明治神宮']) }}
-    <span id="helpBlock" class="help-block">255文字以内で入力ください</span>
+    <span id="helpBlock" class="help-block">255文字以内で入力ください。</span>
     </div>
 
     <div class='form-group'>
@@ -39,12 +39,13 @@
     <div class='form-group'>
     {{ Form::label('address', '住所:') }}
     {{ Form::text('address', null,['class' => 'form-control','placeholder'=>'例)：東京都渋谷区代々木神園町１−１']) }}
-    <span id="helpBlock" class="help-block">255文字以内で入力ください</span>
+    <span id="helpBlock" class="help-block">255文字以内で入力ください。</span>
     </div>
 
     <div class='form-group'> 
     {{ Form::label('image', 'サムネイル:') }}
     <input type="file" name="image" class="form-control">
+    <span id="helpBlock" class="help-block">サムネイルがなくても投稿が可能です。</span>
     </div> 
 
     <div class="form-group">
