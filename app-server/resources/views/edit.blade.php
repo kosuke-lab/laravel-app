@@ -24,7 +24,7 @@
         <div class='form-group'>
             {{ Form::label('titile', '場所:') }}
             {{ Form::text('titile', null,['class' => 'form-control']) }}
-            <span id="helpBlock" class="help-block">255文字以内で入力ください</span>
+            <span id="helpBlock" class="help-block">255文字以内で入力ください。</span>
         </div>
 
         <div class='form-group'>
@@ -40,12 +40,13 @@
         <div class='form-group'>
             {{ Form::label('address', '住所:') }}
             {{ Form::text('address', null,['class' => 'form-control']) }}
-            <span id="helpBlock" class="help-block">255文字以内で入力ください</span>
+            <span id="helpBlock" class="help-block">255文字以内で入力ください。</span>
         </div>
 
         <div class='form-group'> 
         {{ Form::label('image', 'サムネイル:') }}
         <input type="file" name="image" class="form-control" value="{{ old('image', 'image') }}">
+        <span id="helpBlock" class="help-block">再度、投稿時のサムネイルをアップロードしてください。</span>
         </div> 
 
         <div class="form-group">

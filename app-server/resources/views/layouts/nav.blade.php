@@ -13,7 +13,7 @@
           <a class="nav-link" href='/'>Home </a>
         </li>
         <li class="nav-item">
-            <a class="nav-link" href="{{route('post.new')}}">〇〇登録</a>
+            <a class="nav-link" href="{{route('post.new')}}">新規投稿</a>
           </li>
         <li class="nav-item">
           <a class="nav-link" href="{{route('about')}}">〇〇とは</a>
