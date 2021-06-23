@@ -37824,24 +37824,30 @@ var render = function() {
                 ])
               }),
               0
-            ),
-            _vm._v(" "),
-            _vm._m(1)
+            )
           ]),
           _vm._v(" "),
-          _c(
-            "button",
-            {
-              staticClass: "btn btn-success",
-              attrs: { type: "button" },
-              on: {
-                click: function($event) {
-                  return _vm.$emit("close")
+          _c("div", { staticClass: "text-right" }, [
+            _c(
+              "button",
+              {
+                staticClass: "btn btn-success",
+                attrs: { type: "button" },
+                on: {
+                  click: function($event) {
+                    return _vm.$emit("close")
+                  }
                 }
-              }
-            },
-            [_vm._v("閉じる "), _c("i", { staticClass: "fas fa-times" })]
-          )
+              },
+              [_vm._v("閉じる "), _c("i", { staticClass: "fas fa-times" })]
+            ),
+            _vm._v(" "),
+            _c(
+              "button",
+              { staticClass: "btn btn-primary", attrs: { type: "submit" } },
+              [_vm._v("検索")]
+            )
+          ])
         ])
       ])
     ])
@@ -37853,18 +37859,6 @@ var staticRenderFns = [
     var _h = _vm.$createElement
     var _c = _vm._self._c || _h
     return _c("div", [_c("p", [_vm._v("カテゴリーを選択してください")])])
-  },
-  function() {
-    var _vm = this
-    var _h = _vm.$createElement
-    var _c = _vm._self._c || _h
-    return _c("div", { staticClass: "text-center" }, [
-      _c(
-        "button",
-        { staticClass: "btn btn-primary", attrs: { type: "submit" } },
-        [_vm._v("検索")]
-      )
-    ])
   }
 ]
 render._withStripped = true
