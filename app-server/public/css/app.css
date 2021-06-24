@@ -10942,8 +10942,20 @@ a.text-dark:focus {
   }
 }
 
+.bg-navi {
+  background-color: #079ad9;
+}
+
+.navbar-dark .navbar-toggler-icon {
+  background-image: url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' width='30' height='30' viewBox='0 0 30 30'%3e%3cpath stroke='rgba%28255, 255, 255, 029' stroke-linecap='round' stroke-miterlimit='10' stroke-width='2' d='M4 7h22M4 15h22M4 23h22'/%3e%3c/svg%3e");
+}
+
+.navbar-dark .navbar-toggler {
+  border-color: #ffffff;
+}
+
 .foot {
-  background-color: beige;
+  background-color: #c7c7c7;
 }
 
 .container.main {
@@ -10955,6 +10967,10 @@ a.text-dark:focus {
   background-color: initial;
   border: initial;
   text-align: center;
+}
+
+a {
+  color: #ffffff !important;
 }
 
 .copy {
@@ -11044,6 +11060,18 @@ a.text-dark:focus {
 
   .list-group .list-group-item {
     text-align: left;
+  }
+}
+
+@media screen and (max-width: 389px) {
+  .radio-tile-group {
+    justify-content: initial !important;
+  }
+
+  .radio-tile-group .input-container {
+    margin: initial;
+    margin-right: 11px;
+    margin-top: 24px;
   }
 }
 

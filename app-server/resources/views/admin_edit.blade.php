@@ -1,6 +1,8 @@
 @extends('layouts.base')
 
-
+@section('pagecss')
+<link href="{{ asset('/css/form.css') }}" rel="stylesheet">
+@endsection
 @section('content')
 
 <div class="container main">
@@ -45,9 +47,12 @@
         </div> 
 
 
-        <div class="form-group">
-            {{ Form::submit('作成する', ['class' => 'btn btn-outline-primary']) }}
+        <div class="width-btn">
+        <div class="text-center">
+        {{ Form::submit('投稿する', ['class' => 'btn btn-primary']) }}
         </div>
+        </div>
+
 
     {{ Form::close() }} 
 </div>
