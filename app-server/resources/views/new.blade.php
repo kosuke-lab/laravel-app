@@ -48,11 +48,16 @@
     <span id="helpBlock" class="help-block">サムネイルがなくても投稿が可能です。</span>
     </div> 
 
-    <div class="form-group">
-    {{ Form::submit('作成する', ['class' => 'btn btn-outline-primary']) }}
-    </div>
+    <div class="width-btn">
+<div class="text-center">
+{{ Form::submit('作成する', ['class' => 'btn btn-primary']) }}
+</div>
+</div>
 
 {{ Form::close() }} 
+
+
+
 </div>
 
 
