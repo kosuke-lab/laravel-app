@@ -49,8 +49,10 @@
         <span id="helpBlock" class="help-block">再度、投稿時のサムネイルをアップロードしてください。</span>
         </div> 
 
-        <div class="form-group">
-            {{ Form::submit('作成する', ['class' => 'btn btn-outline-primary']) }}
+        <div class="width-btn">
+        <div class="text-center">
+        {{ Form::submit('投稿する', ['class' => 'btn btn-primary']) }}
+        </div>
         </div>
 
     {{ Form::close() }} 

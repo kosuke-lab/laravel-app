@@ -34,3 +34,13 @@
   width: 100%;
   height: 56px;
   }
+
+
+
+  @media screen and (max-width: 768px) {
+    /* 768pxまでの幅の場合に適応される */
+
+  .width-btn{
+    width: 100%;
+  }
+  }

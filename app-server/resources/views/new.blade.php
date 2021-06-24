@@ -49,10 +49,10 @@
     </div> 
 
     <div class="width-btn">
-<div class="text-center">
-{{ Form::submit('作成する', ['class' => 'btn btn-primary']) }}
-</div>
-</div>
+    <div class="text-center">
+    {{ Form::submit('投稿する', ['class' => 'btn btn-primary']) }}
+    </div>
+     </div>
 
 {{ Form::close() }} 
 

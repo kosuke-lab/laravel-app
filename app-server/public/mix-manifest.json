@@ -6,5 +6,6 @@
     "/css/form.css": "/css/form.css",
     "/css/detail.css": "/css/detail.css",
     "/css/login.css": "/css/login.css",
-    "/css/about.css": "/css/about.css"
+    "/css/about.css": "/css/about.css",
+    "/css/admin.css": "/css/admin.css"
 }
