@@ -1,6 +1,7 @@
 @extends('layouts.base')
 
 @section('pagecss')
+<link href="{{ asset('/css/common.css') }}" rel="stylesheet">
 <link href="{{ asset('/css/form.css') }}" rel="stylesheet">
 @endsection
 @section('content')
@@ -55,8 +56,6 @@
      </div>
 
 {{ Form::close() }} 
-
-
 
 </div>
 
