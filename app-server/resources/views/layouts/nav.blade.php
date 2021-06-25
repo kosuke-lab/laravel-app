@@ -10,7 +10,7 @@
     <div class="collapse navbar-collapse justify-content-end" id="navbarSupportedContent">
       <ul class="navbar-nav">
         <li class="nav-item active">
-          <a class="nav-link" href='/'>Home </a>
+          <a class="nav-link" href='/'>トップ</a>
         </li>
         <li class="nav-item">
             <a class="nav-link" href="{{route('post.new')}}">新規投稿</a>
@@ -32,9 +32,9 @@
                         <a class="nav-link" href="{{ route('mypage',['user_id' =>auth()->user()->id])}}">mypage</a>
                     </li>   
                     @else
-                        <a  class="nav-link"href="{{ route('login') }}">Login</a>
+                        <a  class="nav-link"href="{{ route('login') }}">ログイン</a>
                     @if (Route::has('register'))
-                        <a class="nav-link" href="{{ route('register') }}">Register</a>
+                        <a class="nav-link" href="{{ route('register') }}">新規アカウント作成</a>
                         @endif
                     @endauth
             @endif
