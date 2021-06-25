@@ -1,7 +1,12 @@
 @extends('layouts.base')
 
+@section('title', 'ログイン')
+@section('description', 'ぺーじのたいとる')
+@section('keywords', 'ぺーじのたいとる')
+
 @section('pagecss')
 <link href="https://use.fontawesome.com/releases/v5.0.6/css/all.css" rel="stylesheet">
+<link href="{{ asset('/css/common.css') }}" rel="stylesheet">
 <link href="{{ asset('/css/login.css') }}" rel="stylesheet">
 @endsection
 @section('content')

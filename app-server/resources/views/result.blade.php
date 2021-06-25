@@ -1,9 +1,11 @@
 @extends('layouts.base')
-@section('title', '詳細ページ')
+@section('title', $results->titile)
 @section('description', 'ぺーじのたいとる')
 @section('keywords', 'ぺーじのたいとる')
 @section('pagecss')
+<link href="{{ asset('/css/common.css') }}" rel="stylesheet">
 <link href="{{ asset('/css/detail.css') }}" rel="stylesheet">
+<link href="{{ asset('/css/form.css') }}" rel="stylesheet">
 @endsection
 @section('content')
 
@@ -34,15 +36,15 @@
         <div class="mb-3">
             <iframe id='map'src='https://www.google.com/maps/embed/v1/place?key={{ config("app.google_api")}}&amp;q={{ $results->address }}' width='100%' height='150' frameborder='0'></iframe>
             </div>
+            <div class="width-btn">
+        <div class="text-center">
         <a href="/" class="btn btn-primary detail-btn">戻る</a>
+        </div>
+        </div>
+       
     </div>
 
-<!-- <script>
-        var reload =document.getElementById('reload');
-        reload.addEventListener('click',function(){
-        window.location.reload();
-        });
-</script> -->
+
         <script src="{{asset('js/app.js')}}"></script>
 
 @endsection

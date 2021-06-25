@@ -3,6 +3,7 @@
 @section('description', 'ぺーじのたいとる')
 @section('keywords', 'ぺーじのたいとる')
 @section('pagecss')
+<link href="{{ asset('/css/common.css') }}" rel="stylesheet">
 <link href="{{ asset('/css/mypage.css') }}" rel="stylesheet">
 @endsection
 
