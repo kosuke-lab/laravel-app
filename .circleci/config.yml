@@ -12,8 +12,11 @@ jobs:
       - run:
           name: install
           command: npm ci
+          working_directory: ./app-server/
       - run:
           command: npm run dev
+          working_directory: ./app-server/
       - run:
           name: php test
           command: vendor/bin/phpunit
+          working_directory: ./app-server/
