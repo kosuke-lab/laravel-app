@@ -14,6 +14,7 @@ class PostTest extends TestCase
 
     use RefreshDatabase;
 
+    //いいねをしているケース
     public function testIsLikedByNull()
     {
         $post = factory(Post::class)->create();
@@ -23,6 +24,7 @@ class PostTest extends TestCase
 
     }
 
+    //いいねをしていないケース
     public function testIsLikedByTheUser()
     {
         $post = factory(Post::class)->create();
@@ -32,5 +34,17 @@ class PostTest extends TestCase
         $result = $post->isLikedBy($user);
 
         $this->assertTrue($result);
+    }
+
+    public function testIsLikedByAnother()
+    {
+        $post = factory(Post::class)->create();
+        $user = factory(User::class)->create();
+        $another = factory(User::class)->create();
+        $post->likes()->attach($another);
+
+        $result = $post->isLikedBy($user);
+
+        $this->assertFalse($result);
     }
 }
