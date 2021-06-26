@@ -9,7 +9,6 @@ jobs:
       - restore_cache:
           key: composer-v1-{{ checksum "composer.lock" }}
       - run: composer install -n --prefer-dist
-         working_directory: ./app-server/
       - save_cache:
           key: composer-v1-{{ checksum "composer.lock" }}
           paths:
@@ -28,7 +27,6 @@ jobs:
           paths:
             - node_modules
       - run: npm run dev
-         working_directory: ./app-server/
       - run:
           name: php test
           command: vendor/bin/phpunit
