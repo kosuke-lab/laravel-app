@@ -11,7 +11,7 @@ jobs:
           working_directory: ./app-server/
       - run: npm install
       - run:
-          command: npm ci
+          command: npm ci --no-optional
           working_directory: ./app-server/
       - run:
           command: npm run dev
