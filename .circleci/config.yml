@@ -8,15 +8,11 @@ jobs:
       - run: sudo composer self-update --1
       - run:
           command: composer install -n --prefer-dist
-          working_directory: ./app-server/
       - run:
           name: install
           command: npm ci
-          working_directory: ./app-server/
       - run:
           command: npm run dev
-          working_directory: ./app-server/
       - run:
           name: php test
           command: vendor/bin/phpunit
-          working_directory: ./app-server/
