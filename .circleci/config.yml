@@ -4,14 +4,16 @@ jobs:
     docker:
       - image: circleci/php:7.3-node-browsers
     steps:
-      - run: echo "Hello World" #==========この行を削除
-      #==========ここから追加==========
       - checkout
       - run: sudo composer self-update --1
-      - run: composer install -n --prefer-dist
-      - run: npm ci
+      - run: 
+         command:composer install -n --prefer-dist
+         working_directory:./app-server/
+      - run:
+         npm ci
+         working_directory:./app-server/
       - run: npm run dev
       - run:
           name: php test
           command: vendor/bin/phpunit
-      #==========ここまで追加==========
+     
