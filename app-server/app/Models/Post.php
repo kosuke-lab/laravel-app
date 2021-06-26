@@ -32,7 +32,21 @@ class Post extends Model
     }
 
     public function user(){
-        return $this->belongsToMany(User::class)->withTimestamps();
+        return $this->belongsToMany(User::class,'likes')->withTimestamps();
+    }
+
+    //サークルCIテスト記述
+    public function isLikedBy(?User $user): bool
+    {
+        return $user
+            ? (bool)$this->likes->where('id', $user->id)->count()
+            : false;
+    }
+
+        //サークルCIテスト記述
+    public function likes()
+    {
+        return $this->belongsToMany(User::class, 'likes')->withTimestamps();
     }
 
 }
