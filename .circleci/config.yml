@@ -10,8 +10,8 @@ jobs:
          command: composer install -n --prefer-dist
          working_directory: ./app-server/
       - run:
-         npm ci
-         working_directory:./app-server/
+         command: npm ci
+         working_directory: ./app-server/
       - run: npm run dev
       - run:
           name: php test
