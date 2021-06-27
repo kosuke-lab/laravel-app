@@ -20,10 +20,10 @@ jobs:
           key: npm-v1-{{ checksum "./app-server/package-lock.json" }}       
       - run:
           name: npm ci
+          working_directory: ./app-server/
           command: |
             if [ ! -d node_modules ]; then
               npm ci
-              working_directory: ./app-server/
             fi 
       - save_cache:
           key: npm-v1-{{ checksum "./app-server/package-lock.json" }}
