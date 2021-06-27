@@ -14,9 +14,9 @@ class ChangeCityNameAreaToNullableToCityTable extends Migration
     public function up()
     {
         Schema::table('cities', function (Blueprint $table) {
-            $table->string('name')->nullable()->change();
-            $table->string('area')->nullable()->change();
-            $table->string('file_path')->nullable()->change();
+            $table->string('name')->nullable(false)->change();
+            $table->string('area')->nullable(false)->change();
+            $table->string('file_path')->nullable(false)->change();
 
         });
     }
