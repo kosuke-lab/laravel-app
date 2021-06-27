@@ -14,7 +14,7 @@ class AddAreaToCitiesTable extends Migration
     public function up()
     {
         Schema::table('cities', function (Blueprint $table) {
-            $table->string('area');
+            $table->string('area')->nullable();
         });
     }
 
