@@ -7,12 +7,28 @@ jobs:
     steps:
       - checkout
       - run: sudo composer self-update --1
+      - restore_cache:
+         key: composer-v1-{{ checksum "./app-server/composer.lock" }}
       - run: 
          command: composer install -n --prefer-dist
          working_directory: ./app-server/
+      - save_cache:
+          key: composer-v1-{{ checksum "./app-server/composer.lock" }}
+          paths:
+             - vendor
+      - restore_cache:
+          key: npm-v1-{{ checksum "./app-server/package-lock.json" }}       
       - run:
-         command: npm ci
-         working_directory: ./app-server/
+          name: npm ci
+          working_directory: ./app-server/
+          command: |
+            if [ ! -d node_modules ]; then
+              npm ci
+            fi 
+      - save_cache:
+          key: npm-v1-{{ checksum "./app-server/package-lock.json" }}
+          paths:
+            - node_modules
       - run: 
          command: npm run dev
          working_directory: ./app-server/
