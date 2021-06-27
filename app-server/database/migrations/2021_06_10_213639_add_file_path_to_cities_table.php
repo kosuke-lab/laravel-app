@@ -14,7 +14,7 @@ class AddFilePathToCitiesTable extends Migration
     public function up()
     {
         Schema::table('cities', function (Blueprint $table) {
-            $table->string('file_path');
+            $table->string('file_path')->nullable();
         });
     }
 

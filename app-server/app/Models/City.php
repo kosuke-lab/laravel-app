@@ -10,4 +10,11 @@ class City extends Model
         'post_id',
         'name',
     ];
+
+    public function post(){
+        return $this->hasMany(Post::class);
+    }
+
 }
+
+

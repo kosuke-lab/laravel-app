@@ -4,6 +4,7 @@ namespace Tests\Feature;
 
 use Tests\TestCase;
 use App\Models\User;
+use App\Models\City;
 use Illuminate\Foundation\Testing\WithFaker;
 use Illuminate\Foundation\Testing\RefreshDatabase;
 
@@ -17,12 +18,18 @@ class PostControllerTest extends TestCase
 
     public function testIndex()
     {
+
+        // $city = factory(City::class)->create();
+        // $result = $city->post(null);
+        // $this->assertFalse($result);
+
+
         $response = $this->get(route('city.list'));
-        
          // レスポンスを検証
         $response->assertStatus(200)
             ->assertViewIs('index');
     }
+
 
     /**
      *新規投稿未ログインのテスト
