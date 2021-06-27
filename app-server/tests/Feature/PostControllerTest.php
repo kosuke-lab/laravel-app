@@ -15,14 +15,20 @@ class PostControllerTest extends TestCase
      *トップページ表示テスト
     */
 
-    // public function testIndex()
-    // {
-    //     $response = $this->get(route('city.list'));
-        
-    //      // レスポンスを検証
-    //     $response->assertStatus(200)
-    //         ->assertViewIs('index');
-    // }
+    public function testIndex()
+    {
+
+        $city = factory(City::class)->create();
+        $result = $city->post(null);
+        $this->assertFalse($result);
+
+
+        $response = $this->get(route('city.list'));
+         // レスポンスを検証
+        $response->assertStatus(200)
+            ->assertViewIs('index');
+    }
+
 
     /**
      *新規投稿未ログインのテスト
