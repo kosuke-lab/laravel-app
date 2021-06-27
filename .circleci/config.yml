@@ -13,7 +13,8 @@ jobs:
       - run:
          command: npm ci
          working_directory: ./app-server/
-      - run: npm run dev
+      - run: 
+         command: npm run dev
          working_directory: ./app-server/
       - run:
           name: php test
