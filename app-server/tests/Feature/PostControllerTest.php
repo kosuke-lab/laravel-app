@@ -16,19 +16,19 @@ class PostControllerTest extends TestCase
      *トップページ表示テスト
     */
 
-    // public function testIndex()
-    // {
+    public function testIndex()
+    {
 
-    //     // $city = factory(City::class)->create();
-    //     // $result = $city->post(null);
-    //     // $this->assertFalse($result);
+        // $city = factory(City::class)->create();
+        // $result = $city->post(null);
+        // $this->assertFalse($result);
 
 
-    //     $response = $this->get(route('city.list'));
-    //      // レスポンスを検証
-    //     $response->assertStatus(200)
-    //         ->assertViewIs('index');
-    // }
+        $response = $this->get(route('city.list'));
+         // レスポンスを検証
+        $response->assertStatus(200)
+            ->assertViewIs('index');
+    }
 
 
     /**
