@@ -26,7 +26,7 @@ class PostControllerTest extends TestCase
 
         $response = $this->get(route('city.list'));
          // レスポンスを検証
-        $response->assertStatus(200)
+        $response->assertStatus(400)
             ->assertViewIs('index');
     }
 
