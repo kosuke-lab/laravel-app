@@ -46,7 +46,7 @@ jobs:
           name: deploy
           working_directory: ./app-server/
           command: |
-            ssh -o StrictHostKeyChecking=no -t webapp@${HOST_NAME} "cd laravel-app && \
+            ssh -o StrictHostKeyChecking=no -t webapp@${HOST_NAME} "cd laravel-app/app-server/ && \
               git pull origin main && \
               composer install -n --no-dev --prefer-dist && \
               npm ci && \
