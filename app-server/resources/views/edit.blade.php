@@ -23,8 +23,8 @@
          @csrf
 
         <div class='form-group'>
-            {{ Form::label('titile', '場所:') }}
-            {{ Form::text('titile', null,['class' => 'form-control']) }}
+            {{ Form::label('title', '場所:') }}
+            {{ Form::text('title', null,['class' => 'form-control']) }}
             <span id="helpBlock" class="help-block">255文字以内で入力ください。</span>
         </div>
 

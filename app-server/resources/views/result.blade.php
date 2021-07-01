@@ -1,5 +1,5 @@
 @extends('layouts.base')
-@section('title', $results->titile)
+@section('title', $results->title)
 @section('description', 'ぺーじのたいとる')
 @section('keywords', 'ぺーじのたいとる')
 @section('pagecss')
@@ -15,7 +15,7 @@
             <img src="http://localhost:9000/{{$results->postImage->file_path }}" alt="{{$results->postImage->file_name }}">
             </div>
             <div class="col-md-6">
-            <h2>{{$results->titile}}</h2>
+            <h2>{{$results->title}}</h2>
             <p>{{$results->address }}</p>
             <p class="list">※イメージ画像がない場合はnoimageの画像が入ることがあります。</p>
                 <div class="row detail">
