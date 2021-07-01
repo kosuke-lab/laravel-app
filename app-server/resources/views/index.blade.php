@@ -54,7 +54,7 @@
                                   <div class="icon">
                                       <img src="{{ asset('images/' .$city->file_path)}}">
                                   </div>
-                              <label for="bike" class="radio-tile-label">{{ $city->name }}</label>
+                              <label  class="radio-tile-label">{{ $city->name }}</label>
                               </div>
                           </div>    
                       @endforeach
@@ -75,7 +75,7 @@
                                   <div class="icon">
                                       <img src="{{ asset('images/' .$city->file_path)}}" alt="{{$city->file_path}}">
                                   </div>
-                                <label for="bike" class="radio-tile-label">{{ $city->name }}</label>
+                                <label  class="radio-tile-label">{{ $city->name }}</label>
                                 </div>
                           </div>    
                       @endforeach
@@ -96,7 +96,7 @@
                                   <div class="icon">
                                       <img src="{{ asset('images/' .$city->file_path)}}">
                                   </div>
-                              <label for="bike" class="radio-tile-label">{{ $city->name }}</label>
+                              <label  class="radio-tile-label">{{ $city->name }}</label>
                               </div>
                           </div>    
                       @endforeach
@@ -117,7 +117,7 @@
                                   <div class="icon">
                                     <img src="{{ asset('images/' .$city->file_path)}}">
                                   </div>
-                              <label for="bike" class="radio-tile-label">{{ $city->name }}</label>
+                              <label  class="radio-tile-label">{{ $city->name }}</label>
                               </div>
                           </div>    
                       @endforeach
@@ -133,9 +133,19 @@
 
 
 
-
-
-    <script type="text/javascript">
+<script>
+  $(function () {
+    $('.radio-button').on('click', function(event) {
+      // 既定の動作をキャンセル(今回はinputにcheckedが入るのをキャンセル)
+      event.preventDefault();
+      
+      // チェック済みの場合はチェックを外し、未チェックの場合はチェックを入れる
+      var $input = $(this).find('input');
+      $input.prop('checked', !$input.prop('checked'));
+    });
+  });
+</script>
+<script type="text/javascript">
             // {{--成功時--}}
             @if (session('msg_success'))
                 $(function () {
@@ -150,13 +160,15 @@
                 });
             @endif
 </script>
-        <script>
-window.addEventListener('pageshow',()=>{
-  if(window.performance.navigation.type==2) location.reload();
-});
+
+<script>
+    window.addEventListener('pageshow',()=>{
+    if(window.performance.navigation.type==2) location.reload();
+    });
 </script>
-        <script src="{{asset('js/app.js')}}">
-        </script>
+<script src="{{asset('js/app.js')}}"> </script>
+
+
 
 
     @endsection
