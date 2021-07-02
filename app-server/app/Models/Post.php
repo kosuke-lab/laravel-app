@@ -12,7 +12,7 @@ class Post extends Model
         'city_id',
         'category_id',
         'status_id',
-        'titile',
+        'title',
         'address',
         'created_at',
         'updated_at',
