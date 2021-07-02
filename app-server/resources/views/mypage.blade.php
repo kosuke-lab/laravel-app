@@ -23,7 +23,7 @@
             <div class="tab_content" id="posts_content">
                 @foreach ($posts as $post)
                     <div class="linkpanel">
-                        <p>{{ $post->titile }}</p>
+                        <p>{{ $post->title }}</p>
                         <p>{{ $post->address }}</p>
                             <div class="status">
                             <p class="status-color">{{ $statuses[$post->status_id] }}</p>
@@ -38,7 +38,7 @@
         <div class="tab_content" id="favorites_content">
             @foreach ($favorites as $favorite)
                 <div class="linkpanel">
-                    <p>{{ $favorite->titile }}</p>
+                    <p>{{ $favorite->title }}</p>
                     <p>{{ $favorite->address }}</p>
                 </div>
             @endforeach
