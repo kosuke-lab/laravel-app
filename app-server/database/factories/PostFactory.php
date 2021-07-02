@@ -15,3 +15,4 @@ $factory->define(Post::class, function (Faker $faker) {
         'user_id' => $faker->randomElement($array=['1','2']),
     ];
 });
+
