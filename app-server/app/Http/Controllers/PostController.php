@@ -149,7 +149,7 @@ class PostController extends Controller
                 $save_path =  public_path('/images/'. $file_name );
     
                 //minioへ画像アップロード
-                $file_path = Storage::disk('minio')->putFile('/', new File($save_path), 'public');
+                //$file_path = Storage::disk('minio')->putFile('/', new File($save_path), 'public');
 
                 //AWSへ画像アップロード
                 $file_path = Storage::disk('s3')->putFile('/', new File($save_path), 'public');
