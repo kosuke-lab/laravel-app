@@ -36,7 +36,7 @@
     @foreach ($posts as $post)
               <tr>
                         <td>{{ $post->id }}</td>
-                        <td>{{ $post->title }}</td>
+                        <td>{{ $post->titile }}</td>
                        
                          <td><a href="{{ route('admin.edit',$post->id)}}">{{ $statuses[$post->status_id] }}</a></td>
               </tr>

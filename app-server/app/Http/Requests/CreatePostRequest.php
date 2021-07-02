@@ -24,14 +24,14 @@ class CreatePostRequest extends FormRequest
     public function rules()
     {
         return [
-            'title' =>'required',
+            'titile' =>'required',
             'address' =>'required',
            
         ];
     }
     public function messages() {
         return [
-            'title.required' => '場所を入力してください。',
+            'titile.required' => '場所を入力してください。',
             'address.required' =>'住所を入力してください。',
           
         ];

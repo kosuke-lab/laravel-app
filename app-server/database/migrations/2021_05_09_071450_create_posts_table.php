@@ -19,7 +19,7 @@ class CreatePostsTable extends Migration
             $table->BigInteger('city_id');
             $table->BigInteger('category_id');
             $table->BigInteger('status_id');
-            $table->string('title');
+            $table->string('titile');
             $table->string('address');
             $table->timestamps();
             $table->softDeletes();

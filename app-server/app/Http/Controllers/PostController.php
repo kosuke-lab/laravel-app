@@ -98,7 +98,7 @@ class PostController extends Controller
     {
 
         $post = Post::find($post_id);
-        $post ->fill(['title' => $request->input('title')]);
+        $post ->fill(['titile' => $request->input('titile')]);
         $post ->fill(['city_id' => $request->input('city_id')]);
         $post ->fill(['category_id' => $request->input('category_id')]);
         $post ->fill(['address' => $request->input('address')]);
@@ -128,7 +128,7 @@ class PostController extends Controller
     {
     try{
         $post_id = Post::create([
-            'title' => $request->input('title'),
+            'titile' => $request->input('titile'),
             'city_id'=>$request->input('city_id'),
             'category_id'=>$request->input('category_id'),
             'status_id'=>1,
@@ -257,7 +257,7 @@ class PostController extends Controller
 
          if ($request->filled('keyword')) {
              $keyword = $request->input('keyword');
-             $posts = Post::where('title', 'like', '%' . $keyword . '%')->get();
+             $posts = Post::where('titile', 'like', '%' . $keyword . '%')->get();
             }else{
             $posts = Post::all();
          }
@@ -293,7 +293,7 @@ class PostController extends Controller
     public function admin_update(CreatePostRequest $request, $post_id)
     {
         $post = Post::find($post_id);
-        $post ->fill(['title' => $request->input('title')]);
+        $post ->fill(['titile' => $request->input('titile')]);
         $post ->fill(['city_id' => $request->input('city_id')]);
         $post ->fill(['category_id' => $request->input('category_id')]);
         $post ->fill(['address' => $request->input('address')]);

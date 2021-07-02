@@ -21,8 +21,8 @@
          <!-- <form action="{{ route('post.store')}} "enctype="multipart/form-data" method="POST"> -->
          @csrf
         <div class='form-group'>
-            {{ Form::label('title', '場所:') }}
-            {{ Form::text('title', null,['class' => 'form-control']) }}
+            {{ Form::label('titile', '場所:') }}
+            {{ Form::text('titile', null,['class' => 'form-control']) }}
         </div>
         <div class='form-group'>
             {{ Form::label('category_id', 'カテゴリー:') }}
