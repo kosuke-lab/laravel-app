@@ -133,18 +133,7 @@
 
 
 
-<script>
-  $(function () {
-    $('.radio-button').on('click', function(event) {
-      // 既定の動作をキャンセル(今回はinputにcheckedが入るのをキャンセル)
-      event.preventDefault();
-      
-      // チェック済みの場合はチェックを外し、未チェックの場合はチェックを入れる
-      var $input = $(this).find('input');
-      $input.prop('checked', !$input.prop('checked'));
-    });
-  });
-</script>
+
 <script type="text/javascript">
             // {{--成功時--}}
             @if (session('msg_success'))
