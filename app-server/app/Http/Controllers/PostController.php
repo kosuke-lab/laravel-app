@@ -126,7 +126,7 @@ class PostController extends Controller
 
     public function store(CreatePostRequest  $request)
     {
-    try{
+
         $post_id = Post::create([
             'title' => $request->input('title'),
             'city_id'=>$request->input('city_id'),
@@ -175,9 +175,6 @@ class PostController extends Controller
         ]);
         session()->flash('msg_success', '投稿が完了しました。管理者の承認をお待ちください');
         return redirect()->route('city.list');
-    }} catch (\Exception $e) {
-        session()->flash('msg_danger', '失敗しました。');
-        return redirect()->route('post.new');
     }
 }
 
