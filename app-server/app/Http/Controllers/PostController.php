@@ -135,32 +135,30 @@ class PostController extends Controller
             'address'=>$request->input('address'),
             'user_id'=> Auth()->id(),
             ])->id;
-            
-            //フォームから画像情報受け取り　画像ありの時の処理
 
-            if ($file = $request->file('image')) {
-                $file = $request->file('image');
+            //フォームから画像情報受け取り　画像ありの時の処理
+            $file = $request->file('image');
+            if (isset($file)) {
                 $file_name = $file->getClientOriginalName();
     
-                InterventionImage::make($file)->resize(440, 300,function ($constraint) {
+                $image = InterventionImage::make($file)->resize(440, 300,function ($constraint) {
                     $constraint->aspectRatio();
-                    })->save(public_path('/images/' . $file_name ) );
+                });
                 
-                $save_path =  public_path('/images/'. $file_name );
+                // $save_path =  public_path('/images/'. $file_name );
     
                 //minioへ画像アップロード
                 //$file_path = Storage::disk('minio')->putFile('/', new File($save_path), 'public');
 
                 //AWSへ画像アップロード
-                $file_path = Storage::disk('s3')->putFile('/', new File($save_path), 'public');
+                
 
                 //minioへ画像アップロード
                 //$file_path = Storage::disk('minio')->put('/', $file, 'public');
 
-            
              Post_image::create([
                 'file_name' => $file_name,
-                'file_path'=> 'image/'.$file_path,
+                'file_path'=> 'image/'.$image->store('/', 's3'),
                  'post_id' =>  $post_id,
             ]);
         session()->flash('msg_success', '投稿が完了しました。管理者の承認をお待ちください');
