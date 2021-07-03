@@ -141,16 +141,17 @@ class PostController extends Controller
             if (isset($file)) {
                 $file_name = $file->getClientOriginalName();
     
-                $image = InterventionImage::make($file)->resize(440, 300,function ($constraint) {
+                InterventionImage::make($file)->resize(440, 300,function ($constraint) {
                     $constraint->aspectRatio();
-                });
+                    })->save(public_path('/images/' . $file_name ) );
                 
-                // $save_path =  public_path('/images/'. $file_name );
+                 $save_path =  public_path('/images/'. $file_name );
     
                 //minioへ画像アップロード
                 //$file_path = Storage::disk('minio')->putFile('/', new File($save_path), 'public');
 
                 //AWSへ画像アップロード
+                $file_path = Storage::disk('s3')->putFile('/', new File($save_path), 'public');
                 
 
                 //minioへ画像アップロード
@@ -158,7 +159,7 @@ class PostController extends Controller
 
              Post_image::create([
                 'file_name' => $file_name,
-                'file_path'=> 'image/'.$image->store('/', 's3','public'),
+                'file_path'=> 'image/'.$file_path,
                  'post_id' =>  $post_id,
             ]);
         session()->flash('msg_success', '投稿が完了しました。管理者の承認をお待ちください');
