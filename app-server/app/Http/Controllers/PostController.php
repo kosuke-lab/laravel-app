@@ -140,18 +140,23 @@ class PostController extends Controller
             $file = $request->file('image');
             if (isset($file)) {
                 $file_name = $file->getClientOriginalName();
-    
-                InterventionImage::make($file)->resize(440, 300,function ($constraint) {
+
+                InterventionImage::make($file)
+                ->resize(440, 300, function ($constraint) {
                     $constraint->aspectRatio();
-                    })->save(public_path('/images/' . $file_name ) );
+                })
+                ->save($file);
+    
+                // $image = InterventionImage::make($file)->resize(440, 300,function ($constraint) {
+                //     $constraint->aspectRatio();
+                // });
                 
-                 $save_path =  public_path('/images/'. $file_name );
+                // $save_path =  public_path('/images/'. $file_name );
     
                 //minioへ画像アップロード
                 //$file_path = Storage::disk('minio')->putFile('/', new File($save_path), 'public');
 
                 //AWSへ画像アップロード
-                $file_path = Storage::disk('s3')->putFile('/', new File($save_path), 'public');
                 
 
                 //minioへ画像アップロード
@@ -159,14 +164,14 @@ class PostController extends Controller
 
              Post_image::create([
                 'file_name' => $file_name,
-                'file_path'=> 'image/'.$file_path,
+                'file_path'=> 'image/'.$file->store('/', 's3'),
                  'post_id' =>  $post_id,
             ]);
         session()->flash('msg_success', '投稿が完了しました。管理者の承認をお待ちください');
         return redirect()->route('city.list');
     }else{
         //画像なしの時の処理、デフォルトの画像を表示させる
-        $file = $request->file('image');
+
         Post_image::create([
             'file_name' => 'noimage',
             'file_path'=> 'image/noimage.png',
