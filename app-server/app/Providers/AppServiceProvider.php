@@ -4,10 +4,7 @@ namespace App\Providers;
 
 use Illuminate\Support\ServiceProvider;
 
-use Illuminate\Routing\UrlGenerator;
-
 class AppServiceProvider extends ServiceProvider
-
 {
     /**
      * Register any application services.
@@ -24,10 +21,8 @@ class AppServiceProvider extends ServiceProvider
      *
      * @return void
      */
-
-     //httpsでcss画像読み込む処理
-    public function boot(UrlGenerator $url)
+    public function boot()
     {
-        $url->forceScheme('https');
+        //
     }
 }
