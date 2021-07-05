@@ -102,22 +102,42 @@ class PostController extends Controller
         $post ->fill(['city_id' => $request->input('city_id')]);
         $post ->fill(['category_id' => $request->input('category_id')]);
         $post ->fill(['address' => $request->input('address')]);
-
         $post->save();
 
              //フォームから画像情報受け取り
              $file = $request->file('image');
-             $file_name = $file->getClientOriginalName();
+             if (isset($file)) {
+                $file_name = $file->getClientOriginalName();
+
+                InterventionImage::make($file)
+                ->resize(440, 300, function ($constraint) {
+                    $constraint->aspectRatio();
+                })
+                ->save($file);
+
+                 //AWSへ画像アップロード
+                Post_image::create([
+                    'file_name' => $file_name,
+                    'file_path'=> 'image/'.$file->store('/', 's3'),
+                     'post_id' =>  $post_id,
+                ]);
+            session()->flash('msg_success', '編集しました。');
+           return redirect()->route('city.list');
+            }
+             else{
+                //画像なしの時の処理、デフォルトの画像を表示させる
+                Post_image::create([
+                    'file_name' => 'noimage',
+                    'file_path'=> 'image/noimage.png',
+                    'post_id' =>  $post_id,
+                ]);
+                session()->flash('msg_danger', '失敗しました。');
+                return redirect()->route('city.list');
+            }
 
              //minioへ画像アップロード
-             $file_path = Storage::disk('minio')->put('/', $file, 'public');
+             //$file_path = Storage::disk('minio')->put('/', $file, 'public');
             
-              Post_image::create([
-                 'file_name' => $file_name,
-                 'file_path'=> 'image/'.$file_path,
-                  'post_id' =>  $post_id,
-             ]);
-        return redirect()->route('city.list');
     }
 
     /**
