@@ -137,6 +137,7 @@ class PostController extends Controller
             ])->id;
 
             //フォームから画像情報受け取り　画像ありの時の処理
+        try{
             $file = $request->file('image');
             if (isset($file)) {
                 $file_name = $file->getClientOriginalName();
@@ -146,22 +147,11 @@ class PostController extends Controller
                     $constraint->aspectRatio();
                 })
                 ->save($file);
-    
-                // $image = InterventionImage::make($file)->resize(440, 300,function ($constraint) {
-                //     $constraint->aspectRatio();
-                // });
-                
-                // $save_path =  public_path('/images/'. $file_name );
-    
+
                 //minioへ画像アップロード
                 //$file_path = Storage::disk('minio')->putFile('/', new File($save_path), 'public');
 
                 //AWSへ画像アップロード
-                
-
-                //minioへ画像アップロード
-                //$file_path = Storage::disk('minio')->put('/', $file, 'public');
-
              Post_image::create([
                 'file_name' => $file_name,
                 'file_path'=> 'image/'.$file->store('/', 's3'),
@@ -169,18 +159,22 @@ class PostController extends Controller
             ]);
         session()->flash('msg_success', '投稿が完了しました。管理者の承認をお待ちください');
         return redirect()->route('city.list');
-    }else{
-        //画像なしの時の処理、デフォルトの画像を表示させる
-
-        Post_image::create([
-            'file_name' => 'noimage',
-            'file_path'=> 'image/noimage.png',
-             'post_id' =>  $post_id,
-        ]);
-        session()->flash('msg_success', '投稿が完了しました。管理者の承認をお待ちください');
-        return redirect()->route('city.list');
-    }
+            }else{
+                //画像なしの時の処理、デフォルトの画像を表示させる
+                Post_image::create([
+                    'file_name' => 'noimage',
+                    'file_path'=> 'image/noimage.png',
+                    'post_id' =>  $post_id,
+                ]);
+                session()->flash('msg_success', '投稿が完了しました。管理者の承認をお待ちください');
+                return redirect()->route('city.list');
+            }
+        } catch (\Exception $e) {
+                session()->flash('msg_danger', '失敗しました。');
+                return redirect()->route('post.new');
+        }
 }
+
 
 
      /**
