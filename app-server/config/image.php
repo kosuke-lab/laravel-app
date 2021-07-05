@@ -15,8 +15,8 @@ return [
     |
     */
 
-    // 'driver' => 'gd'
-    'driver' => 'imagick'
+    'driver' => 'gd'
+    //'driver' => 'imagick'
 
 
 ];
