@@ -126,7 +126,8 @@ class PostController extends Controller
 
     public function store(CreatePostRequest  $request)
     {
-
+    
+     try{
         $post_id = Post::create([
             'title' => $request->input('title'),
             'city_id'=>$request->input('city_id'),
@@ -137,7 +138,6 @@ class PostController extends Controller
             ])->id;
 
             //フォームから画像情報受け取り　画像ありの時の処理
-        try{
             $file = $request->file('image');
             if (isset($file)) {
                 $file_name = $file->getClientOriginalName();
