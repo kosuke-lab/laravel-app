@@ -61,10 +61,10 @@ class LoginController extends Controller
     {
          //各SNSからログイン情報取得
         try {
-            $providerUser = Socialite::with($provider)->user();
-        } catch(Exception $e) {
-            return redirect('/login')->with('oauth_error', '予期せぬエラーが発生しました');
-        }
+            $providerUser = Socialite::driver($provider)->user();
+         } catch(Exception $e) {
+             return redirect('/login')->with('oauth_error', '予期せぬエラーが発生しました');
+         }
 
         $myinfo = User::firstOrCreate([
             //SNSID取得
