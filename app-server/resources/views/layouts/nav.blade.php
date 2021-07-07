@@ -29,7 +29,7 @@
                         
                     </li>
                     <li>
-                        <a class="nav-link" href="{{ route('mypage',['user_id' =>auth()->user()->id])}}">mypage</a>
+                        <a class="nav-link" href="{{ route('mypage',['user_id' =>auth()->user()->id])}}">マイページ</a>
                     </li>   
                     @else
                         <a  class="nav-link"href="{{ route('login') }}">ログイン</a>
