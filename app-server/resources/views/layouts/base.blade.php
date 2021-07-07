@@ -25,7 +25,7 @@
                 <li class="list-group-item flex-fill"><a  href="{{route('about')}}">〇〇について</a></li>
                 <li class="list-group-item flex-fill"><a  href="{{route('post.new')}}">新規投稿</a></li>
         </ul>
-        <p class="copy">© 2021 Copyright<br>★★★.com</p>
+        <p class="copy">© 2021 Copyright<br>shuffle.tokyo</p>
     </div>
 </footer>
 
