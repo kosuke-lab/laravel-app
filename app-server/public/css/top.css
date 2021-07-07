@@ -39,6 +39,10 @@ h2 {
   padding-bottom: 40px;
 }
 
+.navbar-brand .logo {
+  max-width: 120px;
+}
+
 #content {
   z-index: 10;
   width: 50%;

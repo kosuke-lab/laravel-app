@@ -2,7 +2,7 @@
     <div class="container">
       <div class="logo">
 
-    <a class="navbar-brand logo" href='/'><img src="" class="navbar-brand logo" alt="ロゴ"></a>
+    <a class="navbar-brand logo" href='/'><img src="/images/logo.png" class="navbar-brand logo" alt="ロゴ"></a> 
   </div>
     <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
       <span class="navbar-toggler-icon"></span>
