@@ -10,6 +10,10 @@
   border-color: #ffffff;
 }
 
+.navbar-brand .logo {
+  max-width: 121px;
+}
+
 .foot {
   background-color: #c7c7c7;
 }
