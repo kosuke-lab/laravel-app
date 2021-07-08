@@ -12,7 +12,7 @@
 <div class="container main">
     <div class="row">
             <div class="col-md-6 position">
-            <img src="http://localhost:9000/{{$results->postImage->file_path }}" alt="{{$results->postImage->file_name }}">
+            <img src="https://shuffle.tokyo/{{$results->postImage->file_path }}" alt="{{$results->postImage->file_name }}">
             </div>
             <div class="col-md-6">
             <h2>{{$results->title}}</h2>
