@@ -22,7 +22,7 @@
     <div class="container">
         <ul class="list-group list-group-horizontal pb-1">
                 <li class="list-group-item flex-fill"><a  href="{{route('city.list')}}">トップ</a></li>
-                <li class="list-group-item flex-fill"><a  href="{{route('about')}}">〇〇について</a></li>
+                <li class="list-group-item flex-fill"><a  href="{{route('about')}}">サービス紹介</a></li>
                 <li class="list-group-item flex-fill"><a  href="{{route('post.new')}}">新規投稿</a></li>
         </ul>
         <p class="copy">© 2021 Copyright<br>shuffle.tokyo</p>

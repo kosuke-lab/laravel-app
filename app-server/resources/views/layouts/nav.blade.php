@@ -16,14 +16,14 @@
             <a class="nav-link" href="{{route('post.new')}}">新規投稿</a>
           </li>
         <li class="nav-item">
-          <a class="nav-link" href="{{route('about')}}">〇〇とは</a>
+          <a class="nav-link" href="{{route('about')}}">サービス紹介</a>
         </li>    
         @if (Route::has('login'))
                     @auth
                     <li class="nav-item">
                             <a class="nav-link" href="{{ route('logout') }}" onclick="event.preventDefault();
                         document.getElementById('logout-form').submit();">
-                        Logout
+                        ログアウト
                     </a>
                     <form id='logout-form' action="{{ route('logout')}}" method="POST" style="display: none;">@csrf</form>
                         
