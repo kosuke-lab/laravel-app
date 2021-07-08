@@ -118,7 +118,7 @@ class PostController extends Controller
                  //AWSへ画像アップロード
                 Post_image::create([
                     'file_name' => $file_name,
-                    'file_path'=> 'laravel-app-images/'.$file->store('/', 's3'),
+                    'file_path'=> 'image/'.$file->store('/', 's3','public'),
                      'post_id' =>  $post_id,
                 ]);
             session()->flash('msg_success', '編集しました。');
@@ -174,7 +174,7 @@ class PostController extends Controller
                 //AWSへ画像アップロード
              Post_image::create([
                 'file_name' => $file_name,
-                'file_path'=> 'laravel-app-images/'.$file->store('/', 's3'),
+                'file_path'=> 'image/'.$file->store('/', 's3','public'),
                  'post_id' =>  $post_id,
             ]);
         session()->flash('msg_success', '投稿が完了しました。管理者の承認をお待ちください');
