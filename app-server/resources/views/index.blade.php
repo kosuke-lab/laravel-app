@@ -13,7 +13,7 @@
 
 <div class="container-fluid">
   <div class="row">
-    <img src="{{ asset('images/top_mv.jpg')}}" class="img-fluid">
+    <img src="{{ asset('images/top_kv.jpeg')}}" class="img-fluid">
   </div>
 </div>
 
