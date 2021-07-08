@@ -12,7 +12,7 @@
 <div class="container main">
     <div class="row">
             <div class="col-md-6 position">
-            <img src="https://shuffle.tokyo/{{$results->postImage->file_path }}" alt="{{$results->postImage->file_name }}">
+            <img src="https://laravel-service-images.s3.us-west-2.amazonaws.com/{{$results->postImage->file_path }}" alt="{{$results->postImage->file_name }}">
             </div>
             <div class="col-md-6">
             <h2>{{$results->title}}</h2>
