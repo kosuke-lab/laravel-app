@@ -183,7 +183,7 @@ class PostController extends Controller
                 //画像なしの時の処理、デフォルトの画像を表示させる
                 Post_image::create([
                     'file_name' => 'noimage',
-                    'file_path'=> 'image/noimage.png',
+                    'file_path'=> 'noimage.png',
                     'post_id' =>  $post_id,
                 ]);
                 session()->flash('msg_success', '投稿が完了しました。管理者の承認をお待ちください');
