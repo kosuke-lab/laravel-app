@@ -1,4 +1,7 @@
 @extends('layouts.base')
+@section('title', '編集フォーム')
+@section('description', 'ぺーじのたいとる')
+@section('keywords', 'ぺーじのたいとる')
 
 @section('pagecss')
 <link href="{{ asset('/css/common.css') }}" rel="stylesheet">

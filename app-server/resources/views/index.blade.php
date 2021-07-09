@@ -1,6 +1,6 @@
 @extends('layouts.base')
 
-@section('title', 'shffle.tokyo')
+@section('title', 'トップページ')
 @section('description', 'ぺーじのたいとる')
 @section('keywords', 'ぺーじのたいとる')
 @section('pagecss')
