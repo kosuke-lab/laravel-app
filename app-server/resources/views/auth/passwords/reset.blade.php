@@ -1,6 +1,16 @@
-@extends('layouts.app')
+@extends('layouts.base')
 
+@section('title', 'パスワードリセット')
+@section('description', 'ぺーじのたいとる')
+@section('keywords', 'ぺーじのたいとる')
+
+@section('pagecss')
+<link href="https://use.fontawesome.com/releases/v5.0.6/css/all.css" rel="stylesheet">
+<link href="{{ asset('/css/common.css') }}" rel="stylesheet">
+<link href="{{ asset('/css/login.css') }}" rel="stylesheet">
+@endsection
 @section('content')
+
 <div class="container">
     <div class="row justify-content-center">
         <div class="col-md-8">
