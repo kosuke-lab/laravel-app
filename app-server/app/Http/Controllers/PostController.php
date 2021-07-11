@@ -244,16 +244,16 @@ class PostController extends Controller
         $statuses = config('status.statuses');
 
         if(Gate::allows('admin')){
-        $posts =Post::all();
-        }else{
+            $posts =Post::get();
+            }else{
             return redirect('/');
-        }
+            }
 
          if ($request->filled('keyword')) {
              $keyword = $request->input('keyword');
              $posts = Post::where('title', 'like', '%' . $keyword . '%')->get();
             }else{
-            $posts = Post::all();
+            $posts = Post::get();
          }
 
         return view ('admin',[
@@ -269,7 +269,7 @@ class PostController extends Controller
     {
         if(Gate::allows('admin')){
             $post =Post::find($post_id);
-            $cities = City::all()->pluck('name', 'id');
+            $cities = City::get()->pluck('name', 'id');
             $categories = config('category.categories');
             $statuses = config('status.statuses');
         }
