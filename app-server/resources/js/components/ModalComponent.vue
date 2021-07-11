@@ -9,7 +9,7 @@
                     <div class="container">
                         <div class="row">
                         <div v-for="(category_data, index) in category_datas" v-bind:key="index" class="col-lg-6">
-                            <input type ="radio" name = "category_id" :value="index">{{ category_data }}
+                            <input type ="radio" :id="'category_' + index" name = "category_id" :value="index"><label :for="'category_' + index">{{ category_data }}</label>
                         </div>
                         </div>
                     </div>

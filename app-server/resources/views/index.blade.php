@@ -6,6 +6,7 @@
 @section('pagecss')
 <link href="{{ asset('/css/common.css') }}" rel="stylesheet">
 <link href="{{ asset('/css/top.css') }}" rel="stylesheet">
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script><!-- Scripts（Jquery） -->
 @endsection
 
 @section('content')
@@ -75,7 +76,7 @@
                                   <div class="icon">
                                       <img src="{{ asset('images/' .$city->file_path)}}" alt="{{$city->file_path}}">
                                   </div>
-                                <label  class="radio-tile-label">{{ $city->name }}</label>
+                                <label for="cityId" name="cityId" class="radio-tile-label">{{ $city->name }}</label>
                                 </div>
                           </div>    
                       @endforeach
@@ -148,14 +149,45 @@
                     toastr.success('{{ session('msg_danger') }}');
                 });
             @endif
-</script>
 
-<script>
-    window.addEventListener('pageshow',()=>{
-    if(window.performance.navigation.type==2) location.reload();
-    });
+            window.addEventListener('pageshow',()=>{
+                if(window.performance.navigation.type==2) location.reload();
+            });
+
+            
 </script>
 <script src="{{asset('js/app.js')}}"> </script>
+
+<!-- <script>
+  $(function () {
+    $('.radio-button').on('click', function(event) {
+      // 既定の動作をキャンセル(今回はinputにcheckedが入るのをキャンセル)
+    //   event.preventDefault();
+      
+      // チェック済みの場合はチェックを外し、未チェックの場合はチェックを入れる
+      var $input = $(this).find('input');
+      $input.prop('checked', !$input.prop('checked'));
+    });
+  });
+</script> -->
+
+<script>
+    var radio_val;
+    $('input[name="cityId"]').on('click',function(){
+        console.log(radio_val)
+	if($(this).val() == radio_val) {
+		$(this).prop('checked', true);
+		radio_val = null;
+	} else {
+        radio_val = $(this).val();
+        // console.log(radio_val)
+	}
+}); 
+
+</script>
+<script type="text/javascript"></script>
+
+
 
 
 
