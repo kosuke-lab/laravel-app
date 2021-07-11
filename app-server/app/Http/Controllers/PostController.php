@@ -4,16 +4,12 @@ namespace App\Http\Controllers;
 
 use Illuminate\Support\Facades\Auth; 
 use Gate;
-use App\Models\User;
 use App\Models\Post;
 use App\Models\City;
-use App\Models\Like;
 use App\Models\Post_image;
 use App\Http\Requests\CreatePostRequest;
 use Illuminate\Http\Request;
-use Illuminate\Support\Facades\Storage;
 use InterventionImage;
-use Illuminate\Http\File;
 
 class PostController extends Controller
 {
@@ -28,38 +24,21 @@ class PostController extends Controller
      */
     public function index()
     {
-    $cities_center = City::where('area', '都心')->get();
-    $cities_subcenter = City::where('area', '副都心')->get();
-    $cities_east = City::where('area', '東部')->get();
-    $cities_west = City::where('area', '西部')->get();
-    
-    $categories = config('category.caterories');
-    return view('index',[
-        'cities_center' =>$cities_center,
-        'categories' =>$categories,
-        'cities_subcenter'=>$cities_subcenter,
-        'cities_east'=>$cities_east,
-        'cities_west'=>$cities_west,
+        $cities_center = City::where('area', '都心')->get();
+        $cities_subcenter = City::where('area', '副都心')->get();
+        $cities_east = City::where('area', '東部')->get();
+        $cities_west = City::where('area', '西部')->get();
+        
+        $categories = config('category.categories');
+        return view('index',[
+            'cities_center' =>$cities_center,
+            'categories' =>$categories,
+            'cities_subcenter'=>$cities_subcenter,
+            'cities_east'=>$cities_east,
+            'cities_west'=>$cities_west,
         ]);
     }
 
-    /**
-     * カテゴリー選択画面
-     */
-
-    public function category(Request $request, $id)
-    {
-        $city_name = City::find($id)->name;
-        $categories = config('category.caterories');
-
-        //セッションcity_idを保存
-        $request->session()->put('city_id', $id);
-        return view('category',[
-            'city_name' => $city_name,
-            'categories' =>$categories,
-            'id' =>$id,
-            ]);
-        }
 
      /**
      *新規投稿画面
@@ -67,12 +46,12 @@ class PostController extends Controller
         
     public function create()
     {
-        $cities = City::all()->pluck('name', 'id');
-        $categories = config('category.caterories');
+        $cities = City::get()->pluck('name', 'id');
+        $categories = config('category.categories');
         return view('new', [
              'cities' => $cities,
              'categories' => $categories, 
-             ]);
+        ]);
     }
 
      /**
@@ -81,13 +60,13 @@ class PostController extends Controller
     public function edit($post_id)
     {
         $post = Post::find($post_id);
-        $cities = City::all()->pluck('name', 'id');
-        $categories = config('category.caterories');
+        $cities = City::get()->pluck('name', 'id');
+        $categories = config('category.categories');
         return view('edit', [
             'post' =>$post,
              'cities' => $cities,
              'categories' => $categories, 
-             ]);
+        ]);
     }
 
     /**
@@ -98,22 +77,23 @@ class PostController extends Controller
     {
 
         $post = Post::find($post_id);
+
         $post ->fill(['title' => $request->input('title')]);
         $post ->fill(['city_id' => $request->input('city_id')]);
         $post ->fill(['category_id' => $request->input('category_id')]);
         $post ->fill(['address' => $request->input('address')]);
         $post->save();
 
-             //フォームから画像情報受け取り
-             $file = $request->file('image');
-             if (isset($file)) {
-                $file_name = $file->getClientOriginalName();
+        //フォームから画像情報受け取り
+        $file = $request->file('image');
+        if (isset($file)) {
+        $file_name = $file->getClientOriginalName();
 
-                InterventionImage::make($file)
-                ->resize(440, 300, function ($constraint) {
-                    $constraint->aspectRatio();
-                })
-                ->save($file);
+        InterventionImage::make($file)
+        ->resize(440, 300, function ($constraint) {
+            $constraint->aspectRatio();
+        })
+        ->save($file);
 
                  //AWSへ画像アップロード
                 Post_image::create([
@@ -131,6 +111,7 @@ class PostController extends Controller
                     'file_path'=> 'noimage.png',
                     'post_id' =>  $post_id,
                 ]);
+                
                 session()->flash('msg_danger', '失敗しました。');
                 return redirect()->route('city.list');
             }
@@ -152,10 +133,10 @@ class PostController extends Controller
             'title' => $request->input('title'),
             'city_id'=>$request->input('city_id'),
             'category_id'=>$request->input('category_id'),
-            'status_id'=>1,
+            'status_id'=>   config('status.status_id.open_id'),
             'address'=>$request->input('address'),
             'user_id'=> Auth()->id(),
-            ])->id;
+        ])->id;
 
             //フォームから画像情報受け取り　画像ありの時の処理
             $file = $request->file('image');
@@ -200,8 +181,6 @@ class PostController extends Controller
      /**
      *ランダム結果
      */
-
-
     public function result(Request $request)
     {
         //セッションcity＿idの受け取り
@@ -258,7 +237,7 @@ class PostController extends Controller
 
 
     /**
-     *管理者ページ作成
+     *管理者ページ
      */
     public function admin(Request $request)
     {
@@ -289,14 +268,15 @@ class PostController extends Controller
     public function admin_edit($post_id)
     {
         if(Gate::allows('admin')){
-        $post =Post::find($post_id);
-        $cities = City::all()->pluck('name', 'id');
-        $categories = config('category.caterories');
-        $statuses = config('status.statuses');
+            $post =Post::find($post_id);
+            $cities = City::all()->pluck('name', 'id');
+            $categories = config('category.categories');
+            $statuses = config('status.statuses');
+        }
+        else{
+            return redirect('/');
+        };
 
-    }else{
-         return redirect('/');
-    };
         return view('admin_edit',[
             'post' => $post,
             'cities' => $cities,
@@ -320,9 +300,7 @@ class PostController extends Controller
 
 public function about()
  {
-      return view('about',[
-
-      ]);
+      return view('about');
  }
 }
 
