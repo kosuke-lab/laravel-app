@@ -37864,10 +37864,16 @@ var render = function() {
               _vm._l(_vm.category_datas, function(category_data, index) {
                 return _c("div", { key: index, staticClass: "col-lg-6" }, [
                   _c("input", {
-                    attrs: { type: "radio", name: "category_id" },
+                    attrs: {
+                      type: "radio",
+                      id: "category_" + index,
+                      name: "category_id"
+                    },
                     domProps: { value: index }
                   }),
-                  _vm._v(_vm._s(category_data) + "\n                    ")
+                  _c("label", { attrs: { for: "category_" + index } }, [
+                    _vm._v(_vm._s(category_data))
+                  ])
                 ])
               }),
               0
