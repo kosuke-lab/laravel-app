@@ -26,8 +26,8 @@ class AppServiceProvider extends ServiceProvider
      */
 
      //httpsでcss画像読み込む処理
-    public function boot(UrlGenerator $url)
+    public function boot()
     {
-        $url->forceScheme('https');
+        //$url->forceScheme('https');
     }
 }
