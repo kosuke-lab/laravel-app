@@ -24,10 +24,13 @@ class PostController extends Controller
      */
     public function index()
     {
-        $cities_center = City::where('area', '都心')->get();
-        $cities_subcenter = City::where('area', '副都心')->get();
-        $cities_east = City::where('area', '東部')->get();
-        $cities_west = City::where('area', '西部')->get();
+        $city_all = City::get();
+
+        $cities_center = $city_all->where('area', '都心');
+        $cities_subcenter = $city_all->where('area', '副都心');
+        $cities_subcenter = $city_all->where('area', '副都心');
+        $cities_east = $city_all->where('area', '東部');
+        $cities_west = $city_all->where('area', '西部');
         
         $categories = config('category.categories');
         return view('index',[
