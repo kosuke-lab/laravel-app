@@ -78,6 +78,7 @@ class PostController extends Controller
 
         $post = Post::find($post_id);
 
+        try{
         $post ->fill(['title' => $request->input('title')]);
         $post ->fill(['city_id' => $request->input('city_id')]);
         $post ->fill(['category_id' => $request->input('category_id')]);
@@ -101,8 +102,8 @@ class PostController extends Controller
                     'file_path'=> $file->store('/', ['disk' => 's3', 'ACL' => 'public-read']),
                      'post_id' =>  $post_id,
                 ]);
-            session()->flash('msg_success', '編集しました。');
-           return redirect()->route('city.list');
+        //     session()->flash('msg_success', '編集しました。');
+        //    return redirect()->route('city.list');
             }
              else{
                 //画像なしの時の処理、デフォルトの画像を表示させる
@@ -111,10 +112,14 @@ class PostController extends Controller
                     'file_path'=> 'noimage.png',
                     'post_id' =>  $post_id,
                 ]);
-                
-                session()->flash('msg_danger', '失敗しました。');
-                return redirect()->route('city.list');
             }
+            session()->flash('msg_success', '投稿編集しました');
+            return redirect()->route('city.list');
+        }
+            catch (\Exception $e) {
+                session()->flash('msg_danger', '失敗しました。');
+                return redirect()->route('post.new');
+        }
 
              //minioへ画像アップロード
              //$file_path = Storage::disk('minio')->put('/', $file, 'public');
@@ -158,8 +163,6 @@ class PostController extends Controller
                 'file_path'=> $file->store('/', ['disk' => 's3', 'ACL' => 'public-read']),
                  'post_id' =>  $post_id,
             ]);
-        session()->flash('msg_success', '投稿が完了しました。管理者の承認をお待ちください');
-        return redirect()->route('city.list');
             }else{
                 //画像なしの時の処理、デフォルトの画像を表示させる
                 Post_image::create([
@@ -167,9 +170,9 @@ class PostController extends Controller
                     'file_path'=> 'noimage.png',
                     'post_id' =>  $post_id,
                 ]);
-                session()->flash('msg_success', '投稿が完了しました。管理者の承認をお待ちください');
-                return redirect()->route('city.list');
             }
+            session()->flash('msg_success', '投稿が完了しました。管理者の承認をお待ちください');
+            return redirect()->route('city.list');
         } catch (\Exception $e) {
                 session()->flash('msg_danger', '失敗しました。');
                 return redirect()->route('post.new');
