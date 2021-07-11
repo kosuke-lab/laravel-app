@@ -1,7 +1,7 @@
 <?php
 
 return [
-    'caterories' => [
+    'categories' => [
         1 => 'グルメ',
         2 => '観光',
     ],

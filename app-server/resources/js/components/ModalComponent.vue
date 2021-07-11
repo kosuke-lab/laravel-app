@@ -30,13 +30,13 @@
                 type: Object
             },
         },
-        methods :{
-    clickEvent: function(){
-      this.$emit('from-child')
-     }
-  },
-  stopEvent: function(){
-      event.stopPropagation()
-    }
+//         methods :{
+//     // clickEvent: function(){
+//     //   this.$emit('from-child')
+//     //  }
+//   },
+//   stopEvent: function(){
+//       event.stopPropagation()
+//     }
     }
 </script>

@@ -2078,15 +2078,15 @@ __webpack_require__.r(__webpack_exports__);
     category_datas: {
       type: Object
     }
-  },
-  methods: {
-    clickEvent: function clickEvent() {
-      this.$emit('from-child');
-    }
-  },
-  stopEvent: function stopEvent() {
-    event.stopPropagation();
-  }
+  } //         methods :{
+  //     // clickEvent: function(){
+  //     //   this.$emit('from-child')
+  //     //  }
+  //   },
+  //   stopEvent: function(){
+  //       event.stopPropagation()
+  //     }
+
 });
 
 /***/ }),
