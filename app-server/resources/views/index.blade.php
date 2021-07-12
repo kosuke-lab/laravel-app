@@ -149,11 +149,6 @@
                     toastr.success('{{ session('msg_danger') }}');
                 });
             @endif
-
-            window.addEventListener('pageshow',()=>{
-                if(window.performance.navigation.type==2) location.reload();
-            });
-
             
 </script>
 <script src="{{asset('js/app.js')}}"> </script>
