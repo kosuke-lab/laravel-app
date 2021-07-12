@@ -12,8 +12,6 @@
 @section('content')
 
 <div class="container main">
-
-        <p>{{ $statuses[1]}}</p>
     {{ Form::open(['method' => 'get']) }}
     {{ csrf_field() }}
     <div class='form-group'>
@@ -28,20 +26,21 @@
 
 <table class='table table-striped table-hover'>
     <tr>
-              <th>ID</th>
-              <th>場所</th>
-             
-              <th>ステータス</th>
+        <th>ID</th>
+        <th>場所</th>
+        <th>ステータス</th>
     </tr>
     @foreach ($posts as $post)
               <tr>
-                        <td>{{ $post->id }}</td>
-                        <td>{{ $post->title }}</td>
-                       
-                         <td><a href="{{ route('admin.edit',$post->id)}}">{{ $statuses[$post->status_id] }}</a></td>
+                    <td>{{ $post->id }}</td>
+                    <td>{{ $post->title }}</td>
+                     <td><a href="{{ route('admin.edit',$post->id)}}">{{ $statuses[$post->status_id] }}</a></td>
               </tr>
-              @endforeach
+    @endforeach
     </table>
+    <div class="pagination">
+                {{ $posts->appends(request()->input())->links()  }}
+     </div>
     </div>
 
 

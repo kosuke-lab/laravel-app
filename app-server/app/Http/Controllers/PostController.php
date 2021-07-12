@@ -257,9 +257,9 @@ class PostController extends Controller
 
          if ($request->filled('keyword')) {
              $keyword = $request->input('keyword');
-             $posts = Post::where('title', 'like', '%' . $keyword . '%')->get();
+             $posts = Post::where('title', 'like', '%' . $keyword . '%')->paginate(20);
             }else{
-            $posts = Post::get();
+            $posts = Post::paginate(20);
          }
 
         return view ('admin',[
