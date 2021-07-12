@@ -193,20 +193,20 @@ class PostController extends Controller
         //$city_id = $request->session()->get('city_id');
         $datas = $request->input();
         
-        // dd($datas);
         //ランダムでcity_idとcategory_idが一致するデータ呼び出し
         $results = Post::where('city_id', $datas['cityId'])->where('category_id', $datas['category_id'])->where('status_id', 2)->inRandomOrder()->first();
 
-        //Vue側でuser_id取得
+        //user_id取得
         $userAuth = Auth::id();
 
-        //ランダム結果をいいねしてる取得
-        $defaultLiked = $results->like->where('user_id',$userAuth)->first();
-
-        //ランダム結果をいいねされてる数を取得
+        //ランダム結果をお気に入りされてる数を取得
         $defaultCount = count($results->like);
 
-            if(!empty($defaultLiked) ==0){
+        //ログイン中のユーザーがランダム結果に対してお気に入りしている情報を取得
+        $defaultLiked = $results->like->where('user_id',$userAuth)->first();
+
+        //ログイン中のユーザーがお気に入りしているか判定 、falseお気に入りしてない、trueお気に入りしてる
+            if(empty($defaultLiked)){ 
                 $defaultLiked == false;
             }else{
                 $defaultLiked == true;
