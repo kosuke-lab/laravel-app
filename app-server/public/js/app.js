@@ -2073,11 +2073,28 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
+//
+//
+//
+//
+//
+//
+//
+//
 /* harmony default export */ __webpack_exports__["default"] = ({
-  props: {
-    category_datas: {
-      type: Object
-    }
+  data: function data() {
+    return {
+      categories: [{
+        name: "グルメ",
+        image: "images/sumida.png",
+        id: 1
+      }, {
+        name: "観光",
+        image: "images/shinzyuku.png",
+        id: 2
+      }]
+    };
   } //         methods :{
   //     // clickEvent: function(){
   //     //   this.$emit('from-child')
@@ -37860,47 +37877,67 @@ var render = function() {
           _c("div", { staticClass: "container" }, [
             _c(
               "div",
-              { staticClass: "row" },
-              _vm._l(_vm.category_datas, function(category_data, index) {
-                return _c("div", { key: index, staticClass: "col-lg-6" }, [
-                  _c("input", {
-                    attrs: {
-                      type: "radio",
-                      id: "category_" + index,
-                      name: "category_id"
-                    },
-                    domProps: { value: index }
-                  }),
-                  _c("label", { attrs: { for: "category_" + index } }, [
-                    _vm._v(_vm._s(category_data))
+              { staticClass: "radio-tile-group" },
+              _vm._l(_vm.categories, function(category_data, index) {
+                return _c("div", { key: index, staticClass: "radio-tile" }, [
+                  _c("div", { staticClass: "input-container-modal" }, [
+                    _c("input", {
+                      staticClass: "radio-button",
+                      attrs: {
+                        type: "radio",
+                        id: "category_" + category_data.id,
+                        name: "category_id"
+                      },
+                      domProps: { value: category_data.id }
+                    }),
+                    _vm._v(" "),
+                    _c("div", { staticClass: "radio-tile-modal" }, [
+                      _c("div", { staticClass: "icon" }, [
+                        _c("img", {
+                          attrs: {
+                            src: category_data.image,
+                            alt: category_data.name
+                          }
+                        })
+                      ]),
+                      _vm._v(" "),
+                      _c(
+                        "label",
+                        {
+                          staticClass: "radio-tile-label",
+                          attrs: { for: "category_" + category_data.id }
+                        },
+                        [_vm._v(_vm._s(category_data.name))]
+                      )
+                    ])
                   ])
                 ])
               }),
               0
             )
-          ]),
-          _vm._v(" "),
-          _c("div", { staticClass: "text-right" }, [
-            _c(
-              "button",
-              {
-                staticClass: "btn btn-success",
-                attrs: { type: "button" },
-                on: {
-                  click: function($event) {
-                    return _vm.$emit("close")
-                  }
-                }
-              },
-              [_vm._v("閉じる "), _c("i", { staticClass: "fas fa-times" })]
-            ),
-            _vm._v(" "),
-            _c(
-              "button",
-              { staticClass: "btn btn-primary", attrs: { type: "submit" } },
-              [_vm._v("検索")]
-            )
           ])
+        ]),
+        _vm._v(" "),
+        _c("div", { staticClass: "text-right" }, [
+          _c(
+            "button",
+            {
+              staticClass: "btn btn-success",
+              attrs: { type: "button" },
+              on: {
+                click: function($event) {
+                  return _vm.$emit("close")
+                }
+              }
+            },
+            [_vm._v("閉じる "), _c("i", { staticClass: "fas fa-times" })]
+          ),
+          _vm._v(" "),
+          _c(
+            "button",
+            { staticClass: "btn btn-primary", attrs: { type: "submit" } },
+            [_vm._v("検索")]
+          )
         ])
       ])
     ])
