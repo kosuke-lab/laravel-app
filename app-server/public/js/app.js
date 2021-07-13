@@ -2087,11 +2087,11 @@ __webpack_require__.r(__webpack_exports__);
     return {
       categories: [{
         name: "グルメ",
-        image: "images/sumida.png",
+        image: "images/gurume.png",
         id: 1
       }, {
         name: "観光",
-        image: "images/shinzyuku.png",
+        image: "images/sightseeing.png",
         id: 2
       }]
     };
