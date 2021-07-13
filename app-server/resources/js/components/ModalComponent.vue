@@ -37,8 +37,8 @@
     data() {
         return {
             categories: [
-                { name: "グルメ", image: "images/sumida.png", id: 1 },
-                { name: "観光", image: "images/shinzyuku.png", id: 2 },
+                { name: "グルメ", image: "images/gurume.png", id: 1 },
+                { name: "観光", image: "images/sightseeing.png", id: 2 },
             ]
     };
   }
