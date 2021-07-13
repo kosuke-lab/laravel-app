@@ -32,10 +32,8 @@ class PostController extends Controller
         $cities_east = $city_all->where('area', '東部');
         $cities_west = $city_all->where('area', '西部');
         
-        $categories = config('category.categories');
         return view('index',[
             'cities_center' =>$cities_center,
-            'categories' =>$categories,
             'cities_subcenter'=>$cities_subcenter,
             'cities_east'=>$cities_east,
             'cities_west'=>$cities_west,

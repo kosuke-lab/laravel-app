@@ -7,11 +7,20 @@
                         <p>カテゴリーを選択してください</p>
                     </div>
                     <div class="container">
-                        <div class="row">
-                        <div v-for="(category_data, index) in category_datas" v-bind:key="index" class="col-lg-6">
-                            <input type ="radio" :id="'category_' + index" name = "category_id" :value="index"><label :for="'category_' + index">{{ category_data }}</label>
+                        <div class="radio-tile-group">
+                        <div v-for="(category_data, index) in categories" v-bind:key="index" class="radio-tile">
+                                    <div class="input-container-modal">
+                                           <input type ="radio" :id="'category_' + category_data.id" name = "category_id" :value="category_data.id" class="radio-button">
+                                        <div class="radio-tile-modal">
+                                  <div class="icon">
+                                      <img :src="category_data.image"  :alt="category_data.name"> 
+                                  </div>
+                                <label :for="'category_' + category_data.id" class="radio-tile-label">{{ category_data.name }}</label>
+                                   </div>
+                                   </div>
                         </div>
-                        </div>
+                         </div>
+                        </div>   
                     </div>
                     <div class="text-right">
                 <button type="button" v-on:click="$emit('close')" class="btn btn-success">閉じる <i class="fas fa-times"></i></button>
@@ -20,16 +29,19 @@
                 </div>
             </div>
         </div>
-    </div>
 </template>
+
 
 <script>
     export default {
-        props: {
-            category_datas: {
-                type: Object
-            },
-        },
+    data() {
+        return {
+            categories: [
+                { name: "グルメ", image: "images/sumida.png", id: 1 },
+                { name: "観光", image: "images/shinzyuku.png", id: 2 },
+            ]
+    };
+  }
 //         methods :{
 //     // clickEvent: function(){
 //     //   this.$emit('from-child')

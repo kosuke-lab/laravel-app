@@ -125,7 +125,7 @@
                       </div>
                   </div>
       </div> 
-        <open-modal v-show="showContent" @close="showContent = false"  :category_datas="{{ json_encode($categories) }}"></open-modal>
+        <open-modal v-show="showContent" @close="showContent = false"></open-modal>
         </div>
       </div>
     </form>
@@ -152,19 +152,6 @@
             
 </script>
 <script src="{{asset('js/app.js')}}"> </script>
-
-<!-- <script>
-  $(function () {
-    $('.radio-button').on('click', function(event) {
-      // 既定の動作をキャンセル(今回はinputにcheckedが入るのをキャンセル)
-    //   event.preventDefault();
-      
-      // チェック済みの場合はチェックを外し、未チェックの場合はチェックを入れる
-      var $input = $(this).find('input');
-      $input.prop('checked', !$input.prop('checked'));
-    });
-  });
-</script> -->
 
 <script>
     var radio_val;
