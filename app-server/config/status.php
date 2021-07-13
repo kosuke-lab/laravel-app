@@ -8,5 +8,5 @@ return [
           'status_id' => [
                     'close_id' => 1,
                     'open_id' => 2,
-          ],
+          ], 
 ];
