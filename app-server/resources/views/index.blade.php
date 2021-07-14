@@ -1,8 +1,8 @@
 @extends('layouts.base')
 
 @section('title', 'トップページ')
-@section('description', 'ぺーじのたいとる')
-@section('keywords', 'ぺーじのたいとる')
+@section('description', 'shuffle.tokyoは東京23区内のオススメの観光地や、グルメなど、各場所、ジャンルに合わせてランダムで表示してくれるユーザー投稿型ランダムアプリケーションです。会員登録なしでご利用になれます。')
+@section('keywords', 'shuffle.tokyo,東京,グルメ,観光,TOKYO')
 @section('pagecss')
 <link href="{{ asset('/css/common.css') }}" rel="stylesheet">
 <link href="{{ asset('/css/top.css') }}" rel="stylesheet">
