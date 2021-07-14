@@ -1,7 +1,7 @@
 @extends('layouts.base')
 @section('title', '新規投稿ページ')
-@section('description', 'ぺーじのたいとる')
-@section('keywords', 'ぺーじのたいとる')
+@section('description', 'shuffle.tokyoの新規投稿ページです。あなたの東京23区のオススメの場所を登録してみましょう。')
+@section('keywords', 'shuffle.tokyo,投稿,新規投稿,TOKYO')
 
 @section('pagecss')
 <link href="{{ asset('/css/common.css') }}" rel="stylesheet">
