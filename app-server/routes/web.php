@@ -16,7 +16,7 @@ Auth::routes();
 Route::get('/', 'PostController@index')->name('city.list');
 
 //サービス紹介アバウトページ
-Route::get('/about', 'PostController@about')->name('about');
+//Route::get('/about', 'PostController@about')->name('about');
 
 //サービス紹介アバウトページ
 Route::get('/service', 'PostController@service')->name('service');

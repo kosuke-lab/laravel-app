@@ -56,7 +56,7 @@
                               </div>
                     </div>
                     <div class="mt-4 randam mx-auto">
-                              <h4>ランダムで行き先を決める</h4>
+                              <h3>ランダムで行き先を決める</h3>
                     </div>
                               <div class="mt-4 randam mx-auto">
                                         <div class="column">
@@ -101,7 +101,7 @@
 <div class="block">
           <div class="container mb-4 mt-5">
                               <div class="mt-4 randam mx-auto">
-                              <h4 class="text-left" id="post">新規投稿する</h4>
+                              <h3 class="text-left" id="post">新規投稿する</h3>
                               </div>
 
                               <div class="mt-4 randam mx-auto">

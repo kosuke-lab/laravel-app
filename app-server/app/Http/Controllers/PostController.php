@@ -16,7 +16,7 @@ class PostController extends Controller
 
     public function __construct()
     {
-        $this->middleware('auth')->except(['index','result','about','service']);
+        $this->middleware('auth')->except(['index','result','service','service']);
     }
     
     /**
@@ -302,10 +302,6 @@ class PostController extends Controller
         return redirect()->route('admin');
     }
 
-public function about()
- {
-      return view('about');
- }
  public function service()
  {
       return view('service');
