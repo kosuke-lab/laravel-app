@@ -18,7 +18,6 @@ mix.js('resources/js/app.js', 'public/js')
     .sass('resources/sass/form.scss', 'public/css')
     .sass('resources/sass/detail.scss', 'public/css')
     .sass('resources/sass/login.scss', 'public/css')
-    .sass('resources/sass/about.scss', 'public/css')
     .sass('resources/sass/admin.scss', 'public/css')
     .sass('resources/sass/common.scss', 'public/css')
     .sass('resources/sass/service.scss', 'public/css');
