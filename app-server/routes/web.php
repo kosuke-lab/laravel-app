@@ -12,7 +12,7 @@
 */
 Auth::routes();
 
-//トップページ（市町村選択一覧表示）
+//トップページ（市区町村選択一覧表示）
 Route::get('/', 'PostController@index')->name('city.list');
 
 //サービス紹介アバウトページ
@@ -57,10 +57,10 @@ Route::get('/mypage/{user_id}', 'PostController@getuser')->name('mypage');
 //マイページお気に入り表示
 Route::get('/mypage/{user_id}/favorite', 'PostController@favorite')->name('favorite');
 
-//市町村選択後、カテゴリー表示
+//市区町村選択後、カテゴリー表示
 Route::get('/{city_id}', 'PostController@category')->name('category.list');
 
-//市町村*カテゴリーのランダム結果
+//市区町村*カテゴリーのランダム結果
 Route::post('/result', 'PostController@result')->name('post.list');
 
 // パスワードリセットのためのemail入力

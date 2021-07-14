@@ -20,7 +20,7 @@ class PostController extends Controller
     }
     
     /**
-     * トップページで市町村選択処理
+     * トップページで市区町村選択処理
      */
     public function index()
     {
