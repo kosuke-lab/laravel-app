@@ -29,7 +29,7 @@
             {{ Form::select('category_id', $categories,  null, ['class' => 'form-control']) }}
         </div>
         <div class='form-group'>
-            {{ Form::label('city_id', '市町村:') }}
+            {{ Form::label('city_id', '市区町村:') }}
             {{ Form::select('city_id', $cities , null , ['class' => 'form-control']) }}
         </div>
 
