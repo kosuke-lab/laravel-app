@@ -103,8 +103,6 @@ class PostController extends Controller
                     'file_path'=> $file->store('/', ['disk' => 's3', 'ACL' => 'public-read']),
                      'post_id' =>  $post_id,
                 ]);
-        //     session()->flash('msg_success', '編集しました。');
-        //    return redirect()->route('city.list');
             }
              else{
                 //画像なしの時の処理、デフォルトの画像を表示させる
@@ -139,7 +137,7 @@ class PostController extends Controller
             'title' => $request->input('title'),
             'city_id'=>$request->input('city_id'),
             'category_id'=>$request->input('category_id'),
-            'status_id'=>   config('status.status_id.open_id'),
+            'status_id'=>   config('status.status_id.close_id'),
             'address'=>$request->input('address'),
             'user_id'=> Auth()->id(),
         ])->id;
