@@ -1,0 +1,63 @@
+.max-content {
+  max-width: 640px;
+  margin: 0 auto;
+}
+
+.randam {
+  display: flex;
+  flex-wrap: wrap;
+  max-width: 900px;
+}
+
+.column {
+  display: flex;
+  flex-wrap: wrap;
+  margin-right: -15px;
+  margin-left: -15px;
+  min-width: 100%;
+  margin-bottom: 48px;
+}
+
+@media screen and (max-width: 768px) {
+  .randam {
+    flex-direction: column;
+  }
+
+  .order1 {
+    order: 1;
+  }
+
+  .order2 {
+    order: 2;
+  }
+
+  .order3 {
+    order: 3;
+  }
+
+  .order4 {
+    order: 4;
+  }
+
+  .order5 {
+    order: 5;
+  }
+
+  .order6 {
+    order: 6;
+  }
+
+  .order7 {
+    order: 7;
+  }
+
+  .column .order4 {
+    text-align: center;
+  }
+
+  .width-btn.col-md-6 {
+    margin: initial !important;
+    max-width: 50%;
+  }
+}
+

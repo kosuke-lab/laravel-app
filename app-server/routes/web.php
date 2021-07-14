@@ -18,6 +18,9 @@ Route::get('/', 'PostController@index')->name('city.list');
 //サービス紹介アバウトページ
 Route::get('/about', 'PostController@about')->name('about');
 
+//サービス紹介アバウトページ
+Route::get('/service', 'PostController@service')->name('service');
+
 //新規投稿フォーム作成
 Route::get('/new', 'PostController@create')->name('post.new');
 
