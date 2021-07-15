@@ -20,7 +20,7 @@
         </script>
     </head>
     
-    <body>
+    <body> 
     @include('layouts.nav')
     @yield('content')
    </body>
