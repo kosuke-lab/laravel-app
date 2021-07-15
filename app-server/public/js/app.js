@@ -37821,7 +37821,7 @@ var render = function() {
       ? _c(
           "button",
           {
-            staticClass: "btn btn-primary detail-btn",
+            staticClass: "btn btn-primary detail-btn like-after",
             attrs: { type: "button" },
             on: {
               click: function($event) {
@@ -37834,7 +37834,7 @@ var render = function() {
       : _c(
           "button",
           {
-            staticClass: "btn btn-primary detail-btn",
+            staticClass: "btn btn-primary detail-btn liked-after",
             attrs: { type: "button" },
             on: {
               click: function($event) {
@@ -37842,7 +37842,7 @@ var render = function() {
               }
             }
           },
-          [_vm._v("お気に入り登録 " + _vm._s(_vm.likeCount))]
+          [_vm._v("お気に入り登録済み " + _vm._s(_vm.likeCount) + "  ")]
         )
   ])
 }
@@ -50425,17 +50425,6 @@ __webpack_require__.r(__webpack_exports__);
 
 /***/ }),
 
-/***/ "./resources/sass/about.scss":
-/*!***********************************!*\
-  !*** ./resources/sass/about.scss ***!
-  \***********************************/
-/*! no static exports found */
-/***/ (function(module, exports) {
-
-// removed by extract-text-webpack-plugin
-
-/***/ }),
-
 /***/ "./resources/sass/admin.scss":
 /*!***********************************!*\
   !*** ./resources/sass/admin.scss ***!
@@ -50536,9 +50525,9 @@ __webpack_require__.r(__webpack_exports__);
 /***/ }),
 
 /***/ 0:
-/*!***************************************************************************************************************************************************************************************************************************************************************************************************************************!*\
-  !*** multi ./resources/js/app.js ./resources/sass/app.scss ./resources/sass/top.scss ./resources/sass/mypage.scss ./resources/sass/form.scss ./resources/sass/detail.scss ./resources/sass/login.scss ./resources/sass/about.scss ./resources/sass/admin.scss ./resources/sass/common.scss ./resources/sass/service.scss ***!
-  \***************************************************************************************************************************************************************************************************************************************************************************************************************************/
+/*!***********************************************************************************************************************************************************************************************************************************************************************************************!*\
+  !*** multi ./resources/js/app.js ./resources/sass/app.scss ./resources/sass/top.scss ./resources/sass/mypage.scss ./resources/sass/form.scss ./resources/sass/detail.scss ./resources/sass/login.scss ./resources/sass/admin.scss ./resources/sass/common.scss ./resources/sass/service.scss ***!
+  \***********************************************************************************************************************************************************************************************************************************************************************************************/
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
@@ -50549,7 +50538,6 @@ __webpack_require__(/*! /work/app-server/resources/sass/mypage.scss */"./resourc
 __webpack_require__(/*! /work/app-server/resources/sass/form.scss */"./resources/sass/form.scss");
 __webpack_require__(/*! /work/app-server/resources/sass/detail.scss */"./resources/sass/detail.scss");
 __webpack_require__(/*! /work/app-server/resources/sass/login.scss */"./resources/sass/login.scss");
-__webpack_require__(/*! /work/app-server/resources/sass/about.scss */"./resources/sass/about.scss");
 __webpack_require__(/*! /work/app-server/resources/sass/admin.scss */"./resources/sass/admin.scss");
 __webpack_require__(/*! /work/app-server/resources/sass/common.scss */"./resources/sass/common.scss");
 module.exports = __webpack_require__(/*! /work/app-server/resources/sass/service.scss */"./resources/sass/service.scss");
