@@ -2,7 +2,7 @@
 @section('title', $results->title)
 @section('description', 'ぺーじのたいとる')
 @section('keywords', 'ぺーじのたいとる')
-@section('pagecss')
+@section('head')
 <link href="{{ asset('/css/common.css') }}" rel="stylesheet">
 <link href="{{ asset('/css/detail.css') }}" rel="stylesheet">
 <link href="{{ asset('/css/form.css') }}" rel="stylesheet">

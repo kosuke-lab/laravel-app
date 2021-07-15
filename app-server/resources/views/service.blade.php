@@ -3,7 +3,7 @@
 @section('title', 'サービス紹介')
 @section('description', 'shuffle.tokyoは、東京に観光に来たが、どこに行けば良いかわからない。東京に引っ越したが、色々ありすぎてどこに行けば良いかわからない。このようなお悩みを持ってるあなたの悩みを解決するために作られました。')
 @section('keywords', 'shuffle.tokyo, 観光,グルメ,東京')
-@section('pagecss')
+@section('head')
 <link href="{{ asset('/css/common.css') }}" rel="stylesheet">
 <link href="{{ asset('/css/about.css') }}" rel="stylesheet">
 <link href="{{ asset('/css/service.css') }}" rel="stylesheet">

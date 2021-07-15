@@ -3,7 +3,7 @@
 @section('description', 'shuffle.tokyoの投稿編集フォームです。')
 @section('keywords', 'shuffle.tokyo,東京,観光,グルメ')
 
-@section('pagecss')
+@section('head')
 <link href="{{ asset('/css/common.css') }}" rel="stylesheet">
 <link href="{{ asset('/css/form.css') }}" rel="stylesheet">
 @endsection

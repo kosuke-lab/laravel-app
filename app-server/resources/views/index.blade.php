@@ -3,7 +3,15 @@
 @section('title', 'トップページ')
 @section('description', 'shuffle.tokyoは東京23区内のオススメの観光地や、グルメなど、各場所、ジャンルに合わせてランダムで表示してくれるユーザー投稿型ランダムアプリケーションです。会員登録なしでご利用になれます。')
 @section('keywords', 'shuffle.tokyo,東京,グルメ,観光,TOKYO')
-@section('pagecss')
+@section('head')
+<meta property="og:type" content="website">
+<meta property="og:url" content="https://shuffle.tokyo/" />
+<meta property="og:image" content="https://shuffle.tokyo/images/top_kv.jpeg" />
+<meta property="twitter:title" content="トップページ | shuffle.tokyo" />
+<meta property="twitter:description" content="shuffle.tokyoは東京23区内のオススメの観光地や、グルメなど、各場所、ジャンルに合わせてランダムで表示してくれるユーザー投稿型ランダムアプリケーションです。会員登録なしでご利用になれます。" />
+<meta property="twitter:card" content="summary_large_image" />
+<meta property="twitter:image" content="https://shuffle.tokyo/images/top_kv.jpeg" />
+<link rel="canonical" href="https://shuffle.tokyo/">
 <link href="{{ asset('/css/common.css') }}" rel="stylesheet">
 <link href="{{ asset('/css/top.css') }}" rel="stylesheet">
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
