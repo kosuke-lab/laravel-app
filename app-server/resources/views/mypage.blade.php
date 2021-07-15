@@ -1,6 +1,6 @@
 @extends('layouts.base')
 @section('title', 'マイページ')
-@section('pagecss')
+@section('head')
 <link href="{{ asset('/css/common.css') }}" rel="stylesheet">
 <link href="{{ asset('/css/mypage.css') }}" rel="stylesheet">
 @endsection

@@ -4,7 +4,7 @@
 @section('description', 'ぺーじのたいとる')
 @section('keywords', 'ぺーじのたいとる')
 
-@section('pagecss')
+@section('head')
 <link href="https://use.fontawesome.com/releases/v5.0.6/css/all.css" rel="stylesheet">
 <link href="{{ asset('/css/common.css') }}" rel="stylesheet">
 <link href="{{ asset('/css/login.css') }}" rel="stylesheet">
