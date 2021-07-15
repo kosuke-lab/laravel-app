@@ -17,6 +17,22 @@
   margin-bottom: 24px;
 }
 
+.like-after::after {
+  content: "";
+  min-width: 16px;
+  min-height: 16px;
+  margin-left: 8px;
+  background: url(/images/unlike-heart.svg?d41d8cd98f00b204e9800998ecf8427e);
+}
+
+.liked-after::after {
+  content: "";
+  min-width: 16px;
+  min-height: 16px;
+  margin-left: 8px;
+  background: url(/images/like-heart.svg?d41d8cd98f00b204e9800998ecf8427e);
+}
+
 @media screen and (max-width: 768px) {
   /* 768pxまでの幅の場合に適応される */
 
