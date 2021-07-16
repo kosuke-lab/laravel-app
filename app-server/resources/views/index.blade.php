@@ -15,6 +15,25 @@
 <link href="{{ asset('/css/common.css') }}" rel="stylesheet">
 <link href="{{ asset('/css/top.css') }}" rel="stylesheet">
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
+<script type="application/ld+json">
+{
+    "@context":"http://schema.org",
+    "@type":"website",
+    "name":"shuffle.tokyo",
+    "inLanguage":"jp", 
+    "publisher": {
+    "@type": "Organization",
+    "name": "shuffle.tokyo",
+    "logo": {
+        "@type": "ImageObject",
+        "url": "https://shuffle.tokyo/images/top_kv.jpeg"
+    }},
+    "copyrightYear":"2019-01-02T10:50:37+0000",//コピーライトの日付
+"headline":"トップページ｜shuffle.tokyo 東京をランダムで案内",
+    "description":"shuffle.tokyoは東京23区内のオススメの観光地や、グルメなど、各場所、ジャンルに合わせてランダムで表示してくれるユーザー投稿型ランダムアプリケーションです。会員登録なしでご利用になれます。",
+"url":"https://shuffle.tokyo/"
+}
+</script>
 @endsection
 
 @section('content')
