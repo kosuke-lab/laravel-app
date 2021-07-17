@@ -14,7 +14,6 @@
 <link rel="canonical" href="https://shuffle.tokyo/">
 <link href="{{ asset('/css/common.css') }}" rel="stylesheet">
 <link href="{{ asset('/css/top.css') }}" rel="stylesheet">
-<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
 <script type="application/ld+json">
 {
     "@context":"http://schema.org",
@@ -176,25 +175,21 @@
                     toastr.success('{{ session('msg_danger') }}');
                 });
             @endif
+
+            var radio_val;
+            $('input[name="cityId"]').on('click',function(){
+            if($(this).val() == radio_val) {
+                $(this).prop('checked', true);
+                radio_val = null;
+            } else {
+                radio_val = $(this).val();
+                // console.log(radio_val)
+            }
+}); 
             
 </script>
 <script src="{{asset('js/app.js')}}"> </script>
 
-<script>
-    var radio_val;
-    $('input[name="cityId"]').on('click',function(){
-        console.log(radio_val)
-	if($(this).val() == radio_val) {
-		$(this).prop('checked', true);
-		radio_val = null;
-	} else {
-        radio_val = $(this).val();
-        // console.log(radio_val)
-	}
-}); 
-
-</script>
-<script type="text/javascript"></script>
 
 
 

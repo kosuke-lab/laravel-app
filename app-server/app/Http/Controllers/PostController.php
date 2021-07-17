@@ -128,7 +128,8 @@ class PostController extends Controller
     public function update(CreatePostRequest $request, $post_id)
     {
 
-        $post = Post::find($post_id);
+        $post =   Post::where('id', $post_id)->first();
+        $UploadImage =  Post_image::where('post_id', $post_id) ->first();
 
         try{
         $post ->fill(['title' => $request->input('title')]);
@@ -149,26 +150,26 @@ class PostController extends Controller
         ->save($file);
 
                  //AWSへ画像アップロード
-                Post_image::create([
+                 $UploadImage->fill([
                     'file_name' => $file_name,
                     'file_path'=> $file->store('/', ['disk' => 's3', 'ACL' => 'public-read']),
                      'post_id' =>  $post_id,
-                ]);
+                ])->save();
             }
              else{
                 //画像なしの時の処理、デフォルトの画像を表示させる
-                Post_image::create([
+                $UploadImage->fill([
                     'file_name' => 'noimage',
                     'file_path'=> 'noimage.png',
                     'post_id' =>  $post_id,
-                ]);
+                ])->save();
             }
             session()->flash('msg_success', '投稿編集しました');
             return redirect()->route('city.list');
         }
             catch (\Exception $e) {
                 session()->flash('msg_danger', '失敗しました。');
-                return redirect()->route('post.new');
+                return redirect()->route('mypage');
         }
 
              //minioへ画像アップロード
