@@ -10,11 +10,16 @@
 
 <div class="container main">
          <h1>お店編集</h1>
-         <ul>
-        @foreach ($errors->all() as $error)
-            <li>{{ $error }}</li>
-        @endforeach
-    </ul>
+         @if ($errors->any())
+        <div class="error">
+            <ul class="error-space"> 
+                @foreach ($errors->all() as $error)
+                    <li>{{ $error }}</li>
+                @endforeach
+            </ul>
+        </div>
+    @endif
+    
           {{ Form::model($post, ['route' =>[ 'admin.update',$post->id],  'method'=>'POST', 'enctype' => 'multipart/form-data']) }} 
 
          <!-- <form action="{{ route('post.store')}} "enctype="multipart/form-data" method="POST"> -->

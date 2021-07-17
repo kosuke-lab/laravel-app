@@ -14,9 +14,9 @@
     @if ($errors->any())
         <div class="error">
             <ul class="error-space"> 
-            @foreach ($errors->all() as $error)
-            <li>{{ $error }}</li>
-            @endforeach
+                @foreach ($errors->all() as $error)
+                    <li>{{ $error }}</li>
+                @endforeach
             </ul>
         </div>
     @endif
@@ -32,12 +32,12 @@
 
     <div class='form-group'>
     {{ Form::label('category_id', 'カテゴリー:') }}
-    {{ Form::select('category_id', $categories,'ordinarily', ['class' => 'form-control']) }}
+    {{ Form::select('category_id', $categories,'null', ['class' => 'form-control','placeholder' => '選択してください']) }}
     </div>
 
     <div class='form-group'>
     {{ Form::label('city_id', '市区町村:') }}
-    {{ Form::select ('city_id', $cities, 'ordinarily', ['class' => 'form-control']) }}
+    {{ Form::select ('city_id', $cities, 'null', ['class' => 'form-control','placeholder' => '選択してください']) }}
     </div>
 
     <div class='form-group'>
