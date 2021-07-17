@@ -26,6 +26,8 @@ class CreatePostRequest extends FormRequest
         return [
             'title' =>'required',
             'address' =>'required',
+            'category_id' => 'required',
+            'city_id'=> 'required',
            
         ];
     }
@@ -33,7 +35,8 @@ class CreatePostRequest extends FormRequest
         return [
             'title.required' => '場所を入力してください。',
             'address.required' =>'住所を入力してください。',
-          
-        ];
+            'category_id.required' => 'カテゴリーを選択してください。',
+            'city_id.required' =>  '市区町村を選択してください。'
+        ]; 
     }
 }
