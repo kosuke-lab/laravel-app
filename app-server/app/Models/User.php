@@ -47,9 +47,9 @@ class User extends Authenticatable
         return $this->belongsToMany(Post::class, 'likes')->withTimestamps();
     }
 
-    public function user()
-    {
-        return $this->hasMany(User::class);
-    }
+    // public function user()
+    // {
+    //     return $this->hasMany(User::class);
+    // }
 
 }
