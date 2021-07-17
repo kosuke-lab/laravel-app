@@ -29,7 +29,7 @@ class PostTest extends TestCase
     {
         $post = factory(Post::class)->create();
         $user = factory(User::class)->create();
-        $post->user()->attach($user);
+        $post->likes()->attach($user);
 
         $result = $post->isLikedBy($user);
 
