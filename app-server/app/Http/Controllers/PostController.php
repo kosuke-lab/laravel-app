@@ -186,7 +186,7 @@ class PostController extends Controller
         //セッションcity＿idの受け取り
         //$city_id = $request->session()->get('city_id');
         $datas = $request->input();
-        //dd($datas);
+
         //ランダムでcity_idとcategory_idが一致するデータ呼び出し
         $results = Post::where('city_id', $datas['cityId'])->where('category_id', $datas['category_id'])->where(config('status.statuses.open_id'))->inRandomOrder()->first();
 
@@ -196,9 +196,9 @@ class PostController extends Controller
         //ランダム結果をお気に入りされてる数を取得
         $defaultCount = count($results->like);
 
-        //ログイン中のユーザーがランダム結果に対してお気に入りしている情報を取得
+        //ログイン中のユーザーがランダム結果に対してお気に入りしているlikeテーブルの情報を取得
         $defaultLiked = $results->like->where('user_id',$userAuth)->first();
-
+        //dd($defaultLiked);
         //ログイン中のユーザーがお気に入りしているか判定 、falseお気に入りしてない、trueお気に入りしてる
         if(empty($defaultLiked)){ 
             $defaultLiked == false;
@@ -226,7 +226,7 @@ class PostController extends Controller
 
         //ユーザーお気に入り投稿取得
         $favorites = Auth::user()->posts()->get();
-        //dd($posts);
+
         return view('mypage',[
             'user_id' => $user_id,
             'posts' => $posts,

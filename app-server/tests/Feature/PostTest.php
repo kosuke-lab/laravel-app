@@ -3,10 +3,8 @@
 namespace Tests\Feature;
 
 use App\Models\Post;
-use App\Models\Like;
 use App\Models\User;
 use Tests\TestCase;
-use Illuminate\Foundation\Testing\WithFaker;
 use Illuminate\Foundation\Testing\RefreshDatabase;
 
 class PostTest extends TestCase
@@ -14,7 +12,7 @@ class PostTest extends TestCase
 
     use RefreshDatabase;
 
-    //いいねをしているケース
+    //引数としてnullを渡した時、falseが返ってくること
     public function testIsLikedByNull()
     {
         $post = factory(Post::class)->create();
@@ -24,11 +22,13 @@ class PostTest extends TestCase
 
     }
 
-    //いいねをしていないケース
+    //いいねをしているケース
     public function testIsLikedByTheUser()
     {
         $post = factory(Post::class)->create();
         $user = factory(User::class)->create();
+
+        //attachを使って中間テーブルにデータを入れる
         $post->likes()->attach($user);
 
         $result = $post->isLikedBy($user);
@@ -36,6 +36,7 @@ class PostTest extends TestCase
         $this->assertTrue($result);
     }
 
+     //いいねをしていないケース
     public function testIsLikedByAnother()
     {
         $post = factory(Post::class)->create();
