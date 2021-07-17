@@ -245,15 +245,17 @@ class PostController extends Controller
     {
         $statuses = config('status.statuses');
 
+        ##アクセス制限の処理
         if(Gate::allows('admin')){
             $posts =Post::get();
             }else{
             return redirect('/');
             }
 
+         ##検索機能の処理   
          if ($request->filled('keyword')) {
              $keyword = $request->input('keyword');
-             $posts = Post::where('title', 'like', '%' . $keyword . '%')->paginate(20);
+             $posts = Post::where('title', 'like', "%$keyword%")->paginate(20);
             }else{
             $posts = Post::paginate(20);
          }
