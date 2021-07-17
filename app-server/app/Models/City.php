@@ -9,6 +9,8 @@ class City extends Model
     protected $fillable = [
         'post_id',
         'name',
+        'area',
+        'file_path',
     ];
 
     public function post(){

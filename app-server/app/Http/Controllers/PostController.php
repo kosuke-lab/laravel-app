@@ -16,7 +16,7 @@ class PostController extends Controller
 
     public function __construct()
     {
-        $this->middleware('auth')->except(['index','result','service','service']);
+        $this->middleware('auth')->except(['index','result','service']);
     }
     
     /**
@@ -27,7 +27,6 @@ class PostController extends Controller
         $city_all = City::get();
 
         $cities_center = $city_all->where('area', '都心');
-        $cities_subcenter = $city_all->where('area', '副都心');
         $cities_subcenter = $city_all->where('area', '副都心');
         $cities_east = $city_all->where('area', '東部');
         $cities_west = $city_all->where('area', '西部');
@@ -44,7 +43,6 @@ class PostController extends Controller
      /**
      *新規投稿画面
      */
-        
     public function create()
     {
         $cities = City::get()->pluck('name', 'id');
@@ -56,8 +54,61 @@ class PostController extends Controller
     }
 
      /**
-     *投稿編集画面
+     *新規投稿情報受け取り
      */
+    public function store(CreatePostRequest  $request)
+    {
+    
+     try{
+        $post_id = Post::create([
+            'title' => $request->input('title'),
+            'city_id'=>$request->input('city_id'),
+            'category_id'=>$request->input('category_id'),
+            'status_id'=>   config('status.status_id.close_id'),
+            'address'=>$request->input('address'),
+            'user_id'=> Auth()->id(),
+        ])->id;
+
+            //フォームから画像情報受け取り　画像ありの時の処理
+            $file = $request->file('image');
+            if (isset($file)) {
+                $file_name = $file->getClientOriginalName();
+
+                InterventionImage::make($file)
+                ->resize(440, 300, function ($constraint) {
+                    $constraint->aspectRatio();
+                })
+                ->save($file);
+
+                //minioへ画像アップロード
+                //$file_path = Storage::disk('minio')->putFile('/', new File($save_path), 'public');
+
+                //AWSへ画像アップロード
+             Post_image::create([
+                'file_name' => $file_name,
+                'file_path'=> $file->store('/', ['disk' => 's3', 'ACL' => 'public-read']),
+                 'post_id' =>  $post_id,
+            ]);
+            }else{
+                //画像なしの時の処理、デフォルトの画像を表示させる
+                Post_image::create([
+                    'file_name' => 'noimage',
+                    'file_path'=> 'noimage.png',
+                    'post_id' =>  $post_id,
+                ]);
+            }
+            session()->flash('msg_success', '投稿が完了しました。管理者の承認をお待ちください');
+            return redirect()->route('city.list');
+        } catch (\Exception $e) {
+                session()->flash('msg_danger', '失敗しました。');
+                return redirect()->route('post.new');
+        }
+}
+
+
+    /**
+     *投稿編集画面
+    */
     public function edit($post_id)
     {
         $post = Post::find($post_id);
@@ -125,59 +176,6 @@ class PostController extends Controller
             
     }
 
-    /**
-     *新規投稿情報受け取り
-     */
-
-    public function store(CreatePostRequest  $request)
-    {
-    
-     try{
-        $post_id = Post::create([
-            'title' => $request->input('title'),
-            'city_id'=>$request->input('city_id'),
-            'category_id'=>$request->input('category_id'),
-            'status_id'=>   config('status.status_id.close_id'),
-            'address'=>$request->input('address'),
-            'user_id'=> Auth()->id(),
-        ])->id;
-
-            //フォームから画像情報受け取り　画像ありの時の処理
-            $file = $request->file('image');
-            if (isset($file)) {
-                $file_name = $file->getClientOriginalName();
-
-                InterventionImage::make($file)
-                ->resize(440, 300, function ($constraint) {
-                    $constraint->aspectRatio();
-                })
-                ->save($file);
-
-                //minioへ画像アップロード
-                //$file_path = Storage::disk('minio')->putFile('/', new File($save_path), 'public');
-
-                //AWSへ画像アップロード
-             Post_image::create([
-                'file_name' => $file_name,
-                'file_path'=> $file->store('/', ['disk' => 's3', 'ACL' => 'public-read']),
-                 'post_id' =>  $post_id,
-            ]);
-            }else{
-                //画像なしの時の処理、デフォルトの画像を表示させる
-                Post_image::create([
-                    'file_name' => 'noimage',
-                    'file_path'=> 'noimage.png',
-                    'post_id' =>  $post_id,
-                ]);
-            }
-            session()->flash('msg_success', '投稿が完了しました。管理者の承認をお待ちください');
-            return redirect()->route('city.list');
-        } catch (\Exception $e) {
-                session()->flash('msg_danger', '失敗しました。');
-                return redirect()->route('post.new');
-        }
-}
-
 
 
      /**
@@ -188,9 +186,9 @@ class PostController extends Controller
         //セッションcity＿idの受け取り
         //$city_id = $request->session()->get('city_id');
         $datas = $request->input();
-        
+        //dd($datas);
         //ランダムでcity_idとcategory_idが一致するデータ呼び出し
-        $results = Post::where('city_id', $datas['cityId'])->where('category_id', $datas['category_id'])->where('status_id', 2)->inRandomOrder()->first();
+        $results = Post::where('city_id', $datas['cityId'])->where('category_id', $datas['category_id'])->where(config('status.statuses.open_id'))->inRandomOrder()->first();
 
         //user_id取得
         $userAuth = Auth::id();
@@ -202,11 +200,11 @@ class PostController extends Controller
         $defaultLiked = $results->like->where('user_id',$userAuth)->first();
 
         //ログイン中のユーザーがお気に入りしているか判定 、falseお気に入りしてない、trueお気に入りしてる
-            if(empty($defaultLiked)){ 
-                $defaultLiked == false;
-            }else{
-                $defaultLiked == true;
-            }
+        if(empty($defaultLiked)){ 
+            $defaultLiked == false;
+        }else{
+            $defaultLiked == true;
+        }
         
         return view('result',[
             'results' =>$results,
