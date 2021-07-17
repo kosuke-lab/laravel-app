@@ -1,6 +1,6 @@
 FROM node:14.2-alpine as node
 FROM nginx:1.18-alpine
-LABEL maintainer="ucan-lab <yes@u-can.pro>"
+LABEL maintainer="kosuke<k.12ap.m@gmail.com>"
 SHELL ["/bin/ash", "-oeux", "pipefail", "-c"]
 
 ENV TZ=UTC
