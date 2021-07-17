@@ -1,5 +1,5 @@
 FROM mysql/mysql-server:8.0
-LABEL maintainer="ucan-lab <yes@u-can.pro>"
+LABEL maintainer="kosuke<k.12ap.m@gmail.com>"
 
 ENV TZ=UTC
 
