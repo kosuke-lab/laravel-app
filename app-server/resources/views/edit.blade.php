@@ -11,7 +11,7 @@
 
 <div class="container main">
 
-<h1>お店編集</h1>
+<h1>編集</h1>
     @if ($errors->any())
         <div class="error">
             <ul class="error-space"> 

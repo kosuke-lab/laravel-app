@@ -7,9 +7,8 @@
 
 @section('content')
 <div class="container main">
-              <h1>投稿一覧</h1>
-              <p>{{ $user_id }}</p>
-
+    <h1>投稿一覧</h1>
+    
 <div class="wrapper">
     <div class="tabs">
     <div>
@@ -24,7 +23,7 @@
                         <p>{{ $post->title }}</p>
                         <p>{{ $post->address }}</p>
                             <div class="status">
-                            <p class="status-color">{{ $statuses[$post->status_id] }}</p>
+                                <p class="status-color">{{ $statuses[$post->status_id] }}</p>
                             </div>
                                 <div class="panel-button">
                                     <a href="{{ route('post.edit',$post->id)}}" class="btn btn-outline-primary">編集</a>
@@ -43,9 +42,13 @@
         </div>
     </div>
 </div>
- <a href="/">戻る</a>
+<div class="width-btn">
+        <div class="text-center">
+        <a href="/" class="btn btn-primary">戻る</a>
+        </div>
+</div>
 </div>
 
 </div>
 
-            @endsection
+@endsection
