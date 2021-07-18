@@ -23,6 +23,7 @@
 ・PHP 7.3
 ・Laravel 5.8
 ・MySQL 8.0
+・Vue2
 ・AWS
 　・EC2
 　・S3

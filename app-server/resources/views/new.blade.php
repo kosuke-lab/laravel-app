@@ -10,7 +10,7 @@
 @section('content')
 
 <div class="container main">
-<h1>新しいお店</h1>
+<h1>新規投稿</h1>
     @if ($errors->any())
         <div class="error">
             <ul class="error-space"> 
