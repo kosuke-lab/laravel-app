@@ -35,9 +35,6 @@ const app = new Vue({
         showContent: false
       },
       methods:{
-        clickEvent: function(){
-            this.$emit('from-child')
-           },
         openModal: function(){
           this.showContent = true
         },
