@@ -2095,15 +2095,7 @@ __webpack_require__.r(__webpack_exports__);
         id: 2
       }]
     };
-  } //         methods :{
-  //     // clickEvent: function(){
-  //     //   this.$emit('from-child')
-  //     //  }
-  //   },
-  //   stopEvent: function(){
-  //       event.stopPropagation()
-  //     }
-
+  }
 });
 
 /***/ }),
@@ -50159,9 +50151,6 @@ var app = new Vue({
     showContent: false
   },
   methods: {
-    clickEvent: function clickEvent() {
-      this.$emit('from-child');
-    },
     openModal: function openModal() {
       this.showContent = true;
     },

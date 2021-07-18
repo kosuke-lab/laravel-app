@@ -42,13 +42,5 @@
             ]
     };
   }
-//         methods :{
-//     // clickEvent: function(){
-//     //   this.$emit('from-child')
-//     //  }
-//   },
-//   stopEvent: function(){
-//       event.stopPropagation()
-//     }
     }
 </script>
