@@ -9,7 +9,7 @@
 @section('content')
 
 <div class="container main">
-         <h1>お店編集</h1>
+         <h1>管理者編集</h1>
          @if ($errors->any())
         <div class="error">
             <ul class="error-space"> 
