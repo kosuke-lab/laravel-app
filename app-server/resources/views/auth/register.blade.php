@@ -19,7 +19,7 @@
                 <div class="card-body">
                     <h4 class="card-title text-center mb-4 mt-1">新規登録</h4>
                     <hr>
-                    <p class="text-success text-center">Some message goes here</p>
+                    <p class="text-success text-center"></p>
                     <form method="POST" action="{{ route('register') }}">
                         @csrf
 
