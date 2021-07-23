@@ -222,17 +222,36 @@ class PostController extends Controller
     public function getuser($user_id)
     {
         $user_id =Auth()->id();
+
+        //ユーザーが投稿したデータを取得
         $posts = Post::where('user_id',$user_id)->get();
         $statuses = config('status.statuses');
 
         //ユーザーお気に入り投稿取得
         $favorites = Auth::user()->posts()->get();
+    
+         $defaultLiked = [];
+          foreach($favorites as $favo){
+              $defaultLiked[] = $favo->like->where('user_id',$user_id)->first();
+         }
+
+
+        //dd($defaultLiked);
+        //ログイン中のユーザーがお気に入りしているか判定 、falseお気に入りしてない、trueお気に入りしてる
+         if(empty($defaultLiked)){ 
+             $defaultLiked == false;
+         }else{
+             $defaultLiked == true;
+         }
+
 
         return view('mypage',[
             'user_id' => $user_id,
             'posts' => $posts,
             'favorites' => $favorites,
             'statuses' => $statuses,
+            'defaultLiked' =>$defaultLiked,
+
         ]);
     }
 
