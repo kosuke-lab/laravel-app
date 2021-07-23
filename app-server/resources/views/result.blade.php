@@ -25,7 +25,7 @@
                 @if (Route::has('login'))
                     @auth
                     <div class="col-md-6" id="app">
-                                <like-component :post-id="{{ json_encode($results->id) }}":user-id="{{ json_encode($userAuth) }}":default-liked="{{ json_encode($defaultLiked) }}":default-Count="{{ json_encode($defaultCount) }}"></like-component>
+                                <like-component :post-id="{{ json_encode($results->id) }}":user-id="{{ json_encode($userAuth) }}":default-liked="{{ json_encode($defaultLiked) }}"></like-component>
                             </div>
                     @else
                     @endauth
