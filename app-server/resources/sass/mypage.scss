@@ -39,19 +39,45 @@
   }
 }
 
+.like-after {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border-radius: 100px;
+  text-decoration: none;
+  padding: 0 24px;
+  width: 186px;
+  height: 40px;
+  margin-left: auto;
+  font-size: 12px;
+}
+
 .like-after::after{
           content :"";
           min-width:16px ;
           min-height: 16px;
-          margin-left: 8px;
+          margin-left: 12px;
           background: url(images/unlike-heart.svg); 
+}
+
+.liked-after {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border-radius: 100px;
+  text-decoration: none;
+  padding: 0 24px;
+  width: 186px;
+  height: 40px;
+  margin-left: auto;
+  font-size: 12px;
 }
 
 .liked-after::after{
           content :"";
           min-width:16px ;
           min-height: 16px;
-          margin-left: 8px;
+          margin-left: 12px;
           background: url(images/like-heart.svg); 
 }
 

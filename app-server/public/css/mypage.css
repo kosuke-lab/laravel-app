@@ -43,19 +43,45 @@
   border-radius: 30px;
 }
 
+.like-after {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border-radius: 100px;
+  text-decoration: none;
+  padding: 0 24px;
+  width: 186px;
+  height: 40px;
+  margin-left: auto;
+  font-size: 12px;
+}
+
 .like-after::after {
   content: "";
   min-width: 16px;
   min-height: 16px;
-  margin-left: 8px;
+  margin-left: 12px;
   background: url(/images/unlike-heart.svg?f7c205cbf83e60940c9c0c139174bdd2);
+}
+
+.liked-after {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border-radius: 100px;
+  text-decoration: none;
+  padding: 0 24px;
+  width: 186px;
+  height: 40px;
+  margin-left: auto;
+  font-size: 12px;
 }
 
 .liked-after::after {
   content: "";
   min-width: 16px;
   min-height: 16px;
-  margin-left: 8px;
+  margin-left: 12px;
   background: url(/images/like-heart.svg?5ad8a6c2fe200843810064bea3d06941);
 }
 
