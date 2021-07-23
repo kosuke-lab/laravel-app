@@ -1,22 +1,20 @@
 <template>
    <div>
-       <button v-if="!liked" type="button" class="btn btn-primary detail-btn like-after" @click="like(postId)">お気に入り登録 {{ likeCount }}</button>
-        <button v-else type="button" class="btn btn-primary detail-btn liked-after"  @click="unlike(postId)">お気に入り登録済み {{ likeCount }}  </button>
+       <button v-if="!liked" type="button" class="btn btn-primary detail-btn like-after" @click="like(postId)">お気に入り登録 </button>
+        <button v-else type="button" class="btn btn-primary detail-btn liked-after"  @click="unlike(postId)">お気に入り登録済み</button>
    </div>
 </template>
 
 <script>
         export default {
-        props: ['postId', 'userId', 'defaultLiked', 'defaultCount'],
+        props: ['postId', 'userId', 'defaultLiked'],
         data() {
             return {
                 liked: false,
-                likeCount: 0,
             };
         },
         created () {
             this.liked = this.defaultLiked
-            this.likeCount = this.defaultCount
         },
         methods: {
             like(postId) {
@@ -26,7 +24,6 @@
                 })
                 .then(response => {
                   this.liked = true
-                  this.likeCount = response.data.likeCount
                 })
                 .catch(error => {
                   alert(error)
@@ -39,7 +36,6 @@
                 })
                 .then(response => {
                   this.liked = false
-                  this.likeCount = response.data.likeCount
                 })
                 .catch(error => {
                   alert(error)
