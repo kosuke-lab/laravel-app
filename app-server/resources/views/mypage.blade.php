@@ -7,7 +7,7 @@
 
 @section('content')
 <div class="container main">
-    <h1>投稿一覧</h1>
+    <h1>マイページ</h1>
     
 <div class="wrapper">
     <div class="tabs">
@@ -33,12 +33,15 @@
             </div>
 
         <div class="tab_content" id="favorites_content">
+            <div id="app">
             @foreach ($favorites as $favorite)
                 <div class="linkpanel">
                     <p>{{ $favorite->title }}</p>
                     <p>{{ $favorite->address }}</p>
+                         <like-component :post-id="{{ json_encode($favorite->id) }}":user-id="{{ json_encode($user_id) }}":default-liked="{{ json_encode($defaultLiked) }}"></like-component>
                 </div>
-            @endforeach
+                @endforeach
+            </div>
         </div>
     </div>
 </div>
@@ -51,4 +54,5 @@
 
 </div>
 
+<script src="{{asset('js/app.js')}}"> </script>
 @endsection

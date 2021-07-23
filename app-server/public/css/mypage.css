@@ -43,6 +43,22 @@
   border-radius: 30px;
 }
 
+.like-after::after {
+  content: "";
+  min-width: 16px;
+  min-height: 16px;
+  margin-left: 8px;
+  background: url(/images/unlike-heart.svg?f7c205cbf83e60940c9c0c139174bdd2);
+}
+
+.liked-after::after {
+  content: "";
+  min-width: 16px;
+  min-height: 16px;
+  margin-left: 8px;
+  background: url(/images/like-heart.svg?5ad8a6c2fe200843810064bea3d06941);
+}
+
 /*タブ切り替え全体のスタイル*/
 
 .tabs {

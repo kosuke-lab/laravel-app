@@ -39,6 +39,22 @@
   }
 }
 
+.like-after::after{
+          content :"";
+          min-width:16px ;
+          min-height: 16px;
+          margin-left: 8px;
+          background: url(images/unlike-heart.svg); 
+}
+
+.liked-after::after{
+          content :"";
+          min-width:16px ;
+          min-height: 16px;
+          margin-left: 8px;
+          background: url(images/like-heart.svg); 
+}
+
 
 /*タブ切り替え全体のスタイル*/
 .tabs {
