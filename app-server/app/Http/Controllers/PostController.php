@@ -189,7 +189,7 @@ class PostController extends Controller
         $datas = $request->input();
 
         //ランダムでcity_idとcategory_idが一致するデータ呼び出し
-        $results = Post::where('city_id', $datas['cityId'])->where('category_id', $datas['category_id'])->where(config('status.statuses.open_id'))->inRandomOrder()->first();
+        $results = Post::where('city_id', $datas['cityId'])->where('category_id', $datas['category_id'])->where('status_id', 2)->inRandomOrder()->first();
 
         //user_id取得
         $userAuth = Auth::id();
