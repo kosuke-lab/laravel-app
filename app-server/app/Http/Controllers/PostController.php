@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Support\Facades\Auth;
+use App\Repositories\City\CityRepositoryInterface;
 use Gate;
 use App\Models\Post;
 use App\Models\City;
@@ -13,9 +14,13 @@ use InterventionImage;
 
 class PostController extends Controller
 {
+    private  $cityRepository;
 
-    public function __construct()
+    public function __construct(
+        CityRepositoryInterface $cityRepository
+        )
     {
+        $this->cityRepository = $cityRepository;
         $this->middleware('auth')->except(['index','result','service']);
     }
     
@@ -24,6 +29,8 @@ class PostController extends Controller
      */
     public function index()
     {
+        $city_test =  $this->cityRepository->getAllCity();
+        // dd($city_test);
         $city_all = City::get();
 
         $cities_center = $city_all->where('area', '都心');
